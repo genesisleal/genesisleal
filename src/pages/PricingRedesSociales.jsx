@@ -15,7 +15,7 @@ const plans = [
     popular: false,
     features: [
       { text: '2 redes sociales', subtext: 'Instagram + Facebook', included: true, icon: Instagram },
-      { text: '8 publicaciones/mes', subtext: '2 reels + carruseles o posts · Cliente provee recursos', included: true, icon: Calendar },
+      { text: '8 publicaciones/mes', subtext: '2 reels + carruseles o posts · Cliente provee el material grabado', included: true, icon: Calendar },
       { text: '12 historias/mes', subtext: 'Cliente provee recursos', included: true, icon: Sparkles },
       { text: '1 campaña Meta Ads', subtext: 'Configuración básica', included: true, icon: Target },
       { text: 'Calendario editorial', subtext: 'Planificación mensual', included: true, icon: Calendar },
@@ -39,7 +39,7 @@ const plans = [
     popular: true,
     features: [
       { text: '3 redes sociales', subtext: 'Instagram + Facebook + 1 más', included: true, icon: Instagram },
-      { text: '12 publicaciones/mes', subtext: '3 reels + carruseles o posts', included: true, icon: Calendar },
+      { text: '12 publicaciones/mes', subtext: '3 reels + carruseles o posts · Cliente provee el material grabado', included: true, icon: Calendar },
       { text: '15 historias/mes', subtext: 'Diseñadas + interactivas', included: true, icon: Sparkles },
       { text: '1 campaña Meta Ads', subtext: 'Configuración avanzada', included: true, icon: Target },
       { text: 'Calendario editorial', subtext: 'Planificación mensual', included: true, icon: Calendar },
@@ -64,7 +64,7 @@ const plans = [
     popular: false,
     features: [
       { text: 'Todas las plataformas', subtext: 'Las que tu negocio necesite', included: true, icon: Globe },
-      { text: '16 publicaciones/mes', subtext: '5 reels + carruseles o posts', included: true, icon: Calendar },
+      { text: '16 publicaciones/mes', subtext: '5 reels + carruseles o posts · Cliente provee el material grabado', included: true, icon: Calendar },
       { text: '20 historias/mes', subtext: 'Diseñadas + interactivas', included: true, icon: Sparkles },
       { text: '1 campaña Meta Ads', subtext: '2 configuraciones (audiencias + creatividades)', included: true, icon: Target },
       { text: 'Estrategia personalizada', subtext: 'Plan de contenido a medida', included: true, icon: Crown },

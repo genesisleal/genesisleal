@@ -22,7 +22,7 @@ const plans = [
       {
         icon: Calendar,
         title: '8 publicaciones/mes',
-        description: '3 reels + 2 carruseles + 3 posts. Contenido variado para mantener tu feed activo y atractivo.'
+        description: '3 reels + 2 carruseles + 3 posts. Contenido variado para mantener tu feed activo y atractivo. Cliente provee el material grabado.'
       },
       {
         icon: Video,
@@ -71,7 +71,7 @@ const plans = [
       {
         icon: Calendar,
         title: '12 publicaciones/mes',
-        description: '4 reels con guion estratégico + edición, 4 carruseles de 4-5 slides, 4 posts. Contenido profesional y variado.'
+        description: '4 reels con guion estratégico + edición, 4 carruseles de 4-5 slides, 4 posts. Contenido profesional y variado. Cliente provee el material grabado.'
       },
       {
         icon: Video,
@@ -108,12 +108,8 @@ const plans = [
         title: 'Reporte mensual',
         description: 'Métricas de publicidad y redes sociales. Análisis de rendimiento con recomendaciones para el próximo mes.'
       },
-      {
-        icon: Camera,
-        title: 'Creación de contenido',
-        description: 'Producción de fotos y videos dentro de CABA, o el cliente provee el material visual (fotos/videos).'
-      }
-    ]
+    ],
+    note: 'El cliente provee el material visual (fotos/videos).'
   },
   {
     name: 'Premium',
@@ -133,7 +129,7 @@ const plans = [
       {
         icon: Calendar,
         title: '16 publicaciones/mes',
-        description: '6 reels con guion estratégico + edición, 6 carruseles de 5-8 slides, 4 posts. Máxima presencia en el feed.'
+        description: '6 reels con guion estratégico + edición, 6 carruseles de 5-8 slides, 4 posts. Máxima presencia en el feed. Cliente provee el material grabado.'
       },
       {
         icon: Video,
@@ -171,16 +167,12 @@ const plans = [
         description: 'Métricas detalladas cada semana con análisis de tendencias, rendimiento y recomendaciones estratégicas.'
       },
       {
-        icon: Camera,
-        title: 'Creación de contenido',
-        description: 'Producción de fotos y videos dentro de CABA, o el cliente provee el material visual (fotos/videos).'
-      },
-      {
         icon: MapPin,
         title: 'Actualización Google Maps',
         description: '2 fotos o videos mensuales + respuesta de comentarios mensual en Google Maps. Mejora tu visibilidad local.'
       }
-    ]
+    ],
+    note: 'El cliente provee el material visual (fotos/videos).'
   }
 ]
 
