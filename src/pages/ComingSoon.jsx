@@ -102,7 +102,7 @@ export default function ComingSoon() {
               Volver a planes
             </Link>
             <a
-              href="https://wa.me/5491125490503?text=Hola! Quiero consultar sobre los planes"
+              href="https://wa.me/5491138851664?text=Hola! Quiero consultar sobre los planes"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.whatsappButton}

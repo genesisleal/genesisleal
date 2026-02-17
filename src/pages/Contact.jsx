@@ -13,8 +13,8 @@ const contactMethods = [
   {
     icon: <Phone size={24} />,
     title: 'WhatsApp',
-    value: '+54 11 2549 0503',
-    href: 'https://wa.me/5491125490503',
+    value: '+54 11 3885 1664',
+    href: 'https://wa.me/5491138851664',
   },
   {
     icon: <Linkedin size={24} />,
@@ -35,7 +35,7 @@ export default function Contact() {
     <>
       <SEO
         title="Contacto"
-        description="Contactá a Genesis Leal, Community Manager en Buenos Aires. WhatsApp: +54 11 2549 0503. Disponible para proyectos de redes sociales, Meta Ads y marketing digital."
+        description="Contactá a Genesis Leal, Community Manager en Buenos Aires. WhatsApp: +54 11 3885 1664. Disponible para proyectos de redes sociales, Meta Ads y marketing digital."
         path="/contacto"
       />
       <section className={styles.hero}>

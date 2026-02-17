@@ -527,7 +527,7 @@ export default function Portfolio1() {
                     Cada proyecto empieza con una conversación. Contame qué necesitás.
                   </p>
                   <a
-                    href="https://wa.me/5491125490503?text=Hola! Vi tu portafolio y me gustaría trabajar juntos"
+                    href="https://wa.me/5491138851664?text=Hola! Vi tu portafolio y me gustaría trabajar juntos"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.ctaButton}

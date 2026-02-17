@@ -308,7 +308,7 @@ function ServiceCard({ service, index }) {
         </ul>
 
         <a
-          href={`https://wa.me/5491125490503?text=Hola! Me interesa el servicio: ${service.name}`}
+          href={`https://wa.me/5491138851664?text=Hola! Me interesa el servicio: ${service.name}`}
           target="_blank"
           rel="noopener noreferrer"
           className={styles.ctaButton}
@@ -497,7 +497,7 @@ export default function Marketplace() {
                 </div>
               </div>
               <a
-                href="https://wa.me/5491125490503?text=Hola! Necesito un presupuesto personalizado"
+                href="https://wa.me/5491138851664?text=Hola! Necesito un presupuesto personalizado"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.customButton}
