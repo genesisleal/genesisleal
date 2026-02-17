@@ -21,13 +21,13 @@ const plans = [
       },
       {
         icon: Calendar,
-        title: '8 publicaciones/mes',
-        description: '3 reels + 2 carruseles + 3 posts. Contenido variado para mantener tu feed activo y atractivo. Cliente provee el material grabado.'
+        title: '6 publicaciones/mes',
+        description: '2 reels + 2 carruseles + 2 posts. Contenido variado para mantener tu feed activo y atractivo. Cliente provee el material grabado.'
       },
       {
         icon: Video,
-        title: '12 historias/mes',
-        description: 'Imagen estática o video corto con subtítulos. Contenido diario para mantener la interacción con tu audiencia.'
+        title: '8 historias/mes',
+        description: 'Imagen estática o video corto con subtítulos. Contenido para mantener la interacción con tu audiencia.'
       },
       {
         icon: Target,
@@ -70,12 +70,12 @@ const plans = [
       },
       {
         icon: Calendar,
-        title: '12 publicaciones/mes',
-        description: '4 reels con guion estratégico + edición, 4 carruseles de 4-5 slides, 4 posts. Contenido profesional y variado. Cliente provee el material grabado.'
+        title: '10 publicaciones/mes',
+        description: '3 reels con guion estratégico + edición, 4 carruseles de 4-5 slides, 3 posts. Contenido profesional y variado. Cliente provee el material grabado.'
       },
       {
         icon: Video,
-        title: '15 historias/mes diseñadas',
+        title: '10 historias/mes diseñadas',
         description: 'Imágenes estáticas o videos cortos con subtítulos. Diseño profesional y coherente con tu identidad visual.'
       },
       {
@@ -128,12 +128,12 @@ const plans = [
       },
       {
         icon: Calendar,
-        title: '16 publicaciones/mes',
-        description: '6 reels con guion estratégico + edición, 6 carruseles de 5-8 slides, 4 posts. Máxima presencia en el feed. Cliente provee el material grabado.'
+        title: '12 publicaciones/mes',
+        description: '4 reels con guion estratégico + edición, 5 carruseles de 5-8 slides, 3 posts. Máxima presencia en el feed. Cliente provee el material grabado.'
       },
       {
         icon: Video,
-        title: '20 historias/mes',
+        title: '15 historias/mes',
         description: 'Imágenes estáticas o videos cortos con subtítulos, hook y CTA estratégico. Diseño premium enfocado en conversión.'
       },
       {

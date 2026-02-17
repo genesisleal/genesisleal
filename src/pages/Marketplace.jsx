@@ -42,8 +42,8 @@ const services = [
     popular: false,
     features: [
       '2 redes sociales (IG + FB)',
-      '8 publicaciones/mes (cliente provee el material grabado)',
-      '12 historias/mes',
+      '6 publicaciones/mes (cliente provee el material grabado)',
+      '8 historias/mes',
       '1 campaña Meta Ads',
       'Calendario editorial',
       'Copywriting + hashtags',
@@ -65,8 +65,8 @@ const services = [
     popular: true,
     features: [
       '3 redes sociales',
-      '12 publicaciones/mes (cliente provee el material grabado)',
-      '15 historias/mes diseñadas',
+      '10 publicaciones/mes (cliente provee el material grabado)',
+      '10 historias/mes diseñadas',
       '1 campaña Meta Ads',
       'Calendario editorial',
       'Copywriting estratégico',
@@ -90,8 +90,8 @@ const services = [
     popular: false,
     features: [
       'Todas las plataformas',
-      '16 publicaciones/mes (cliente provee el material grabado)',
-      '20 historias/mes',
+      '12 publicaciones/mes (cliente provee el material grabado)',
+      '15 historias/mes',
       '1 campaña Meta Ads (2 config)',
       'Estrategia personalizada',
       'Copywriting avanzado',
