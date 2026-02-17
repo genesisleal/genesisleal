@@ -33,7 +33,7 @@ const plans = [
     subtitle: 'Para negocios en crecimiento',
     originalPrice: '650.000',
     priceARS: '500.000',
-    priceUSD: '335',
+    priceUSD: '350',
     discount: '23%',
     period: '/mes',
     popular: true,

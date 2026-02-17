@@ -59,7 +59,7 @@ const services = [
     description: 'Para negocios en crecimiento que buscan resultados consistentes.',
     price: 500000,
     originalPrice: 650000,
-    priceUSD: 335,
+    priceUSD: 350,
     discount: 23,
     period: '/mes',
     popular: true,
