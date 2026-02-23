@@ -21,7 +21,8 @@ const GitHubIcon = () => (
 
 const menuLinks = [
   { path: '/', label: 'Inicio' },
-  { path: '/portafolio', label: 'Experiencia' },
+  { path: '/experiencia', label: 'Experiencia' },
+  { path: '/portafolio', label: 'Portafolio' },
   { path: '/sobre-mi', label: 'Sobre mí' },
   { path: '/contacto', label: 'Contacto' },
 ]

@@ -67,7 +67,7 @@ export default function Portfolio() {
       <SEO
         title="Experiencia Profesional"
         description="Conocé mi experiencia como Community Manager: +5 años gestionando redes sociales, Meta Ads y estrategias digitales para marcas en Argentina, Chile y México."
-        path="/portafolio"
+        path="/experiencia"
       />
       <section className={styles.hero}>
         <div className="container">

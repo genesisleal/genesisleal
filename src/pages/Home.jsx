@@ -357,7 +357,7 @@ export default function Home() {
           </div>
 
           <div className={styles.portfolioLink}>
-            <Link to="/portafolio" className={styles.viewAllLink}>
+            <Link to="/experiencia" className={styles.viewAllLink}>
               Ver más experiencia <ArrowUpRight size={20} />
             </Link>
           </div>
