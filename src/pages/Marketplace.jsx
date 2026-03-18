@@ -332,8 +332,8 @@ export default function Marketplace() {
   return (
     <>
       <SEO
-        title="Servicios de Marketing Digital"
-        description="Explorá todos los servicios de Genesis Leal: gestión de redes sociales, publicidad digital, automatizaciones y contenido. Encontrá el plan perfecto para tu negocio."
+        title="Planes y Precios — Community Manager"
+        description="Planes de Community Manager desde $300.000 ARS/mes: gestión de redes sociales, Meta Ads, Google Ads y contenido digital. Consultá precios y elegí tu plan."
         path="/planes"
       />
 

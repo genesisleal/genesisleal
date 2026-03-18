@@ -198,8 +198,8 @@ export default function PlanDetailRedesSociales() {
   return (
     <>
       <SEO
-        title="Detalle de Planes de Redes Sociales"
-        description="Conocé en detalle qué incluye cada plan de gestión de redes sociales. Comparación completa de servicios, features y condiciones de pago."
+        title="Planes de Redes Sociales — Detalle y Precios"
+        description="Compará los planes de gestión de redes sociales: Standard, Pro y Premium desde $300.000 ARS/mes. Incluye publicaciones, historias, Meta Ads y reportes."
         path="/planes/detalleredessociales"
       />
       <main className={styles.page}>

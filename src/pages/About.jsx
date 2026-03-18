@@ -78,8 +78,8 @@ export default function About() {
   return (
     <>
       <SEO
-        title="Sobre Mí"
-        description="Conocé a Genesis Leal: Community Manager venezolana en Buenos Aires con experiencia en Chile, México y Argentina. Especialista en Meta Ads y estrategias digitales."
+        title="Sobre Genesis Leal — Community Manager Buenos Aires"
+        description="Conocé a Genesis Leal: Community Manager en Buenos Aires con más de 5 años de experiencia en Meta Ads, redes sociales y estrategias digitales. Consultá ahora."
         path="/sobre-mi"
       />
       <section className={styles.hero}>
@@ -125,7 +125,7 @@ export default function About() {
                 onMouseLeave={handleMouseLeave}
                 data-cursor-hover
               >
-                <img src={genesisProfile} alt="Genesis Leal" />
+                <img src={genesisProfile} alt="Genesis Leal, Community Manager en Buenos Aires especializada en redes sociales y Meta Ads" />
                 <div className={styles.imageShine} />
               </motion.div>
             </motion.div>

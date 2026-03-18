@@ -34,8 +34,8 @@ export default function Contact() {
   return (
     <>
       <SEO
-        title="Contacto"
-        description="Contactá a Genesis Leal, Community Manager en Buenos Aires. WhatsApp: +54 11 3885 1664. Disponible para proyectos de redes sociales, Meta Ads y marketing digital."
+        title="Contacto — Community Manager Buenos Aires"
+        description="Contactá a Genesis Leal, Community Manager en Buenos Aires. WhatsApp: +54 11 3885 1664. Disponible para redes sociales, Meta Ads y marketing digital."
         path="/contacto"
       />
       <section className={styles.hero}>

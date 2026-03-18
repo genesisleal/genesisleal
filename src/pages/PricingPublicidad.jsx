@@ -79,8 +79,8 @@ export default function PricingPublicidad() {
   return (
     <>
       <SEO
-        title="Precios Publicidad Digital"
-        description="Planes de Meta Ads y Google Ads en Buenos Aires desde $180.000 ARS/mes. Campañas optimizadas para ROAS, remarketing y estrategias de conversión."
+        title="Precios Meta Ads y Google Ads — Publicidad Digital"
+        description="Planes de publicidad digital desde $180.000 ARS/mes: Meta Ads, Google Ads, remarketing y A/B testing en Buenos Aires. Consultá precios y elegí tu plan."
         path="/precios/publicidad"
       />
       <main className={styles.pricingPage}>

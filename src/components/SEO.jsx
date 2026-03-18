@@ -11,7 +11,9 @@ export default function SEO({
   image = '/og-image.png',
   type = 'website'
 }) {
-  const fullTitle = title ? `${title} | Genesis Leal` : DEFAULT_TITLE
+  const fullTitle = title
+    ? (title.includes('Genesis Leal') ? title : `${title} | Genesis Leal`)
+    : DEFAULT_TITLE
   const fullUrl = `${SITE_URL}${path}`
   const fullImage = image.startsWith('http') ? image : `${SITE_URL}${image}`
 
