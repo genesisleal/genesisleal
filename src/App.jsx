@@ -9,9 +9,12 @@ import PortfolioComingSoon from './pages/PortfolioComingSoon'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import PricingPublicidad from './pages/PricingPublicidad'
+import Oferta from './pages/Oferta'
 import Marketplace from './pages/Marketplace'
 import PlanDetailRedesSociales from './pages/PlanDetailRedesSociales'
 import ComingSoon from './pages/ComingSoon'
+
+const BARE_ROUTES = ['/oferta']
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -23,13 +26,20 @@ function ScrollToTop() {
   return null
 }
 
-function App() {
+function Layout() {
+  const { pathname } = useLocation()
+  const isBare = BARE_ROUTES.includes(pathname)
+
+  useEffect(() => {
+    document.body.classList.toggle('bare-route', isBare)
+    return () => document.body.classList.remove('bare-route')
+  }, [isBare])
+
   return (
-    <Router>
-      <ScrollToTop />
-      <CustomCursor />
-      <Header />
-      <main style={{ paddingTop: 'var(--header-height)' }}>
+    <>
+      {!isBare && <CustomCursor />}
+      {!isBare && <Header />}
+      <main style={{ paddingTop: isBare ? 0 : 'var(--header-height)' }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/experiencia" element={<Portfolio />} />
@@ -37,12 +47,22 @@ function App() {
           <Route path="/sobre-mi" element={<About />} />
           <Route path="/contacto" element={<Contact />} />
           <Route path="/precios/publicidad" element={<PricingPublicidad />} />
+          <Route path="/oferta" element={<Oferta />} />
           <Route path="/planes" element={<Marketplace />} />
           <Route path="/planes/detalleredessociales" element={<PlanDetailRedesSociales />} />
           <Route path="/planes/proximamente" element={<ComingSoon />} />
         </Routes>
       </main>
-      <Footer />
+      {!isBare && <Footer />}
+    </>
+  )
+}
+
+function App() {
+  return (
+    <Router>
+      <ScrollToTop />
+      <Layout />
     </Router>
   )
 }
