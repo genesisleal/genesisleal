@@ -35,6 +35,7 @@ const planFeatures = [
   '3 redes sociales: Instagram + Facebook + 1 más',
   '10 publicaciones/mes: 3 reels + 4 carruseles + 3 posts',
   '10 historias/mes diseñadas e interactivas',
+  'El cliente provee el material de imágenes y videos a editar',
   '2 campañas de Meta Ads al mes con configuración avanzada',
   'Calendario editorial y copywriting estratégico',
   'Programación y publicación automática',
@@ -253,6 +254,11 @@ export default function Oferta() {
               Compromiso mínimo de 3 meses para ver resultados. La inversión
               publicitaria de Meta se paga aparte, directo a Meta. Precio de
               lanzamiento vigente sobre el valor regular de $650.000 ARS.
+            </p>
+
+            <p className={styles.finePrintAlert}>
+              Si las redes sociales o la cuenta publicitaria todavía no están
+              creadas, su creación y configuración se cobran aparte.
             </p>
           </motion.article>
         </motion.section>
