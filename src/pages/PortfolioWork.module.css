@@ -359,6 +359,105 @@
   padding-left: 3px;
 }
 
+.carouselPreview {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: min(100%, 340px);
+  margin: 0 auto;
+  aspect-ratio: 4 / 5;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.carouselFrame {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  transition: transform var(--transition-base);
+}
+
+.carouselPreview:hover .carouselFrame {
+  transform: translateY(-4px);
+}
+
+.carouselCover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.carouselDots {
+  position: absolute;
+  z-index: 3;
+  bottom: var(--spacing-3);
+  right: var(--spacing-3);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cDot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--border-radius-full);
+  background: rgba(255, 255, 255, 0.55);
+  transition: width var(--transition-fast), background var(--transition-fast);
+}
+
+.cDotActive {
+  width: 16px;
+  background: #ffffff;
+}
+
+.stackA,
+.stackB {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--border-radius-lg);
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow);
+}
+
+.stackA {
+  z-index: 1;
+  transform: rotate(3deg) translate(10px, 6px);
+}
+
+.stackB {
+  z-index: 0;
+  transform: rotate(6deg) translate(20px, 12px);
+}
+
+.carouselBadge {
+  position: absolute;
+  z-index: 3;
+  bottom: var(--spacing-3);
+  left: var(--spacing-3);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: var(--font-weight-semibold);
+  color: #ffffff;
+  background: rgba(20, 20, 28, 0.62);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 5px 11px;
+  border-radius: var(--border-radius-full);
+}
+
 .lightbox {
   position: fixed;
   inset: 0;
@@ -370,6 +469,87 @@
   background: rgba(15, 12, 24, 0.85);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+}
+
+.viewerCarousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4);
+  max-width: 100%;
+}
+
+.viewerStage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-4);
+}
+
+.vSlide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vSlide img {
+  max-height: 74vh;
+  max-width: min(82vw, 430px);
+  object-fit: contain;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-xl);
+  display: block;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.arrow:hover {
+  background: #ffffff;
+  transform: scale(1.08);
+}
+
+.slideCaption {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: rgba(255, 255, 255, 0.92);
+  text-align: center;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: var(--border-radius-full);
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: background var(--transition-fast), width var(--transition-fast);
+}
+
+.dotActive {
+  width: 22px;
+  background: #ffffff;
 }
 
 .lightboxInner {
@@ -468,10 +648,36 @@
   }
 }
 
+@media (max-width: 600px) {
+  .viewerStage {
+    gap: var(--spacing-2);
+  }
+
+  .arrow {
+    position: absolute;
+    z-index: 3;
+    width: 40px;
+    height: 40px;
+  }
+
+  .arrow:first-of-type {
+    left: 6px;
+  }
+
+  .arrow:last-of-type {
+    right: 6px;
+  }
+
+  .vSlide img {
+    max-width: 84vw;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .window,
   .phone,
-  .btnPrimary {
+  .btnPrimary,
+  .carouselCover {
     transition: none;
   }
 }
