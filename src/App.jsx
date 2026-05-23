@@ -13,6 +13,7 @@ import Oferta from './pages/Oferta'
 import Marketplace from './pages/Marketplace'
 import PlanDetailRedesSociales from './pages/PlanDetailRedesSociales'
 import ComingSoon from './pages/ComingSoon'
+import NotFound from './pages/NotFound'
 
 const BARE_ROUTES = ['/oferta']
 
@@ -51,6 +52,7 @@ function Layout() {
           <Route path="/planes" element={<Marketplace />} />
           <Route path="/planes/detalleredessociales" element={<PlanDetailRedesSociales />} />
           <Route path="/planes/proximamente" element={<ComingSoon />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       {!isBare && <Footer />}
