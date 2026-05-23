@@ -137,7 +137,7 @@ export default function Oferta() {
 
               <motion.p className={styles.lede} variants={fadeUp}>
                 Estrategia, contenido y Meta Ads para que tus redes te traigan
-                clientes reales — sin que tengas que estar encima todos los días.
+                clientes reales, sin que tengas que estar encima todos los días.
               </motion.p>
 
               <motion.div className={styles.heroCta} variants={fadeUp}>
