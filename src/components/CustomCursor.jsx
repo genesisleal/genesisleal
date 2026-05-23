@@ -31,7 +31,8 @@ export default function CustomCursor() {
     const handleMouseUp = () => setIsClicking(false)
 
     const handleHoverStart = (e) => {
-      if (e.target.closest('a, button, [data-cursor-hover]')) {
+      const el = e.target.closest('a, button, [data-cursor-hover]')
+      if (el && !el.closest('[data-cursor-ignore]')) {
         setIsHovering(true)
       }
     }

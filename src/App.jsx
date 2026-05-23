@@ -5,7 +5,7 @@ import Footer from './components/Footer'
 import CustomCursor from './components/CustomCursor'
 import Home from './pages/Home'
 import Portfolio from './pages/Portfolio'
-import PortfolioComingSoon from './pages/PortfolioComingSoon'
+import PortfolioWork from './pages/PortfolioWork'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import PricingPublicidad from './pages/PricingPublicidad'
@@ -44,7 +44,7 @@ function Layout() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/experiencia" element={<Portfolio />} />
-          <Route path="/portafolio" element={<PortfolioComingSoon />} />
+          <Route path="/portafolio" element={<PortfolioWork />} />
           <Route path="/sobre-mi" element={<About />} />
           <Route path="/contacto" element={<Contact />} />
           <Route path="/precios/publicidad" element={<PricingPublicidad />} />
