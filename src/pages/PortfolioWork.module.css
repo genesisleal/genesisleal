@@ -2,6 +2,7 @@
   max-width: 1140px;
   margin: 0 auto;
   padding: var(--spacing-12) var(--spacing-5) var(--spacing-24);
+  overflow-x: clip;
 }
 
 .hero {
@@ -796,6 +797,10 @@
 
   .statValue {
     font-size: var(--font-size-2xl);
+  }
+
+  .reelCombo .phone {
+    right: 0;
   }
 }
 
