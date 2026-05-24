@@ -306,18 +306,61 @@
   z-index: 3;
   width: clamp(116px, 32%, 168px);
   aspect-ratio: 9 / 16;
-  padding: 0;
-  border-radius: 24px;
-  border: 5px solid #15131c;
-  background: #15131c;
+  padding: 5px;
+  border-radius: 26px;
+  background: linear-gradient(150deg, #3a3a44 0%, #15131c 26%, #15131c 74%, #3a3a44 100%);
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 0 22px 44px -14px rgba(21, 19, 28, 0.6);
+  box-shadow: 0 22px 44px -14px rgba(21, 19, 28, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.12);
   transition: transform var(--transition-base);
 }
 
 .phone:hover {
   transform: translateY(-4px);
+}
+
+.reelSolo {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: min(100%, 270px);
+  margin: 0 auto;
+  aspect-ratio: 9 / 16;
+  padding: 6px;
+  border-radius: 30px;
+  background: linear-gradient(150deg, #3a3a44 0%, #15131c 26%, #15131c 74%, #3a3a44 100%);
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 26px 52px -18px rgba(21, 19, 28, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  transition: transform var(--transition-base);
+}
+
+.reelSolo:hover {
+  transform: translateY(-4px);
+}
+
+.reelCombo {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 320px);
+  margin: 0 auto;
+}
+
+.reelCombo .carouselPreview {
+  width: 100%;
+  margin: 0;
+}
+
+.reelCombo .phone {
+  position: absolute;
+  right: -14px;
+  bottom: -16px;
+  width: 46%;
+  max-width: 148px;
+}
+
+.reelCombo .carouselDots {
+  display: none;
 }
 
 .notch {
@@ -337,7 +380,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 19px;
+  border-radius: 21px;
   display: block;
 }
 
@@ -500,6 +543,38 @@
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-xl);
   display: block;
+}
+
+.phoneMock {
+  position: relative;
+  height: 78vh;
+  aspect-ratio: 9 / 16.6;
+  padding: 10px;
+  border-radius: 44px;
+  background: linear-gradient(150deg, #3c3c46 0%, #15131c 24%, #15131c 76%, #3c3c46 100%);
+  box-shadow: 0 30px 70px -22px rgba(0, 0, 0, 0.7), inset 0 0 0 1.5px rgba(255, 255, 255, 0.14);
+}
+
+.mockVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 35px;
+  background: #000000;
+  display: block;
+}
+
+.island {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: 28%;
+  max-width: 92px;
+  height: 19px;
+  background: #000000;
+  border-radius: var(--border-radius-full);
 }
 
 .arrow {
@@ -670,6 +745,13 @@
 
   .vSlide img {
     max-width: 84vw;
+  }
+
+  .phoneMock {
+    height: auto;
+    width: min(74vw, 290px);
+    padding: 8px;
+    border-radius: 38px;
   }
 }
 

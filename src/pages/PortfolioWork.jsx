@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
-import { Play, X, ChevronLeft, ChevronRight, Megaphone, Layers, Sparkles } from 'lucide-react'
+import { Play, X, ChevronLeft, ChevronRight, ExternalLink, Megaphone, Layers, Sparkles } from 'lucide-react'
 import SEO from '../components/SEO'
 import styles from './PortfolioWork.module.css'
 
@@ -18,6 +18,18 @@ import carruselDiseno from '../assets/images/portfolio/carrusel-victorino-diseno
 import carruselAlcance from '../assets/images/portfolio/carrusel-victorino-alcance.png'
 import carruselCrecimiento from '../assets/images/portfolio/carrusel-victorino-crecimiento.png'
 import carruselInteracciones from '../assets/images/portfolio/carrusel-victorino-interacciones.png'
+import carruselBigbangLinkedin from '../assets/images/portfolio/carrusel-bigbang-linkedin.png'
+import carruselBigbangCanva from '../assets/images/portfolio/carrusel-bigbang-canva.png'
+import reelViral from '../assets/videos/reel-viral.mp4'
+import reelViralPoster from '../assets/images/portfolio/reel-viral-poster.jpg'
+import reelViralGuion from '../assets/images/portfolio/reel-viral-guion.png'
+import reelViralAnalisis from '../assets/images/portfolio/reel-viral-analisis.png'
+import reelViralVisualizaciones from '../assets/images/portfolio/reel-viral-visualizaciones.png'
+import reelViralInteracciones from '../assets/images/portfolio/reel-viral-interacciones.png'
+import reelMaje from '../assets/videos/reel-maje.mp4'
+import reelMajePoster from '../assets/images/portfolio/reel-maje-poster.jpg'
+import reelInnvoiceMarca from '../assets/videos/reel-innvoice-marca.mp4'
+import reelInnvoiceMarcaPoster from '../assets/images/portfolio/reel-innvoice-marca-poster.jpg'
 
 const works = [
   {
@@ -84,6 +96,65 @@ const works = [
       { img: carruselCrecimiento, caption: 'Crecimiento del alcance en el tiempo' },
       { img: carruselInteracciones, caption: 'Interacciones y público alcanzado' }
     ]
+  },
+  {
+    id: 'carrusel-bigbang',
+    types: ['carousel'],
+    kicker: 'Caso · Carrusel de LinkedIn',
+    client: 'Contenido propio · LinkedIn',
+    title: 'Carrusel educativo en LinkedIn con +87K impresiones',
+    desc: 'Desarrollé el carrusel completo: idea, concepto, copy, diseño de las 8 diapositivas y optimización para LinkedIn. Expliqué de forma entretenida por qué algunas personas avanzan en su carrera y otras se estancan, usando a los personajes de The Big Bang Theory como metáfora.',
+    stats: [
+      { value: '+87K', label: 'impresiones' },
+      { value: '165', label: 'veces compartido' }
+    ],
+    link: 'https://www.linkedin.com/posts/genesisleal19_the-big-bang-theory-tiene-una-verdad-inc%C3%B3moda-ugcPost-7399069756080947201-NTSn/',
+    cover: carruselBigbangLinkedin,
+    slides: [
+      { img: carruselBigbangLinkedin, caption: 'Publicado en LinkedIn · +87K impresiones · 165 compartidos' },
+      { img: carruselBigbangCanva, caption: 'Concepto y diseño del carrusel en Canva' }
+    ]
+  },
+  {
+    id: 'reel-viral-christian',
+    types: ['video'],
+    kicker: 'Caso · Reel · De la idea al viral',
+    client: 'Christian · Barbería',
+    title: 'De la idea al viral: 89K visualizaciones y +1.800 seguidores',
+    desc: 'Planifiqué, produje y optimicé este reel de punta a punta: guion, dirección de la grabación y análisis del rendimiento. Superó las 89.000 visualizaciones y sumó 1.802 seguidores nuevos, con el 94% del alcance en cuentas que todavía no la seguían.',
+    stats: [
+      { value: '89.465', label: 'visualizaciones' },
+      { value: '+1.802', label: 'seguidores nuevos' }
+    ],
+    video: reelViral,
+    poster: reelViralPoster,
+    slides: [
+      { img: reelViralGuion, caption: 'Guion y planificación del contenido' },
+      { video: reelViral, poster: reelViralPoster, caption: 'Grabación y dirección del video' },
+      { img: reelViralAnalisis, caption: 'Análisis inicial del rendimiento' },
+      { img: reelViralVisualizaciones, caption: 'Visualizaciones totales del reel' },
+      { img: reelViralInteracciones, caption: 'Interacciones y nuevos seguidores' }
+    ]
+  },
+  {
+    id: 'edicion-maje',
+    types: ['video'],
+    kicker: 'Caso · Edición de reel',
+    client: 'Maje',
+    title: 'Reel publicitario editado de punta a punta',
+    desc: 'Guion y edición completa del reel: estructura del mensaje, ritmo, cortes y musicalización pensados para sostener la atención de principio a fin.',
+    video: reelMaje,
+    poster: reelMajePoster
+  },
+  {
+    id: 'edicion-innvoice',
+    types: ['video'],
+    kicker: 'Caso · Edición de reel',
+    client: 'Innvoice · Facturación electrónica, Perú',
+    title: 'Reel de marca para un SaaS de facturación',
+    desc: 'Guion y edición de un reel de marca: claridad del mensaje, ritmo dinámico y un cierre con llamada a la acción, para comunicar el valor del producto.',
+    video: reelInnvoiceMarca,
+    poster: reelInnvoiceMarcaPoster
   }
 ]
 
@@ -122,7 +193,7 @@ function CarouselPreview({ work, onOpen }) {
         <AnimatePresence>
           <motion.img
             key={idx}
-            src={work.slides[idx].img}
+            src={work.slides[idx].img || work.slides[idx].poster}
             alt={work.slides[idx].caption}
             className={styles.carouselCover}
             initial={{ opacity: 0 }}
@@ -148,7 +219,7 @@ function CarouselPreview({ work, onOpen }) {
 }
 
 function Viewer({ item, onClose }) {
-  const [idx, setIdx] = useState(0)
+  const [idx, setIdx] = useState(item.startIndex || 0)
   const slides = item.slides || []
   const total = slides.length
   const isCarousel = item.kind === 'carousel'
@@ -195,15 +266,36 @@ function Viewer({ item, onClose }) {
 
             <div className={styles.vSlide}>
               <AnimatePresence mode="wait">
-                <motion.img
-                  key={idx}
-                  src={slides[idx].img}
-                  alt={slides[idx].caption}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.25 }}
-                />
+                {slides[idx].video ? (
+                  <motion.div
+                    key={idx}
+                    className={styles.phoneMock}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.25 }}
+                  >
+                    <span className={styles.island} aria-hidden />
+                    <video
+                      className={styles.mockVideo}
+                      src={slides[idx].video}
+                      poster={slides[idx].poster}
+                      controls
+                      autoPlay
+                      playsInline
+                    />
+                  </motion.div>
+                ) : (
+                  <motion.img
+                    key={idx}
+                    src={slides[idx].img}
+                    alt={slides[idx].caption}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.25 }}
+                  />
+                )}
               </AnimatePresence>
             </div>
 
@@ -243,14 +335,17 @@ function Viewer({ item, onClose }) {
           onClick={(e) => e.stopPropagation()}
         >
           {item.kind === 'video' ? (
-            <video
-              className={styles.lightboxVideo}
-              src={item.video}
-              poster={item.poster}
-              controls
-              autoPlay
-              playsInline
-            />
+            <div className={styles.phoneMock}>
+              <span className={styles.island} aria-hidden />
+              <video
+                className={styles.mockVideo}
+                src={item.video}
+                poster={item.poster}
+                controls
+                autoPlay
+                playsInline
+              />
+            </div>
           ) : (
             <img className={styles.lightboxImg} src={item.image} alt={item.title} />
           )}
@@ -330,25 +425,56 @@ export default function PortfolioWork() {
                 <p className={styles.client}>{w.client}</p>
                 <p className={styles.desc}>{w.desc}</p>
 
-                <div className={styles.stats}>
-                  {w.stats.map((s) => (
-                    <div key={s.label} className={styles.stat}>
-                      <span className={styles.statValue}>{s.value}</span>
-                      <span className={styles.statLabel}>{s.label}</span>
-                    </div>
-                  ))}
-                </div>
+                {w.stats && (
+                  <div className={styles.stats}>
+                    {w.stats.map((s) => (
+                      <div key={s.label} className={styles.stat}>
+                        <span className={styles.statValue}>{s.value}</span>
+                        <span className={styles.statLabel}>{s.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
 
                 <div className={styles.actions}>
                   {w.slides ? (
-                    <button
-                      type="button"
-                      className={styles.btnPrimary}
-                      onClick={() => setActive({ ...w, kind: 'carousel' })}
-                    >
-                      <Layers size={16} strokeWidth={2} />
-                      Ver el carrusel
-                    </button>
+                    <>
+                      {w.video && (
+                        <button
+                          type="button"
+                          className={styles.btnPrimary}
+                          onClick={() =>
+                            setActive({
+                              ...w,
+                              kind: 'carousel',
+                              startIndex: w.slides.findIndex((s) => s.video)
+                            })
+                          }
+                        >
+                          <Play size={16} fill="currentColor" strokeWidth={0} />
+                          Ver el reel
+                        </button>
+                      )}
+                      {w.link && (
+                        <a
+                          className={styles.btnPrimary}
+                          href={w.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <ExternalLink size={16} strokeWidth={2} />
+                          Ver en LinkedIn
+                        </a>
+                      )}
+                      <button
+                        type="button"
+                        className={w.video || w.link ? styles.btnGhost : styles.btnPrimary}
+                        onClick={() => setActive({ ...w, kind: 'carousel' })}
+                      >
+                        <Layers size={16} strokeWidth={2} />
+                        {w.video ? 'Ver el proceso' : w.link ? 'Ver capturas' : 'Ver el carrusel'}
+                      </button>
+                    </>
                   ) : (
                     <>
                       <button
@@ -359,13 +485,15 @@ export default function PortfolioWork() {
                         <Play size={16} fill="currentColor" strokeWidth={0} />
                         Ver el reel
                       </button>
-                      <button
-                        type="button"
-                        className={styles.btnGhost}
-                        onClick={() => setActive({ ...w, kind: 'image' })}
-                      >
-                        Ver resultados
-                      </button>
+                      {w.image && (
+                        <button
+                          type="button"
+                          className={styles.btnGhost}
+                          onClick={() => setActive({ ...w, kind: 'image' })}
+                        >
+                          Ver resultados
+                        </button>
+                      )}
                     </>
                   )}
                 </div>
@@ -375,12 +503,37 @@ export default function PortfolioWork() {
                 <div className={styles.composition}>
                   <div className={styles.accentPanel} aria-hidden />
 
-                  {w.slides ? (
+                  {w.video && w.slides ? (
+                    <div className={styles.reelCombo}>
+                      <CarouselPreview
+                        work={w}
+                        onOpen={() => setActive({ ...w, kind: 'carousel' })}
+                      />
+                      <button
+                        type="button"
+                        className={styles.phone}
+                        onClick={() =>
+                          setActive({
+                            ...w,
+                            kind: 'carousel',
+                            startIndex: w.slides.findIndex((s) => s.video)
+                          })
+                        }
+                        aria-label={`Reproducir ${w.title}`}
+                      >
+                        <span className={styles.notch} aria-hidden />
+                        <img src={w.poster} alt={w.title} className={styles.phonePoster} />
+                        <span className={styles.play}>
+                          <Play size={20} fill="currentColor" strokeWidth={0} />
+                        </span>
+                      </button>
+                    </div>
+                  ) : w.slides ? (
                     <CarouselPreview
                       work={w}
                       onOpen={() => setActive({ ...w, kind: 'carousel' })}
                     />
-                  ) : (
+                  ) : w.image ? (
                     <>
                       <button
                         type="button"
@@ -409,6 +562,19 @@ export default function PortfolioWork() {
                         </span>
                       </button>
                     </>
+                  ) : (
+                    <button
+                      type="button"
+                      className={styles.reelSolo}
+                      onClick={() => setActive({ ...w, kind: 'video' })}
+                      aria-label={`Reproducir ${w.title}`}
+                    >
+                      <span className={styles.notch} aria-hidden />
+                      <img src={w.poster} alt={w.title} className={styles.phonePoster} />
+                      <span className={styles.play}>
+                        <Play size={26} fill="currentColor" strokeWidth={0} />
+                      </span>
+                    </button>
                   )}
                 </div>
               </div>
