@@ -12,6 +12,7 @@ import PricingPublicidad from './pages/PricingPublicidad'
 import Oferta from './pages/Oferta'
 import Marketplace from './pages/Marketplace'
 import PlanDetailRedesSociales from './pages/PlanDetailRedesSociales'
+import PlanDetailAds from './pages/PlanDetailAds'
 import ComingSoon from './pages/ComingSoon'
 import NotFound from './pages/NotFound'
 
@@ -51,6 +52,7 @@ function Layout() {
           <Route path="/oferta" element={<Oferta />} />
           <Route path="/planes" element={<Marketplace />} />
           <Route path="/planes/detalleredessociales" element={<PlanDetailRedesSociales />} />
+          <Route path="/planes/detallepublicidad" element={<PlanDetailAds />} />
           <Route path="/planes/proximamente" element={<ComingSoon />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
