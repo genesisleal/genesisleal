@@ -17,7 +17,8 @@ export default function SEO({
   const fullTitle = title
     ? (title.includes('Genesis Leal') ? title : `${title} | Genesis Leal`)
     : DEFAULT_TITLE
-  const fullUrl = `${SITE_URL}${path}`
+  const normalizedPath = path && path !== '/' ? `${path.replace(/\/$/, '')}/` : '/'
+  const fullUrl = `${SITE_URL}${normalizedPath}`
   const fullImage = image.startsWith('http') ? image : `${SITE_URL}${image}`
 
   useEffect(() => {
