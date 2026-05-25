@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
-import { Play, X, ChevronLeft, ChevronRight, ExternalLink, Megaphone, Layers, Sparkles } from 'lucide-react'
+import { Play, X, ChevronLeft, ChevronRight, ExternalLink, Megaphone, Layers, Sparkles, Globe } from 'lucide-react'
 import SEO from '../components/SEO'
 import styles from './PortfolioWork.module.css'
 
@@ -30,6 +30,13 @@ import reelMaje from '../assets/videos/reel-maje.mp4'
 import reelMajePoster from '../assets/images/portfolio/reel-maje-poster.jpg'
 import reelInnvoiceMarca from '../assets/videos/reel-innvoice-marca.mp4'
 import reelInnvoiceMarcaPoster from '../assets/images/portfolio/reel-innvoice-marca-poster.jpg'
+import reelMilena from '../assets/videos/reel-milena.mp4'
+import reelMilenaPoster from '../assets/images/portfolio/reel-milena-poster.jpg'
+import reelIndexa from '../assets/videos/reel-indexa.mp4'
+import reelIndexaPoster from '../assets/images/portfolio/reel-indexa-poster.jpg'
+import landingGenesis from '../assets/images/portfolio/landing-genesisleal.png'
+import landingInnvoice from '../assets/images/portfolio/landing-innvoice.png'
+import landingBernal from '../assets/images/portfolio/landing-bernal.png'
 
 const works = [
   {
@@ -155,6 +162,56 @@ const works = [
     desc: 'Guion y edición de un reel de marca: claridad del mensaje, ritmo dinámico y un cierre con llamada a la acción, para comunicar el valor del producto.',
     video: reelInnvoiceMarca,
     poster: reelInnvoiceMarcaPoster
+  },
+  {
+    id: 'edicion-milena',
+    types: ['video'],
+    kicker: 'Caso · Reel informativo · LinkedIn',
+    client: 'Milena',
+    title: 'Reel informativo para LinkedIn',
+    desc: 'Guion y edición de un reel informativo para LinkedIn: contenido de valor estructurado para educar y posicionar, con ritmo y subtítulos pensados para el feed profesional.',
+    video: reelMilena,
+    poster: reelMilenaPoster
+  },
+  {
+    id: 'edicion-indexa',
+    types: ['video'],
+    kicker: 'Caso · Reel publicitario',
+    client: 'Indexa',
+    title: 'Reel publicitario frente a cámara',
+    desc: 'Guion, presentación frente a cámara y edición de un reel publicitario: mensaje directo, ritmo dinámico y un cierre con llamada a la acción.',
+    video: reelIndexa,
+    poster: reelIndexaPoster
+  },
+  {
+    id: 'web-genesisleal',
+    types: ['web'],
+    kicker: 'Caso · Diseño web',
+    client: 'Genesis Leal · Marca personal',
+    title: 'Mi portafolio: diseño y desarrollo propio',
+    desc: 'Diseñé y desarrollé este sitio de punta a punta: identidad visual, estructura, copy y código. La web que estás viendo ahora mismo.',
+    link: 'https://genesisleal.com',
+    image: landingGenesis
+  },
+  {
+    id: 'web-innvoice',
+    types: ['web'],
+    kicker: 'Caso · Diseño web',
+    client: 'Innvoice · Facturación electrónica, Perú',
+    title: 'Landing para un SaaS de facturación',
+    desc: 'Diseño de la landing del producto: hero claro, jerarquía de la propuesta de valor y llamadas a la acción para captar pruebas gratuitas y demos.',
+    link: 'https://innvoice.pe',
+    image: landingInnvoice
+  },
+  {
+    id: 'web-bernal',
+    types: ['web'],
+    kicker: 'Caso · Diseño web',
+    client: 'Bernal Dental Clinic · Barcelona',
+    title: 'Web para una clínica dental',
+    desc: 'Diseño de la web de la clínica: tono cercano y profesional, prueba social y un recorrido pensado para convertir visitas en citas.',
+    link: 'https://bernaldentalclinic.com',
+    image: landingBernal
   }
 ]
 
@@ -162,7 +219,8 @@ const filters = [
   { key: 'all', label: 'Todos', Icon: Sparkles },
   { key: 'meta', label: 'Meta Ads', Icon: Megaphone },
   { key: 'video', label: 'Videos', Icon: Play },
-  { key: 'carousel', label: 'Carruseles', Icon: Layers }
+  { key: 'carousel', label: 'Carruseles', Icon: Layers },
+  { key: 'web', label: 'Webs', Icon: Globe }
 ]
 
 function CarouselPreview({ work, onOpen }) {
@@ -475,7 +533,7 @@ export default function PortfolioWork() {
                         {w.video ? 'Ver el proceso' : w.link ? 'Ver capturas' : 'Ver el carrusel'}
                       </button>
                     </>
-                  ) : (
+                  ) : w.video ? (
                     <>
                       <button
                         type="button"
@@ -494,6 +552,27 @@ export default function PortfolioWork() {
                           Ver resultados
                         </button>
                       )}
+                    </>
+                  ) : (
+                    <>
+                      {w.link && (
+                        <a
+                          className={styles.btnPrimary}
+                          href={w.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <ExternalLink size={16} strokeWidth={2} />
+                          Ver el sitio
+                        </a>
+                      )}
+                      <button
+                        type="button"
+                        className={styles.btnGhost}
+                        onClick={() => setActive({ ...w, kind: 'image' })}
+                      >
+                        Ver captura
+                      </button>
                     </>
                   )}
                 </div>
@@ -546,21 +625,23 @@ export default function PortfolioWork() {
                           <span className={styles.dotY} />
                           <span className={styles.dotG} />
                         </span>
-                        <img src={w.image} alt="Resultados de la campaña" className={styles.windowImg} />
+                        <img src={w.image} alt={w.title} className={styles.windowImg} />
                       </button>
 
-                      <button
-                        type="button"
-                        className={styles.phone}
-                        onClick={() => setActive({ ...w, kind: 'video' })}
-                        aria-label="Reproducir el reel"
-                      >
-                        <span className={styles.notch} aria-hidden />
-                        <img src={w.poster} alt="Reel de la campaña" className={styles.phonePoster} />
-                        <span className={styles.play}>
-                          <Play size={20} fill="currentColor" strokeWidth={0} />
-                        </span>
-                      </button>
+                      {w.video && (
+                        <button
+                          type="button"
+                          className={styles.phone}
+                          onClick={() => setActive({ ...w, kind: 'video' })}
+                          aria-label="Reproducir el reel"
+                        >
+                          <span className={styles.notch} aria-hidden />
+                          <img src={w.poster} alt="Reel de la campaña" className={styles.phonePoster} />
+                          <span className={styles.play}>
+                            <Play size={20} fill="currentColor" strokeWidth={0} />
+                          </span>
+                        </button>
+                      )}
                     </>
                   ) : (
                     <button
