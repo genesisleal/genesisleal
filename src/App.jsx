@@ -8,7 +8,6 @@ import Portfolio from './pages/Portfolio'
 import PortfolioWork from './pages/PortfolioWork'
 import About from './pages/About'
 import Contact from './pages/Contact'
-import PricingPublicidad from './pages/PricingPublicidad'
 import Oferta from './pages/Oferta'
 import Marketplace from './pages/Marketplace'
 import PlanDetailRedesSociales from './pages/PlanDetailRedesSociales'
@@ -48,7 +47,7 @@ function Layout() {
           <Route path="/portafolio" element={<PortfolioWork />} />
           <Route path="/sobre-mi" element={<About />} />
           <Route path="/contacto" element={<Contact />} />
-          <Route path="/precios/publicidad" element={<PricingPublicidad />} />
+          <Route path="/precios/publicidad" element={<Navigate to="/planes/publicidad" replace />} />
           <Route path="/oferta" element={<Oferta />} />
           <Route path="/planes" element={<Marketplace />} />
           <Route path="/planes/redes" element={<PlanDetailRedesSociales />} />

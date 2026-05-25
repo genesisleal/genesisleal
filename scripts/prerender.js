@@ -14,7 +14,6 @@ const ROUTES = [
   '/portafolio',
   '/sobre-mi',
   '/contacto',
-  '/precios/publicidad',
   '/oferta',
   '/planes',
   '/planes/redes',
