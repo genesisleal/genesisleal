@@ -5,7 +5,7 @@ import { useState, useRef, useEffect } from 'react'
 import styles from './Home.module.css'
 import SEO from '../components/SEO'
 
-import genesisProfile from '../assets/images/hero/genesis-profile.png'
+import genesisProfile from '../assets/images/hero/genesis-profile.jpg'
 
 import logoLegourmet from '../assets/logos/clients/legourmet.png'
 import logoDulcemente from '../assets/logos/clients/dulcemente-carol.png'

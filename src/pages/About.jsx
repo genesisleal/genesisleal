@@ -4,7 +4,7 @@ import { useRef, useState } from 'react'
 import styles from './About.module.css'
 import SEO from '../components/SEO'
 
-import genesisProfile from '../assets/images/hero/genesis-profile.png'
+import genesisProfile from '../assets/images/hero/genesis-profile.jpg'
 
 const experience = [
   {
