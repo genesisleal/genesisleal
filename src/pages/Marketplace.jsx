@@ -11,12 +11,12 @@ import {
   Sparkles,
   TrendingUp,
   Bot,
-  Calendar,
   PenTool,
   BarChart3,
   Mail,
   Filter,
-  ChevronDown
+  ChevronDown,
+  Info
 } from 'lucide-react'
 import styles from './Marketplace.module.css'
 import SEO from '../components/SEO'
@@ -115,9 +115,8 @@ const services = [
     period: '/mes',
     popular: false,
     features: [
-      '1 campaña activa (Meta Ads)',
-      '2 configuraciones',
-      'Configuración inicial',
+      'Solo Meta',
+      '1 campaña activa (interacción)',
       'Optimización semanal',
       'Reporte mensual',
     ],
@@ -128,7 +127,7 @@ const services = [
     id: 5,
     category: 'publicidad',
     name: 'Ads Pro',
-    description: 'Meta Ads + Google Ads para escalar tu negocio.',
+    description: 'Concentrá la inversión en la plataforma que elijas.',
     price: 350000,
     originalPrice: 450000,
     priceUSD: 235,
@@ -136,12 +135,10 @@ const services = [
     period: '/mes',
     popular: true,
     features: [
-      '2 plataformas (Meta + Google)',
-      '3 campañas activas',
-      'Setup completo + tracking',
+      '1 plataforma a elección',
+      '2 campañas activas (interacción o cliente potencial)',
       'Optimización avanzada',
       'Reportes quincenales',
-      'Remarketing + A/B Testing',
     ],
     icon: BarChart3,
     color: 'purple',
@@ -150,7 +147,7 @@ const services = [
     id: 6,
     category: 'publicidad',
     name: 'Ads Premium',
-    description: 'Máximo rendimiento en todas las plataformas publicitarias.',
+    description: 'Máximo rendimiento en hasta 3 plataformas a tu elección.',
     price: 500000,
     originalPrice: 600000,
     priceUSD: 335,
@@ -158,13 +155,11 @@ const services = [
     period: '/mes',
     popular: false,
     features: [
-      'Todas las plataformas',
-      '5+ campañas activas',
-      'Estrategia avanzada (funnel)',
+      'Hasta 3 plataformas de ads a elección',
+      '4 campañas activas (máximo)',
+      'Definís el objetivo de cada campaña',
       'Optimización diaria',
-      'Reportes semanales',
-      'Remarketing avanzado',
-      'Testing continuo',
+      'Reportes quincenales',
     ],
     icon: TrendingUp,
     color: 'gold',
@@ -189,48 +184,6 @@ const services = [
     ],
     icon: PenTool,
     color: 'pink',
-  },
-  {
-    id: 8,
-    category: 'contenido',
-    name: 'Estrategia de Contenido',
-    description: 'Plan estratégico de contenido para 3 meses.',
-    price: 250000,
-    originalPrice: 300000,
-    priceUSD: 170,
-    discount: 17,
-    period: 'único',
-    popular: true,
-    features: [
-      'Análisis de marca',
-      'Pilares de contenido',
-      'Calendario 3 meses',
-      '30 ideas de posts',
-      'Guía de estilo',
-    ],
-    icon: Calendar,
-    color: 'purple',
-  },
-  {
-    id: 9,
-    category: 'contenido',
-    name: 'Auditoría de Redes',
-    description: 'Análisis completo de tu presencia digital actual.',
-    price: 180000,
-    originalPrice: 220000,
-    priceUSD: 120,
-    discount: 18,
-    period: 'único',
-    popular: false,
-    features: [
-      'Análisis de perfil',
-      'Benchmark competencia',
-      'Métricas actuales',
-      'Oportunidades de mejora',
-      'Plan de acción',
-    ],
-    icon: BarChart3,
-    color: 'blue',
   },
 ]
 
@@ -318,6 +271,36 @@ function ServiceCard({ service, index }) {
           <ArrowRight size={18} />
         </a>
       </div>
+    </motion.div>
+  )
+}
+
+function AdsNote() {
+  return (
+    <p className={styles.adsNote}>
+      <Info size={16} />
+      Si no contás con tu cuenta de ads configurada, la configuración inicial se cobra aparte.
+    </p>
+  )
+}
+
+function ContentComingSoon() {
+  return (
+    <motion.div
+      className={styles.comingSoonBlock}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4 }}
+    >
+      <span className={styles.comingSoonTag}>
+        <Sparkles size={16} />
+        Contenido
+      </span>
+      <h3 className={styles.comingSoonTitle}>Próximamente</h3>
+      <p className={styles.comingSoonText}>
+        Estamos preparando nuevos planes de contenido.
+      </p>
     </motion.div>
   )
 }
@@ -412,8 +395,10 @@ export default function Marketplace() {
                   </AnimatePresence>
                 </motion.div>
 
+                <AdsNote />
+
                 <div className={styles.detailLinkWrapper}>
-                  <Link to="/planes/proximamente" className={styles.detailLink}>
+                  <Link to="/planes/detallepublicidad" className={styles.detailLink}>
                     Ver detalles de los planes de Publicidad
                     <ArrowRight size={18} />
                   </Link>
@@ -427,12 +412,7 @@ export default function Marketplace() {
                   </AnimatePresence>
                 </motion.div>
 
-                <div className={styles.detailLinkWrapper}>
-                  <Link to="/planes/proximamente" className={styles.detailLink}>
-                    Ver detalles de los planes de Contenido
-                    <ArrowRight size={18} />
-                  </Link>
-                </div>
+                <ContentComingSoon />
               </>
             ) : (
               <>
@@ -454,22 +434,18 @@ export default function Marketplace() {
                 )}
 
                 {activeCategory === 'publicidad' && (
-                  <div className={styles.detailLinkWrapper}>
-                    <Link to="/planes/proximamente" className={styles.detailLink}>
-                      Ver detalles de los planes de Publicidad
-                      <ArrowRight size={18} />
-                    </Link>
-                  </div>
+                  <>
+                    <AdsNote />
+                    <div className={styles.detailLinkWrapper}>
+                      <Link to="/planes/detallepublicidad" className={styles.detailLink}>
+                        Ver detalles de los planes de Publicidad
+                        <ArrowRight size={18} />
+                      </Link>
+                    </div>
+                  </>
                 )}
 
-                {activeCategory === 'contenido' && (
-                  <div className={styles.detailLinkWrapper}>
-                    <Link to="/planes/proximamente" className={styles.detailLink}>
-                      Ver detalles de los planes de Contenido
-                      <ArrowRight size={18} />
-                    </Link>
-                  </div>
-                )}
+                {activeCategory === 'contenido' && <ContentComingSoon />}
               </>
             )}
           </div>
