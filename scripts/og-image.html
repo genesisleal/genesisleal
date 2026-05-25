@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      width: 1200px;
+      height: 630px;
+      font-family: 'Montserrat', sans-serif;
+      overflow: hidden;
+    }
+
+    .card {
+      position: relative;
+      width: 1200px;
+      height: 630px;
+      background:
+        radial-gradient(1200px 700px at -10% 120%, rgba(168, 85, 247, 0.10) 0%, transparent 55%),
+        linear-gradient(160deg, #ffffff 0%, #faf7ff 55%, #f3ecff 100%);
+      overflow: hidden;
+      display: flex;
+    }
+
+    .dots {
+      position: absolute;
+      inset: 0;
+      opacity: 0.5;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(168, 85, 247, 0.18) 1.4px, transparent 1.6px),
+        radial-gradient(circle at 70% 70%, rgba(168, 85, 247, 0.12) 1.2px, transparent 1.4px);
+      background-size: 46px 46px, 64px 64px;
+    }
+
+    .accent-bar {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 10px;
+      background: linear-gradient(180deg, #c084fc 0%, #a855f7 45%, #7c3aed 100%);
+    }
+
+    .left {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      padding: 74px 0 64px 88px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      align-self: flex-start;
+      padding: 10px 20px;
+      border: 1px solid rgba(168, 85, 247, 0.30);
+      background: rgba(168, 85, 247, 0.07);
+      border-radius: 100px;
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+      color: #7c3aed;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: #a855f7;
+      box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.18);
+    }
+
+    .headline { margin-top: 30px; }
+
+    .headline h1 {
+      font-size: 104px;
+      font-weight: 800;
+      line-height: 0.96;
+      letter-spacing: -2.5px;
+      color: #18101f;
+    }
+
+    .headline .serif {
+      display: block;
+      margin-top: 14px;
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 46px;
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.5px;
+      color: #7c3aed;
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      max-width: 560px;
+    }
+
+    .pill {
+      padding: 13px 22px;
+      border-radius: 100px;
+      font-size: 19px;
+      font-weight: 600;
+      color: #2a1f36;
+      background: #ffffff;
+      border: 1px solid rgba(124, 58, 237, 0.18);
+      box-shadow: 0 6px 18px rgba(124, 58, 237, 0.08);
+    }
+
+    .foot {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 22px;
+      font-weight: 700;
+      color: #18101f;
+    }
+
+    .foot .url span { color: #a855f7; }
+
+    .foot .sep {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: rgba(124, 58, 237, 0.35);
+    }
+
+    .foot .exp {
+      font-weight: 500;
+      font-size: 19px;
+      color: #6b5b7e;
+    }
+
+    .right {
+      position: relative;
+      width: 446px;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .right::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(155deg, #b06bf5 0%, #a855f7 42%, #7c3aed 100%);
+    }
+
+    .right::after {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 130px;
+      background: linear-gradient(90deg, #f3ecff 0%, rgba(243, 236, 255, 0) 100%);
+      z-index: 3;
+    }
+
+    .photo {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      height: 100%;
+      width: auto;
+      object-fit: cover;
+      object-position: center top;
+      z-index: 2;
+    }
+
+    .ring {
+      position: absolute;
+      z-index: 1;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.22);
+    }
+    .ring.r1 { width: 360px; height: 360px; right: -120px; top: -90px; }
+    .ring.r2 { width: 220px; height: 220px; right: 250px; bottom: -70px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="dots"></div>
+    <div class="accent-bar"></div>
+
+    <div class="left">
+      <span class="eyebrow">Community Manager · Buenos Aires</span>
+
+      <div class="headline">
+        <h1>Genesis Leal</h1>
+        <span class="serif">Estrategia, contenido &amp; Meta Ads que venden</span>
+      </div>
+
+      <div class="pills">
+        <span class="pill">Gestión de Redes</span>
+        <span class="pill">Meta Ads</span>
+        <span class="pill">Reels &amp; Contenido</span>
+      </div>
+
+      <div class="foot">
+        <span class="url">genesisleal<span>.com</span></span>
+        <span class="sep"></span>
+        <span class="exp">+5 años de experiencia</span>
+      </div>
+    </div>
+
+    <div class="right">
+      <span class="ring r1"></span>
+      <span class="ring r2"></span>
+      <img class="photo" src="../src/assets/images/hero/genesis-profile.png" alt="Genesis Leal" />
+    </div>
+  </div>
+</body>
+</html>

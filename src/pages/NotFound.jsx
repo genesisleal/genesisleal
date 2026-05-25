@@ -68,6 +68,7 @@ export default function NotFound() {
         title="Página no encontrada"
         description="La página que buscás no existe o se movió de lugar."
         path="/404"
+        noindex
       />
 
       <main className={styles.page} onMouseMove={handleMouse}>

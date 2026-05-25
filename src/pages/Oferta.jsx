@@ -114,6 +114,7 @@ export default function Oferta() {
         title="Gestión de Redes que vende | Genesis Leal"
         description="Plan Profesional de gestión de redes sociales: estrategia, contenido y Meta Ads para que tu Instagram te traiga clientes reales. Precio de lanzamiento."
         path="/oferta"
+        noindex
       />
 
       <div className={styles.page}>
