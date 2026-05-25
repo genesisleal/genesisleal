@@ -381,7 +381,7 @@ export default function Marketplace() {
                 </motion.div>
 
                 <div className={styles.detailLinkWrapper}>
-                  <Link to="/planes/detalleredessociales" className={styles.detailLink}>
+                  <Link to="/planes/redes" className={styles.detailLink}>
                     Ver detalles de los planes de Redes Sociales
                     <ArrowRight size={18} />
                   </Link>
@@ -398,7 +398,7 @@ export default function Marketplace() {
                 <AdsNote />
 
                 <div className={styles.detailLinkWrapper}>
-                  <Link to="/planes/detallepublicidad" className={styles.detailLink}>
+                  <Link to="/planes/publicidad" className={styles.detailLink}>
                     Ver detalles de los planes de Publicidad
                     <ArrowRight size={18} />
                   </Link>
@@ -426,7 +426,7 @@ export default function Marketplace() {
 
                 {activeCategory === 'redes' && (
                   <div className={styles.detailLinkWrapper}>
-                    <Link to="/planes/detalleredessociales" className={styles.detailLink}>
+                    <Link to="/planes/redes" className={styles.detailLink}>
                       Ver detalles de los planes de Redes Sociales
                       <ArrowRight size={18} />
                     </Link>
@@ -437,7 +437,7 @@ export default function Marketplace() {
                   <>
                     <AdsNote />
                     <div className={styles.detailLinkWrapper}>
-                      <Link to="/planes/detallepublicidad" className={styles.detailLink}>
+                      <Link to="/planes/publicidad" className={styles.detailLink}>
                         Ver detalles de los planes de Publicidad
                         <ArrowRight size={18} />
                       </Link>

@@ -191,6 +191,11 @@ const paymentConditions = [
     icon: Sparkles,
     title: 'Precio promocional',
     description: 'El precio con descuento se mantiene durante los primeros 3 meses. Luego se realiza un ajuste al precio regular.'
+  },
+  {
+    icon: Instagram,
+    title: 'Creación de redes',
+    description: 'Si todavía no tenés tus redes sociales o la cuenta publicitaria creadas, su creación y configuración inicial se cobra aparte por única vez.'
   }
 ]
 
@@ -200,7 +205,7 @@ export default function PlanDetailRedesSociales() {
       <SEO
         title="Planes de Redes Sociales — Detalle y Precios"
         description="Compará los planes de gestión de redes sociales: Standard, Pro y Premium desde $300.000 ARS/mes. Incluye publicaciones, historias, Meta Ads y reportes."
-        path="/planes/detalleredessociales"
+        path="/planes/redes"
       />
       <main className={styles.page}>
         <div className="container">

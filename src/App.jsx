@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -51,9 +51,11 @@ function Layout() {
           <Route path="/precios/publicidad" element={<PricingPublicidad />} />
           <Route path="/oferta" element={<Oferta />} />
           <Route path="/planes" element={<Marketplace />} />
-          <Route path="/planes/detalleredessociales" element={<PlanDetailRedesSociales />} />
-          <Route path="/planes/detallepublicidad" element={<PlanDetailAds />} />
+          <Route path="/planes/redes" element={<PlanDetailRedesSociales />} />
+          <Route path="/planes/publicidad" element={<PlanDetailAds />} />
           <Route path="/planes/proximamente" element={<ComingSoon />} />
+          <Route path="/planes/detalleredessociales" element={<Navigate to="/planes/redes" replace />} />
+          <Route path="/planes/detallepublicidad" element={<Navigate to="/planes/publicidad" replace />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
