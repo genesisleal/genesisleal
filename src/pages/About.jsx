@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion'
-import { Calendar, MapPin, Award } from 'lucide-react'
+import { Calendar, MapPin, Award, GraduationCap } from 'lucide-react'
 import { useRef, useState } from 'react'
 import styles from './About.module.css'
 import SEO from '../components/SEO'
@@ -10,7 +10,7 @@ const experience = [
   {
     company: 'Sociedad Profesionales de Peluquería Hernández',
     role: 'Social Media Manager & Digital Marketing Specialist',
-    period: 'Abril 2025 - Enero 2026',
+    period: 'Abril 2025 - Junio 2026',
     location: 'Chile (Remoto)',
     highlights: [
       'Lideré estrategia de marketing digital para cadena de barberías con 6 cuentas de Instagram en 5 ciudades de Chile.',
@@ -40,6 +40,19 @@ const experience = [
       'Alcancé meta de ventas de todos los departamentos del edificio Chabrier Golf con Meta Ads.',
       'Administré sitios web en WordPress optimizando experiencia de usuario.',
     ],
+  },
+]
+
+const education = [
+  {
+    degree: 'Licenciada en Publicidad y Mercadeo',
+    institution: 'Universidad Católica del Táchira (UCAT) — San Cristóbal, Venezuela',
+    period: '2017 - 2022',
+  },
+  {
+    degree: 'Bachiller en Ciencias',
+    institution: 'UECLA - U.E. Colegio Los Andes',
+    period: '2011 - 2016',
   },
 ]
 
@@ -171,6 +184,35 @@ export default function About() {
                       <li key={i}>{highlight}</li>
                     ))}
                   </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.education}>
+        <div className="container">
+          <div className={styles.sectionHeader}>
+            <span className={styles.sectionLabel}>Estudios</span>
+            <h2 className={styles.sectionTitle}>Formación Académica</h2>
+          </div>
+
+          <div className={styles.educationGrid}>
+            {education.map((item, index) => (
+              <motion.div
+                key={index}
+                className={styles.educationCard}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <GraduationCap size={24} className={styles.educationIcon} />
+                <div className={styles.educationInfo}>
+                  <h3 className={styles.educationDegree}>{item.degree}</h3>
+                  <span className={styles.educationInstitution}>{item.institution}</span>
+                  <span className={styles.educationPeriod}>{item.period}</span>
                 </div>
               </motion.div>
             ))}
