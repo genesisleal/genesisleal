@@ -37,6 +37,8 @@ import reelIndexaPoster from '../assets/images/portfolio/reel-indexa-poster.jpg'
 import landingGenesis from '../assets/images/portfolio/landing-genesisleal.jpg'
 import landingInnvoice from '../assets/images/portfolio/landing-innvoice.jpg'
 import landingBernal from '../assets/images/portfolio/landing-bernal.jpg'
+import landingBbglobal from '../assets/images/portfolio/landing-bbglobal.jpg'
+import landingCarconnect from '../assets/images/portfolio/landing-carconnect.jpg'
 
 const works = [
   {
@@ -212,6 +214,25 @@ const works = [
     desc: 'Diseño de la web de la clínica: tono cercano y profesional, prueba social y un recorrido pensado para convertir visitas en citas.',
     link: 'https://bernaldentalclinic.com',
     image: landingBernal
+  },
+  {
+    id: 'web-bbglobal',
+    types: ['web'],
+    kicker: 'Caso · Diseño web',
+    client: 'B&B Global · Comercio exterior y supply chain',
+    title: 'Web corporativa para una empresa de comercio exterior',
+    desc: 'Diseño de la web corporativa de una empresa internacional con 30 años de trayectoria: identidad sobria y profesional, jerarquía clara de servicios y sectores, y un recorrido pensado para transmitir escala y confianza, con la cotización como conversión principal.',
+    image: landingBbglobal
+  },
+  {
+    id: 'web-carconnect',
+    types: ['web'],
+    kicker: 'Caso · Diseño web',
+    client: 'Car Connect · Marketing para concesionarias',
+    title: 'Landing para una agencia de performance',
+    desc: 'Diseño de la landing de una agencia especializada en vender autos por redes: hero directo con propuesta de valor clara, tono enérgico con acento naranja y un recorrido enfocado en agendar la llamada como conversión principal.',
+    link: 'https://carconnect.agency',
+    image: landingCarconnect
   }
 ]
 

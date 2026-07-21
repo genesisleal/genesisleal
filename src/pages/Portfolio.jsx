@@ -5,8 +5,24 @@ import SEO from '../components/SEO'
 
 const projects = [
   {
-    id: 1,
+    id: 4,
     number: '01',
+    company: 'Agencia KLIV',
+    role: 'Creativo Publicitario',
+    period: 'jul. 2026 - Actualidad',
+    location: 'Argentina (Remoto)',
+    description: 'Creativo Publicitario especializado en Performance Marketing. Investigación de mercado, ideación de anuncios, coordinación de producción, análisis de resultados y optimización creativa para campañas de Meta Ads, Google Ads y otros canales publicitarios.',
+    metrics: [
+      { icon: <Zap size={18} />, value: 'Perf.', label: 'Marketing' },
+      { icon: <Target size={18} />, value: 'Meta', label: 'Ads' },
+      { icon: <Target size={18} />, value: 'Google', label: 'Ads' },
+      { icon: <TrendingUp size={18} />, value: 'Opt.', label: 'Creativa' },
+    ],
+    tags: ['Performance Marketing', 'Meta Ads', 'Google Ads', 'Creatividad publicitaria'],
+  },
+  {
+    id: 1,
+    number: '02',
     company: 'Sociedad Profesionales de Peluquería Hernández',
     role: 'Social Media Manager & Digital Marketing Specialist',
     period: '2025 - 2026',
@@ -22,7 +38,7 @@ const projects = [
   },
   {
     id: 2,
-    number: '02',
+    number: '03',
     company: 'Rise Job Hunting México',
     role: 'Community Manager',
     period: '2024 - 2025',
@@ -38,7 +54,7 @@ const projects = [
   },
   {
     id: 3,
-    number: '03',
+    number: '04',
     company: 'Enigma Developers SAC',
     role: 'Diseñadora Gráfica & Community Manager',
     period: '2020 - 2024',
