@@ -301,7 +301,7 @@ export default function PlanDetailRedesSociales() {
           <section className={styles.ctaSection}>
             <h2>¿Querés arrancar?</h2>
             <p>Escribinos y empezamos a trabajar en tu presencia digital.</p>
-            <Link to="/contacto" className={styles.ctaButton}>
+            <Link to="/planes" className={styles.ctaButton}>
               Contactar ahora
               <ChevronRight size={18} />
             </Link>

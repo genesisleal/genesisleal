@@ -175,7 +175,7 @@ export default function NotFound() {
               <Home size={18} strokeWidth={2} />
               Volver al inicio
             </Link>
-            <Link to="/contacto" className={styles.secondary}>
+            <Link to="/planes" className={styles.secondary}>
               <MessageCircle size={18} strokeWidth={2} />
               Hablemos
             </Link>

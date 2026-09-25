@@ -249,7 +249,7 @@ export default function PlanDetailAds() {
           <section className={styles.ctaSection}>
             <h2>¿Querés arrancar?</h2>
             <p>Escribinos y armamos juntos la estrategia de publicidad para tu negocio.</p>
-            <Link to="/contacto" className={styles.ctaButton}>
+            <Link to="/planes" className={styles.ctaButton}>
               Contactar ahora
               <ChevronRight size={18} />
             </Link>

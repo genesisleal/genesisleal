@@ -252,7 +252,7 @@ export default function Home() {
               <p className={styles.heroDescription}>
                 Hola, soy Genesis, Community Manager & Social Media Strategist especializada en marcas B2C.
               </p>
-              <Link to="/contacto" className={styles.heroButton}>
+              <Link to="/planes" className={styles.heroButton}>
                 Contactar
               </Link>
             </motion.div>
@@ -443,7 +443,7 @@ export default function Home() {
           >
             <p className={styles.ctaLabel}>¿Tenés un proyecto en mente?</p>
             <h2 className={styles.ctaTitle}>
-              <Link to="/contacto">Trabajemos juntas</Link>
+              <Link to="/planes">Trabajemos juntas</Link>
             </h2>
           </motion.div>
         </div>

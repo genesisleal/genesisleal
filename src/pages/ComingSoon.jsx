@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Clock, ArrowLeft, Rocket, MessageCircle } from 'lucide-react'
 import styles from './ComingSoon.module.css'
 import SEO from '../components/SEO'
+import ContactCards from '../components/ContactCards'
 
 const serviceOptions = [
   'Redes sociales',
@@ -70,7 +71,7 @@ export default function ComingSoon() {
       `WhatsApp: ${formData.phone}`,
       `Servicio: ${formData.services.join(', ')}`,
       `Objetivo: ${formData.objective}`,
-      formData.details ? `Proyecto: ${formData.details}` : null,
+      formData.details ? `Sobre la marca: ${formData.details}` : null,
     ].filter(line => line !== null).join('\n')
 
     window.open(
@@ -83,8 +84,8 @@ export default function ComingSoon() {
   return (
     <>
       <SEO
-        title="Planes — Próximamente"
-        description="Estamos trabajando en nuestros planes y servicios. Mientras tanto, consultanos directamente por WhatsApp."
+        title="Planes y contacto"
+        description="Contame sobre tu marca para recibir una recomendación personalizada o contactame directamente por WhatsApp y email."
         path="/planes"
         noindex
       />
@@ -145,7 +146,7 @@ export default function ComingSoon() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Contame sobre tu proyecto
+            Contame sobre tu marca
           </motion.h1>
 
           <motion.p
@@ -155,7 +156,7 @@ export default function ComingSoon() {
             transition={{ duration: 0.5, delay: 0.35 }}
           >
             Respondé estas preguntas y te recomiendo la opción más adecuada para
-            tu marca. Al finalizar, vas a enviarme todo directamente por WhatsApp.
+            tu marca.
           </motion.p>
 
           <motion.form
@@ -254,12 +255,12 @@ export default function ComingSoon() {
             </fieldset>
 
             <label className={styles.field}>
-              <span>Contame brevemente sobre tu proyecto</span>
+              <span>Contame brevemente sobre tu marca</span>
               <textarea
                 name="details"
                 value={formData.details}
                 onChange={updateField}
-                placeholder="¿Qué hacés, qué redes usás y qué te gustaría mejorar?"
+                placeholder="¿A qué se dedica tu marca, qué redes usa y qué te gustaría mejorar?"
                 rows="4"
               />
             </label>
@@ -276,6 +277,13 @@ export default function ComingSoon() {
               No guardamos tus respuestas. Se envían únicamente cuando abras WhatsApp.
             </p>
           </motion.form>
+
+          <section className={styles.directContact} aria-labelledby="direct-contact-title">
+            <span className={styles.contactEyebrow}>Otras formas de contacto</span>
+            <h2 id="direct-contact-title">¿Preferís hablar directamente?</h2>
+            <p>También podés escribirme por WhatsApp o email, conectar por LinkedIn o ver dónde estoy.</p>
+            <ContactCards />
+          </section>
 
           <Link to="/" className={styles.backButton}>
             <ArrowLeft size={18} />

@@ -1,46 +1,23 @@
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion'
-import { Calendar, MapPin, Award, GraduationCap } from 'lucide-react'
+import { ArrowRight, Award, BarChart3, GraduationCap, Lightbulb, MessageCircle, Target } from 'lucide-react'
 import { useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import styles from './About.module.css'
 import SEO from '../components/SEO'
 
 import genesisProfile from '../assets/images/hero/genesis-profile.jpg'
 
-const experience = [
-  {
-    company: 'Sociedad Profesionales de Peluquería Hernández',
-    role: 'Social Media Manager & Digital Marketing Specialist',
-    period: 'Abril 2025 - Junio 2026',
-    location: 'Chile (Remoto)',
-    highlights: [
-      'Lideré estrategia de marketing digital para cadena de barberías con 6 cuentas de Instagram en 5 ciudades de Chile.',
-      'Produje +150 historias y +35 reels mensuales con ROI significativo.',
-      'Gestioné 24 campañas publicitarias mensuales en Meta Ads optimizando ROAS.',
-      'Implementé chatbots con IA en ManyChat para atención automatizada 24/7.',
-    ],
-  },
-  {
-    company: 'Rise Job Hunting México',
-    role: 'Community Manager',
-    period: 'Marzo 2024 - Abril 2025',
-    location: 'México (Remoto)',
-    highlights: [
-      'Implementé campañas Meta Ads logrando ventas high ticket de USD 1.000 a USD 3.000 desde Instagram.',
-      'Produje testimonios de clientes y contenido con IA de alto valor.',
-      'Gestioné clientes de publicidad digital optimizando tasa de conversión.',
-    ],
-  },
-  {
-    company: 'Enigma Developers SAC',
-    role: 'Diseñadora Gráfica & Community Manager',
-    period: 'Octubre 2020 - Enero 2024',
-    location: 'Perú (Remoto)',
-    highlights: [
-      'Lideré proyectos de marketing digital, branding y materiales promocionales.',
-      'Alcancé meta de ventas de todos los departamentos del edificio Chabrier Golf con Meta Ads.',
-      'Administré sitios web en WordPress optimizando experiencia de usuario.',
-    ],
-  },
+const principles = [
+  { number: '01', icon: Target, title: 'Estrategia antes que contenido', description: 'Cada acción parte de un objetivo claro y de entender a quién queremos llegar.' },
+  { number: '02', icon: Lightbulb, title: 'Creatividad con propósito', description: 'Desarrollo ideas que reflejan la identidad de cada marca y conectan con su audiencia.' },
+  { number: '03', icon: BarChart3, title: 'Decisiones basadas en resultados', description: 'Mido el desempeño de contenidos y campañas para ajustar lo que haga falta.' },
+]
+
+const strengths = [
+  'Más de cinco años trabajando con marcas B2C',
+  'Experiencia con equipos de Argentina y Latinoamérica',
+  'Redes sociales, Meta Ads, contenido y automatización',
+  'Seguimiento cercano en cada etapa del proyecto',
 ]
 
 const education = [
@@ -92,7 +69,7 @@ export default function About() {
     <>
       <SEO
         title="Sobre Genesis Leal — Community Manager Buenos Aires"
-        description="Conocé a Genesis Leal: Community Manager en Buenos Aires con más de 5 años de experiencia en Meta Ads, redes sociales y estrategias digitales. Consultá ahora."
+        description="Conocé el enfoque, la formación y la manera de trabajar de Genesis Leal, Community Manager y Social Media Strategist en Buenos Aires."
         path="/sobre-mi"
       />
       <section className={styles.hero}>
@@ -105,17 +82,17 @@ export default function About() {
               transition={{ duration: 0.6 }}
             >
               <span className={styles.preTitle}>Sobre Mí</span>
-              <h1 className={styles.heroTitle}>Genesis Leal</h1>
-              <p className={styles.heroText}>
-                Community Manager y Social Media Strategist con más de 5 años de experiencia
-                gestionando redes sociales, creando estrategias digitales y produciendo
-                contenido visual de alto impacto.
+              <h1 className={styles.heroTitle}>Hola, soy <span>Genesis Leal.</span></h1>
+              <p className={styles.heroLead}>
+                Ayudo a marcas B2C a crecer con contenido, publicidad digital y estrategias enfocadas en sus objetivos.
               </p>
               <p className={styles.heroText}>
-                Especializada en Meta Ads de respuesta directa para marcas B2C, con historial
-                comprobado en campañas que generaron ventas de alto ticket y resultados
-                medibles en conversión.
+                Soy Community Manager y Social Media Strategist. Me gusta combinar ideas creativas con análisis para que cada acción tenga un sentido dentro del negocio.
               </p>
+              <div className={styles.heroActions}>
+                <Link to="/experiencia" className={styles.primaryLink}>Ver mi experiencia <ArrowRight size={18} aria-hidden="true" /></Link>
+                <Link to="/planes" className={styles.textLink}>Hablemos de tu marca</Link>
+              </div>
             </motion.div>
             <motion.div
               className={styles.heroImage}
@@ -146,47 +123,39 @@ export default function About() {
         </div>
       </section>
 
-      <section className={styles.experience}>
+      <section className={styles.approach}>
         <div className="container">
-          <div className={styles.sectionHeader}>
-            <span className={styles.sectionLabel}>Trayectoria</span>
-            <h2 className={styles.sectionTitle}>Experiencia Profesional</h2>
+          <div className={styles.approachIntro}>
+            <div>
+              <span className={styles.sectionLabel}>Mi enfoque</span>
+              <h2 className={styles.sectionTitle}>Una presencia digital con dirección</h2>
+            </div>
+            <p>
+              Para mí, una buena estrategia empieza por escuchar a la marca, entender a sus clientes y definir qué queremos lograr. Desde ahí construyo contenido y campañas que puedan mejorar con cada aprendizaje.
+            </p>
           </div>
-
-          <div className={styles.timeline}>
-            {experience.map((job, index) => (
-              <motion.div
-                key={index}
-                className={styles.timelineItem}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <div className={styles.timelineMarker}>
-                  <span className={styles.timelineNumber}>{String(index + 1).padStart(2, '0')}</span>
-                </div>
-                <div className={styles.timelineContent}>
-                  <div className={styles.timelineMeta}>
-                    <span className={styles.period}>
-                      <Calendar size={14} />
-                      {job.period}
-                    </span>
-                    <span className={styles.location}>
-                      <MapPin size={14} />
-                      {job.location}
-                    </span>
-                  </div>
-                  <h3 className={styles.timelineRole}>{job.role}</h3>
-                  <span className={styles.timelineCompany}>{job.company}</span>
-                  <ul className={styles.timelineHighlights}>
-                    {job.highlights.map((highlight, i) => (
-                      <li key={i}>{highlight}</li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
+          <div className={styles.principlesGrid}>
+            {principles.map(({ number, icon: Icon, title, description }, index) => (
+              <motion.article key={number} className={styles.principleCard} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: index * 0.1 }} viewport={{ once: true }}>
+                <div className={styles.principleTop}><Icon size={26} strokeWidth={1.8} aria-hidden="true" /><span>{number}</span></div>
+                <h3>{title}</h3>
+                <p>{description}</p>
+              </motion.article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.strengths}>
+        <div className="container">
+          <div className={styles.strengthsGrid}>
+            <div>
+              <span className={styles.sectionLabel}>Lo que aporto</span>
+              <h2 className={styles.sectionTitle}>Creatividad y criterio para cada proyecto</h2>
+            </div>
+            <ul className={styles.strengthsList}>
+              {strengths.map(strength => <li key={strength}>{strength}</li>)}
+            </ul>
           </div>
         </div>
       </section>
@@ -241,6 +210,20 @@ export default function About() {
                 <span>{cert}</span>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.nextStep}>
+        <div className="container">
+          <div className={styles.nextStepCard}>
+            <span className={styles.sectionLabel}>Sigamos conversando</span>
+            <h2>Conocé mi trabajo o contame sobre tu marca</h2>
+            <p>Podés explorar las marcas con las que trabajé o escribirme para pensar juntas el siguiente paso.</p>
+            <div className={styles.nextStepActions}>
+              <Link to="/experiencia" className={styles.primaryLink}>Ver mi experiencia profesional <ArrowRight size={18} aria-hidden="true" /></Link>
+              <a href="https://wa.me/5491125490503" target="_blank" rel="noopener noreferrer" className={styles.secondaryLink}><MessageCircle size={18} aria-hidden="true" /> Hablemos por WhatsApp</a>
+            </div>
           </div>
         </div>
       </section>

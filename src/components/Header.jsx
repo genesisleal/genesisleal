@@ -29,7 +29,6 @@ const navLinks = [
   { path: '/portafolio', label: 'Portafolio' },
   { path: '/planes', label: 'Planes' },
   { path: '/sobre-mi', label: 'Sobre mí' },
-  { path: '/contacto', label: 'Contacto' },
 ]
 
 export default function Header() {

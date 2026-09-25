@@ -7,7 +7,6 @@ import Home from './pages/Home'
 import Portfolio from './pages/Portfolio'
 import PortfolioWork from './pages/PortfolioWork'
 import About from './pages/About'
-import Contact from './pages/Contact'
 import Oferta from './pages/Oferta'
 import PlanDetailRedesSociales from './pages/PlanDetailRedesSociales'
 import PlanDetailAds from './pages/PlanDetailAds'
@@ -46,7 +45,7 @@ function Layout() {
           <Route path="/experiencia" element={<Portfolio />} />
           <Route path="/portafolio" element={<PortfolioWork />} />
           <Route path="/sobre-mi" element={<About />} />
-          <Route path="/contacto" element={<Contact />} />
+          <Route path="/contacto" element={<Navigate to="/planes" replace />} />
           <Route path="/precios/publicidad" element={<Navigate to="/planes/publicidad" replace />} />
           <Route path="/oferta" element={<Oferta />} />
           <Route path="/planes" element={<ComingSoon />} />

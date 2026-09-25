@@ -255,6 +255,31 @@
   text-align: center;
 }
 
+.directContact {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.contactEyebrow {
+  display: block;
+  margin-bottom: 0.75rem;
+  color: var(--color-accent);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.directContact h2 {
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+}
+
+.directContact > p {
+  max-width: 600px;
+  margin: 0.75rem auto 2rem;
+  color: var(--color-text-secondary);
+}
+
 @media (max-width: 768px) {
   .page {
     min-height: 70vh;

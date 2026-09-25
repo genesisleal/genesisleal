@@ -122,8 +122,8 @@ Community Management · Social Media Marketing · Meta Ads · Google Ads · Cont
 - `/sobre-mi` — Sobre mí (trayectoria, certificaciones)
 - `/experiencia` — Experiencia
 - `/portafolio` — Casos: campañas Meta Ads, reels editados y carruseles con resultados
-- `/contacto` — Contacto
-- `/planes` — Comparativa de planes
+- `/planes` — Consulta sobre la marca y formas de contacto (sin indexación)
+- `/contacto` — Redirige a `/planes`
 - `/planes/redes` · `/planes/publicidad` · `/planes/proximamente`
 - `/oferta` — Página de oferta (sin header/footer)
 
