@@ -14,7 +14,7 @@ import logoChickenGuys from '../assets/logos/clients/chicken-guys.png'
 import logoEnigma from '../assets/logos/clients/enigma.png'
 
 const WA_MESSAGE = 'Hola Genesis 👋 Vi la oferta del plan Profesional de gestión de redes y quiero más info.'
-const WA_URL = `https://wa.me/5491138851664?text=${encodeURIComponent(WA_MESSAGE)}`
+const WA_URL = `https://wa.me/5491125490503?text=${encodeURIComponent(WA_MESSAGE)}`
 
 const clientLogos = [
   { src: logoLegourmet, alt: 'Le Gourmet' },
@@ -221,10 +221,10 @@ export default function Oferta() {
             </header>
 
             <div className={styles.priceRow}>
-              <span className={styles.priceOriginal}>$650.000</span>
+              <span className={styles.priceOriginal}>$728.000</span>
               <div className={styles.priceMain}>
                 <span className={styles.priceCurrency}>$</span>
-                <span className={styles.priceAmount}>500.000</span>
+                <span className={styles.priceAmount}>560.000</span>
                 <span className={styles.pricePeriod}>ARS / mes</span>
               </div>
               <span className={styles.priceUsd}>~ USD 350 / mes</span>
@@ -254,7 +254,7 @@ export default function Oferta() {
             <p className={styles.finePrint}>
               Compromiso mínimo de 3 meses para ver resultados. La inversión
               publicitaria de Meta se paga aparte, directo a Meta. Precio de
-              lanzamiento vigente sobre el valor regular de $650.000 ARS.
+              lanzamiento vigente sobre el valor regular de $728.000 ARS.
             </p>
 
             <p className={styles.finePrintAlert}>
@@ -304,7 +304,7 @@ export default function Oferta() {
         <div className={styles.stickyBar}>
           <div className={styles.stickyInfo}>
             <strong>Plan Profesional</strong>
-            <span>$500.000 ARS/mes · 23% OFF</span>
+            <span>$560.000 ARS/mes · 23% OFF</span>
           </div>
           <a
             href={WA_URL}

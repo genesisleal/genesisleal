@@ -43,6 +43,7 @@ function Layout() {
       <main style={{ paddingTop: isBare ? 0 : 'var(--header-height)' }}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/si" element={<Navigate to="/" replace />} />
           <Route path="/experiencia" element={<Portfolio />} />
           <Route path="/portafolio" element={<PortfolioWork />} />
           <Route path="/sobre-mi" element={<About />} />

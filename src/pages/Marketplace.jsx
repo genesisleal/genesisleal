@@ -34,10 +34,10 @@ const services = [
     category: 'redes',
     name: 'Redes Standard',
     description: 'Ideal para emprendedores que dan sus primeros pasos en redes sociales.',
-    price: 300000,
-    originalPrice: 350000,
+    price: 320000,
+    originalPrice: 375000,
     priceUSD: 200,
-    discount: 14,
+    discount: 15,
     period: '/mes',
     popular: false,
     features: [
@@ -57,8 +57,8 @@ const services = [
     category: 'redes',
     name: 'Redes Pro',
     description: 'Para negocios en crecimiento que buscan resultados consistentes.',
-    price: 500000,
-    originalPrice: 650000,
+    price: 560000,
+    originalPrice: 728000,
     priceUSD: 350,
     discount: 23,
     period: '/mes',
@@ -82,8 +82,8 @@ const services = [
     category: 'redes',
     name: 'Redes Premium',
     description: 'Gestión integral para marcas que quieren dominar su nicho.',
-    price: 800000,
-    originalPrice: 950000,
+    price: 864000,
+    originalPrice: 1026000,
     priceUSD: 540,
     discount: 16,
     period: '/mes',
@@ -108,8 +108,8 @@ const services = [
     category: 'publicidad',
     name: 'Ads Standard',
     description: 'Primeros pasos en publicidad digital con Meta Ads.',
-    price: 180000,
-    originalPrice: 210000,
+    price: 192000,
+    originalPrice: 224000,
     priceUSD: 120,
     discount: 14,
     period: '/mes',
@@ -128,8 +128,8 @@ const services = [
     category: 'publicidad',
     name: 'Ads Pro',
     description: 'Concentrá la inversión en la plataforma que elijas.',
-    price: 350000,
-    originalPrice: 450000,
+    price: 376000,
+    originalPrice: 483000,
     priceUSD: 235,
     discount: 22,
     period: '/mes',
@@ -148,8 +148,8 @@ const services = [
     category: 'publicidad',
     name: 'Ads Premium',
     description: 'Máximo rendimiento en hasta 3 plataformas a tu elección.',
-    price: 500000,
-    originalPrice: 600000,
+    price: 536000,
+    originalPrice: 643000,
     priceUSD: 335,
     discount: 17,
     period: '/mes',
@@ -169,8 +169,8 @@ const services = [
     category: 'contenido',
     name: 'Pack de Reels',
     description: '4 reels editados y optimizados para engagement. Cliente provee el material grabado.',
-    price: 120000,
-    originalPrice: 150000,
+    price: 128000,
+    originalPrice: 160000,
     priceUSD: 80,
     discount: 20,
     period: 'único',
@@ -261,7 +261,7 @@ function ServiceCard({ service, index }) {
         </ul>
 
         <a
-          href={`https://wa.me/5491138851664?text=Hola! Me interesa el servicio: ${service.name}`}
+          href={`https://wa.me/5491125490503?text=Hola! Me interesa el servicio: ${service.name}`}
           target="_blank"
           rel="noopener noreferrer"
           className={styles.ctaButton}
@@ -316,7 +316,7 @@ export default function Marketplace() {
     <>
       <SEO
         title="Planes y Precios — Community Manager"
-        description="Planes de Community Manager desde $300.000 ARS/mes: gestión de redes sociales, Meta Ads, Google Ads y contenido digital. Consultá precios y elegí tu plan."
+        description="Planes de Community Manager desde $320.000 ARS/mes: gestión de redes sociales, Meta Ads, Google Ads y contenido digital. Consultá precios y elegí tu plan."
         path="/planes"
       />
 
@@ -473,7 +473,7 @@ export default function Marketplace() {
                 </div>
               </div>
               <a
-                href="https://wa.me/5491138851664?text=Hola! Necesito un presupuesto personalizado"
+                href="https://wa.me/5491125490503?text=Hola! Necesito un presupuesto personalizado"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.customButton}

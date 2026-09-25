@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Sparkles, Instagram, Target, TrendingUp, BarChart3, Layers, Gauge, Globe, Crosshair, CreditCard, Zap, Wallet, Settings, Info, ArrowLeft, ChevronRight } from 'lucide-react'
+import { Sparkles, Instagram, Target, TrendingUp, BarChart3, Layers, Gauge, Globe, Crosshair, CreditCard, Wallet, Settings, Info, ArrowLeft, ChevronRight } from 'lucide-react'
 import styles from './PlanDetailAds.module.css'
 import SEO from '../components/SEO'
 
@@ -7,8 +7,8 @@ const plans = [
   {
     name: 'Ads Standard',
     subtitle: 'Primeros pasos en publicidad',
-    originalPrice: '210.000',
-    priceARS: '180.000',
+    originalPrice: '224.000',
+    priceARS: '192.000',
     priceUSD: '120',
     period: '/mes',
     color: 'starter',
@@ -39,8 +39,8 @@ const plans = [
   {
     name: 'Ads Pro',
     subtitle: 'Para escalar tu negocio',
-    originalPrice: '450.000',
-    priceARS: '350.000',
+    originalPrice: '483.000',
+    priceARS: '376.000',
     priceUSD: '235',
     period: '/mes',
     color: 'professional',
@@ -72,8 +72,8 @@ const plans = [
   {
     name: 'Ads Premium',
     subtitle: 'Máximo rendimiento',
-    originalPrice: '600.000',
-    priceARS: '500.000',
+    originalPrice: '643.000',
+    priceARS: '536.000',
     priceUSD: '335',
     period: '/mes',
     color: 'premium',
@@ -124,13 +124,8 @@ const disclaimers = [
 const paymentConditions = [
   {
     icon: CreditCard,
-    title: 'Primer mes',
-    description: 'Se abona el 50% al comenzar y el 50% restante al finalizar el mes.'
-  },
-  {
-    icon: Zap,
-    title: 'A partir del segundo mes',
-    description: 'El pago es al inicio del mes.'
+    title: 'Pago por adelantado',
+    description: 'El pago se abona por adelantado, al inicio de cada mes.'
   },
   {
     icon: Sparkles,
@@ -144,7 +139,7 @@ export default function PlanDetailAds() {
     <>
       <SEO
         title="Planes de Publicidad — Detalle y Precios"
-        description="Compará los planes de publicidad digital: Ads Standard, Pro y Premium desde $180.000 ARS/mes. Meta Ads, campañas, optimización y reportes."
+        description="Compará los planes de publicidad digital: Ads Standard, Pro y Premium desde $192.000 ARS/mes. Meta Ads, campañas, optimización y reportes."
         path="/planes/publicidad"
       />
       <main className={styles.page}>

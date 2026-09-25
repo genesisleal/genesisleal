@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Sparkles, Instagram, Calendar, Target, Users, MessageCircle, BarChart3, Video, Crown, Globe, MapPin, Camera, Hash, Clock, Zap, FileText, ArrowLeft, CreditCard, ChevronRight } from 'lucide-react'
+import { Sparkles, Instagram, Calendar, Target, Users, MessageCircle, BarChart3, Video, Crown, Globe, MapPin, Camera, Hash, Clock, FileText, ArrowLeft, CreditCard, ChevronRight } from 'lucide-react'
 import styles from './PlanDetailRedesSociales.module.css'
 import SEO from '../components/SEO'
 
@@ -7,8 +7,8 @@ const plans = [
   {
     name: 'Standard',
     subtitle: 'Ideal para emprendedores',
-    originalPrice: '350.000',
-    priceARS: '300.000',
+    originalPrice: '375.000',
+    priceARS: '320.000',
     priceUSD: '200',
     period: '/mes',
     color: 'starter',
@@ -55,8 +55,8 @@ const plans = [
   {
     name: 'Pro',
     subtitle: 'Para negocios en crecimiento',
-    originalPrice: '650.000',
-    priceARS: '500.000',
+    originalPrice: '728.000',
+    priceARS: '560.000',
     priceUSD: '350',
     period: '/mes',
     color: 'professional',
@@ -114,8 +114,8 @@ const plans = [
   {
     name: 'Premium',
     subtitle: 'Gestión integral',
-    originalPrice: '950.000',
-    priceARS: '800.000',
+    originalPrice: '1.026.000',
+    priceARS: '864.000',
     priceUSD: '540',
     period: '/mes',
     color: 'premium',
@@ -179,13 +179,8 @@ const plans = [
 const paymentConditions = [
   {
     icon: CreditCard,
-    title: 'Primer mes',
-    description: 'Se abona el 50% al comenzar y el 50% restante al finalizar el mes.'
-  },
-  {
-    icon: Zap,
-    title: 'A partir del segundo mes',
-    description: 'El pago es al inicio del mes.'
+    title: 'Pago por adelantado',
+    description: 'El pago se abona por adelantado, al inicio de cada mes.'
   },
   {
     icon: Sparkles,
@@ -204,7 +199,7 @@ export default function PlanDetailRedesSociales() {
     <>
       <SEO
         title="Planes de Redes Sociales — Detalle y Precios"
-        description="Compará los planes de gestión de redes sociales: Standard, Pro y Premium desde $300.000 ARS/mes. Incluye publicaciones, historias, Meta Ads y reportes."
+        description="Compará los planes de gestión de redes sociales: Standard, Pro y Premium desde $320.000 ARS/mes. Incluye publicaciones, historias, Meta Ads y reportes."
         path="/planes/redes"
       />
       <main className={styles.page}>
