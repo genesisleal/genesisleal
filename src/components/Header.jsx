@@ -27,7 +27,7 @@ const navLinks = [
   { path: '/', label: 'Inicio' },
   { path: '/experiencia', label: 'Experiencia' },
   { path: '/portafolio', label: 'Portafolio' },
-  { path: '/planes', label: 'Planes' },
+  { path: '/servicios', label: 'Servicios' },
   { path: '/sobre-mi', label: 'Sobre mí' },
 ]
 

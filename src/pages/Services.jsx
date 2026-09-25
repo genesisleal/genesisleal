@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Clock, ArrowLeft, Rocket, MessageCircle } from 'lucide-react'
-import styles from './ComingSoon.module.css'
+import { ArrowLeft, MessageCircle, Share2, Target, Video } from 'lucide-react'
+import styles from './Services.module.css'
 import SEO from '../components/SEO'
 import ContactCards from '../components/ContactCards'
 
@@ -13,6 +13,24 @@ const serviceOptions = [
   'Todavía no estoy segura',
 ]
 
+const services = [
+  {
+    icon: Share2,
+    title: 'Gestión de redes sociales',
+    description: 'Estrategia, planificación y seguimiento para construir una presencia constante y relevante.',
+  },
+  {
+    icon: Target,
+    title: 'Publicidad digital',
+    description: 'Campañas en Meta Ads orientadas a tus objetivos, con optimización y análisis de resultados.',
+  },
+  {
+    icon: Video,
+    title: 'Creación de contenido',
+    description: 'Piezas visuales y mensajes que expresan la identidad de tu marca y conectan con su audiencia.',
+  },
+]
+
 const objectiveOptions = [
   'Conseguir más consultas',
   'Aumentar las ventas',
@@ -20,16 +38,7 @@ const objectiveOptions = [
   'Mejorar la presencia de mi marca',
 ]
 
-const particles = Array.from({ length: 12 }, (_, i) => ({
-  id: i,
-  x: Math.random() * 100,
-  y: Math.random() * 100,
-  size: Math.random() * 6 + 3,
-  delay: Math.random() * 4,
-  duration: Math.random() * 3 + 4,
-}))
-
-export default function ComingSoon() {
+export default function Services() {
   const [formData, setFormData] = useState({
     name: '',
     brand: '',
@@ -64,7 +73,7 @@ export default function ComingSoon() {
     }
 
     const message = [
-      'Hola Genesis, quiero recibir una recomendación para mi marca.',
+      'Hola Genesis, quiero conversar sobre una propuesta para mi marca.',
       '',
       `Nombre: ${formData.name}`,
       `Marca: ${formData.brand}`,
@@ -84,61 +93,21 @@ export default function ComingSoon() {
   return (
     <>
       <SEO
-        title="Planes y contacto"
-        description="Contame sobre tu marca para recibir una recomendación personalizada o contactame directamente por WhatsApp y email."
-        path="/planes"
-        noindex
+        title="Servicios de redes sociales y publicidad digital"
+        description="Gestión de redes sociales, publicidad digital y creación de contenido para marcas. Contame tus objetivos y conversemos sobre una propuesta personalizada."
+        path="/servicios"
       />
 
       <main className={styles.page}>
-        <div className={styles.particlesContainer}>
-          {particles.map(p => (
-            <motion.div
-              key={p.id}
-              className={styles.particle}
-              style={{
-                left: `${p.x}%`,
-                top: `${p.y}%`,
-                width: p.size,
-                height: p.size,
-              }}
-              animate={{
-                y: [0, -30, 0],
-                opacity: [0.2, 0.6, 0.2],
-                scale: [1, 1.3, 1],
-              }}
-              transition={{
-                duration: p.duration,
-                delay: p.delay,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-            />
-          ))}
-        </div>
-
         <div className={styles.content}>
-          <motion.div
-            className={styles.iconGroup}
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          <motion.span
+            className={styles.eyebrow}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
           >
-            <motion.div
-              className={styles.clockWrapper}
-              animate={{ rotate: [0, 10, -10, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-            >
-              <Clock size={48} strokeWidth={1.5} />
-            </motion.div>
-            <motion.div
-              className={styles.rocketWrapper}
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-            >
-              <Rocket size={28} strokeWidth={1.5} />
-            </motion.div>
-          </motion.div>
+            Servicios
+          </motion.span>
 
           <motion.h1
             className={styles.title}
@@ -146,18 +115,41 @@ export default function ComingSoon() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Contame sobre tu marca
+            Una estrategia para hacer crecer tu marca
           </motion.h1>
 
           <motion.p
-            className={styles.subtitle}
+            className={styles.intro}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.35 }}
           >
-            Respondé estas preguntas y te recomiendo la opción más adecuada para
-            tu marca.
+            Trabajo en redes sociales, publicidad digital y contenido con propuestas
+            adaptadas a los objetivos de cada marca.
           </motion.p>
+
+          <div className={styles.servicesGrid}>
+            {services.map(({ icon: Icon, title, description }, index) => (
+              <motion.article
+                key={title}
+                className={styles.serviceCard}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <Icon size={28} strokeWidth={1.7} aria-hidden="true" />
+                <h2>{title}</h2>
+                <p>{description}</p>
+              </motion.article>
+            ))}
+          </div>
+
+          <div className={styles.formIntro}>
+            <span className={styles.eyebrow}>Propuesta personalizada</span>
+            <h2>Empecemos por tus objetivos</h2>
+            <p>Contame qué necesitás y te recomendaré por dónde empezar.</p>
+          </div>
 
           <motion.form
             className={styles.form}
@@ -270,11 +262,11 @@ export default function ComingSoon() {
               className={styles.whatsappButton}
             >
               <MessageCircle size={20} />
-              Recibir recomendación por WhatsApp
+              Pedir una propuesta por WhatsApp
             </button>
 
             <p className={styles.privacyNote}>
-              No guardamos tus respuestas. Se envían únicamente cuando abras WhatsApp.
+              No guardamos tus respuestas. Se abrirá WhatsApp con el mensaje listo para enviar.
             </p>
           </motion.form>
 

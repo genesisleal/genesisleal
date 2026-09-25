@@ -24,7 +24,7 @@ const menuLinks = [
   { path: '/experiencia', label: 'Experiencia' },
   { path: '/portafolio', label: 'Portafolio' },
   { path: '/sobre-mi', label: 'Sobre mí' },
-  { path: '/planes', label: 'Planes' },
+  { path: '/servicios', label: 'Servicios' },
 ]
 
 export default function Footer() {

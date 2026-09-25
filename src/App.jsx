@@ -8,9 +8,7 @@ import Portfolio from './pages/Portfolio'
 import PortfolioWork from './pages/PortfolioWork'
 import About from './pages/About'
 import Oferta from './pages/Oferta'
-import PlanDetailRedesSociales from './pages/PlanDetailRedesSociales'
-import PlanDetailAds from './pages/PlanDetailAds'
-import ComingSoon from './pages/ComingSoon'
+import Services from './pages/Services'
 import NotFound from './pages/NotFound'
 
 const BARE_ROUTES = ['/oferta']
@@ -45,15 +43,16 @@ function Layout() {
           <Route path="/experiencia" element={<Portfolio />} />
           <Route path="/portafolio" element={<PortfolioWork />} />
           <Route path="/sobre-mi" element={<About />} />
-          <Route path="/contacto" element={<Navigate to="/planes" replace />} />
-          <Route path="/precios/publicidad" element={<Navigate to="/planes/publicidad" replace />} />
+          <Route path="/contacto" element={<Navigate to="/servicios" replace />} />
+          <Route path="/precios/publicidad" element={<Navigate to="/servicios" replace />} />
           <Route path="/oferta" element={<Oferta />} />
-          <Route path="/planes" element={<ComingSoon />} />
-          <Route path="/planes/redes" element={<PlanDetailRedesSociales />} />
-          <Route path="/planes/publicidad" element={<PlanDetailAds />} />
-          <Route path="/planes/proximamente" element={<Navigate to="/planes" replace />} />
-          <Route path="/planes/detalleredessociales" element={<Navigate to="/planes/redes" replace />} />
-          <Route path="/planes/detallepublicidad" element={<Navigate to="/planes/publicidad" replace />} />
+          <Route path="/servicios" element={<Services />} />
+          <Route path="/planes" element={<Navigate to="/servicios" replace />} />
+          <Route path="/planes/redes" element={<Navigate to="/servicios" replace />} />
+          <Route path="/planes/publicidad" element={<Navigate to="/servicios" replace />} />
+          <Route path="/planes/proximamente" element={<Navigate to="/servicios" replace />} />
+          <Route path="/planes/detalleredessociales" element={<Navigate to="/servicios" replace />} />
+          <Route path="/planes/detallepublicidad" element={<Navigate to="/servicios" replace />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

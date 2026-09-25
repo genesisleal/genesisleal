@@ -91,7 +91,7 @@ export default function About() {
               </p>
               <div className={styles.heroActions}>
                 <Link to="/experiencia" className={styles.primaryLink}>Ver mi experiencia <ArrowRight size={18} aria-hidden="true" /></Link>
-                <Link to="/planes" className={styles.textLink}>Hablemos de tu marca</Link>
+                <Link to="/servicios" className={styles.textLink}>Hablemos de tu marca</Link>
               </div>
             </motion.div>
             <motion.div

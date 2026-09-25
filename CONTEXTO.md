@@ -122,9 +122,9 @@ Community Management · Social Media Marketing · Meta Ads · Google Ads · Cont
 - `/sobre-mi` — Sobre mí (trayectoria, certificaciones)
 - `/experiencia` — Experiencia
 - `/portafolio` — Casos: campañas Meta Ads, reels editados y carruseles con resultados
-- `/planes` — Consulta sobre la marca y formas de contacto (sin indexación)
-- `/contacto` — Redirige a `/planes`
-- `/planes/redes` · `/planes/publicidad` · `/planes/proximamente`
+- `/servicios` — Áreas de trabajo, consulta sobre la marca y formas de contacto (indexable)
+- `/contacto` y `/planes` — Redirigen a `/servicios`
+- `/planes/redes` · `/planes/publicidad` · `/planes/proximamente` — Redirigen a `/servicios`; los detalles de paquetes no son públicos
 - `/oferta` — Página de oferta (sin header/footer)
 
 **Identidad visual:** tema claro (fondo blanco, texto #1a1a1a), acento púrpura #a855f7. Tipografías Montserrat (base) + Instrument Serif (acento). Cursor personalizado en desktop.
