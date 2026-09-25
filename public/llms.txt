@@ -9,12 +9,6 @@
 - Contenido visual: reels, stories y carruseles con hooks de 3 segundos.
 - Automatización y chatbots IA: flujos de ManyChat y bots conversacionales para atención 24/7.
 
-## Planes y precios
-
-- [Planes y precios](https://genesisleal.com/planes/): comparativa de todos los servicios disponibles.
-- [Planes de redes sociales](https://genesisleal.com/planes/redes/): Standard ($320.000 ARS/mes), Pro ($560.000 ARS/mes) y Premium ($864.000 ARS/mes).
-- [Planes de publicidad](https://genesisleal.com/planes/publicidad/): Ads Standard ($192.000 ARS/mes), Pro ($376.000 ARS/mes) y Premium ($536.000 ARS/mes). La inversión publicitaria es adicional y se paga a las plataformas.
-
 ## Sobre Genesis
 
 - [Sobre mí](https://genesisleal.com/sobre-mi/): trayectoria, enfoque de trabajo y valores.

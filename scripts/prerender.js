@@ -17,8 +17,7 @@ const ROUTES = [
   '/oferta',
   '/planes',
   '/planes/redes',
-  '/planes/publicidad',
-  '/planes/proximamente'
+  '/planes/publicidad'
 ]
 
 const NOT_FOUND_ROUTE = '/__not-found__'

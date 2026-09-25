@@ -318,6 +318,7 @@ export default function Marketplace() {
         title="Planes y Precios — Community Manager"
         description="Planes de Community Manager desde $320.000 ARS/mes: gestión de redes sociales, Meta Ads, Google Ads y contenido digital. Consultá precios y elegí tu plan."
         path="/planes"
+        noindex
       />
 
       <main className={styles.marketplace}>

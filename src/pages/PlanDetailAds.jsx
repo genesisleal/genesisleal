@@ -141,6 +141,7 @@ export default function PlanDetailAds() {
         title="Planes de Publicidad — Detalle y Precios"
         description="Compará los planes de publicidad digital: Ads Standard, Pro y Premium desde $192.000 ARS/mes. Meta Ads, campañas, optimización y reportes."
         path="/planes/publicidad"
+        noindex
       />
       <main className={styles.page}>
         <div className="container">
