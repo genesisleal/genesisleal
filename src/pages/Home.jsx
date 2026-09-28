@@ -53,7 +53,6 @@ const services = [
 const stats = [
   { value: '5+', label: 'Años de Experiencia' },
   { value: '150+', label: 'Historias Mensuales' },
-  { value: '90%', label: 'Clientes Satisfechos' },
 ]
 
 const projects = [

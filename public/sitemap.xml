@@ -2,9 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://genesisleal.com/</loc>
-    <lastmod>2026-02-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-09-25</lastmod>
   </url>
   <url>
     <loc>https://genesisleal.com/servicios/</loc>
@@ -12,20 +10,14 @@
   </url>
   <url>
     <loc>https://genesisleal.com/sobre-mi/</loc>
-    <lastmod>2026-03-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-09-25</lastmod>
   </url>
   <url>
     <loc>https://genesisleal.com/portafolio/</loc>
-    <lastmod>2026-05-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-07-21</lastmod>
   </url>
   <url>
     <loc>https://genesisleal.com/experiencia/</loc>
-    <lastmod>2026-03-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-07-21</lastmod>
   </url>
 </urlset>

@@ -46,8 +46,12 @@ const works = [
     types: ['meta', 'video'],
     kicker: 'Caso · Meta Ads + Reel',
     client: 'Peluquería Hernández · Temuco, Chile',
-    title: 'El reel que disparó las conversaciones en Temuco',
-    desc: 'Edité este reel de posicionamiento y lo usé como creativo principal de una campaña de Meta Ads optimizada a conversaciones. En 2 meses generó un crecimiento sostenido de contactos, con un costo por conversación muy por debajo del promedio del rubro.',
+    title: '1.412 conversaciones iniciadas en una campaña de Temuco',
+    desc: 'Un reel de posicionamiento utilizado como creativo principal de una campaña de Meta Ads orientada a iniciar conversaciones.',
+    goal: 'Generar consultas para la sede de Temuco.',
+    approach: 'Edición del reel y uso como creativo de la campaña a mensajes.',
+    period: '11 de junio al 15 de agosto de 2025',
+    resultNote: 'Meta registró 1.412 conversaciones iniciadas. Esta métrica no equivale a ventas ni reservas confirmadas.',
     stats: [
       { value: '1.412', label: 'conversaciones iniciadas' },
       { value: '$901.845', label: 'invertidos en pauta' }
@@ -62,10 +66,14 @@ const works = [
     kicker: 'Caso · Meta Ads + Reel',
     client: 'Innvoice · Facturación electrónica, Perú',
     title: 'Conversaciones a €0,42 para un SaaS de facturación',
-    desc: 'Reel de concepto usado como creativo de una campaña de Meta Ads a conversaciones. En 15 días consiguió un costo por conversación 31% más bajo que el promedio del rubro. La cuenta factura en euros (dueño en España), aunque el negocio opera en Perú.',
+    desc: 'Reel de concepto usado como creativo de una campaña de Meta Ads orientada a conversaciones para Innvoice, un servicio de facturación electrónica en Perú.',
+    goal: 'Abrir conversaciones con potenciales clientes.',
+    approach: 'Concepto y edición del reel para una campaña de mensajes.',
+    period: '6 al 20 de mayo de 2026',
+    resultNote: 'Meta registró 37 conversaciones a €0,42 cada una, un costo 31% inferior al de conjuntos de anuncios similares según su propia comparación. No equivale a 37 ventas.',
     stats: [
       { value: '37', label: 'conversaciones iniciadas' },
-      { value: '€0,42', label: 'por conversación (−31% vs rubro)' }
+      { value: '€0,42', label: 'por conversación' }
     ],
     video: reelInnvoice,
     poster: reelInnvoicePoster,
@@ -76,11 +84,15 @@ const works = [
     types: ['meta', 'video'],
     kicker: 'Caso · Meta Ads + Reel',
     client: 'Peluquería Hernández · Temuco, Chile',
-    title: 'Un reel para llenar la agenda de reservas',
-    desc: 'Reel pensado para conseguir reservas, usado como creativo de una campaña de Meta Ads a conversaciones. En febrero generó 268 conversaciones, con un costo por conversación 27% más bajo que el promedio del rubro.',
+    title: 'Un reel para generar consultas sobre reservas',
+    desc: 'Reel pensado para impulsar consultas sobre reservas y usado como creativo de una campaña de Meta Ads orientada a conversaciones.',
+    goal: 'Recibir consultas sobre turnos en Temuco.',
+    approach: 'Creación del reel y campaña orientada a mensajes.',
+    period: '1 al 28 de febrero de 2026',
+    resultNote: 'Meta registró 268 conversaciones a $1.498 cada una, 27% menos que conjuntos de anuncios similares según su comparación. La captura no permite confirmar cuántas terminaron en reservas.',
     stats: [
       { value: '268', label: 'conversaciones iniciadas' },
-      { value: '27%', label: 'más barato que el rubro' }
+      { value: '$1.498', label: 'por conversación' }
     ],
     video: reelTemuco2,
     poster: reelTemuco2Poster,
@@ -503,6 +515,15 @@ export default function PortfolioWork() {
                 <h2 className={styles.caseTitle}>{w.title}</h2>
                 <p className={styles.client}>{w.client}</p>
                 <p className={styles.desc}>{w.desc}</p>
+
+                {w.goal && (
+                  <dl className={styles.caseDetails}>
+                    <div><dt>Objetivo</dt><dd>{w.goal}</dd></div>
+                    <div><dt>Trabajo</dt><dd>{w.approach}</dd></div>
+                    <div><dt>Período</dt><dd>{w.period}</dd></div>
+                    <div><dt>Resultado</dt><dd>{w.resultNote}</dd></div>
+                  </dl>
+                )}
 
                 {w.stats && (
                   <div className={styles.stats}>

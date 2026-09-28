@@ -31,6 +31,19 @@ const services = [
   },
 ]
 
+const servicesStructuredData = {
+  '@context': 'https://schema.org',
+  '@graph': services.map(({ title, description }, index) => ({
+    '@type': 'Service',
+    '@id': `https://genesisleal.com/servicios/#servicio-${index + 1}`,
+    name: title,
+    description,
+    provider: { '@id': 'https://genesisleal.com/#person' },
+    url: 'https://genesisleal.com/servicios/',
+    areaServed: { '@type': 'Country', name: 'Argentina' },
+  })),
+}
+
 const objectiveOptions = [
   'Conseguir más consultas',
   'Aumentar las ventas',
@@ -96,6 +109,7 @@ export default function Services() {
         title="Servicios de redes sociales y publicidad digital"
         description="Gestión de redes sociales, publicidad digital y creación de contenido para marcas. Contame tus objetivos y conversemos sobre una propuesta personalizada."
         path="/servicios"
+        structuredData={servicesStructuredData}
       />
 
       <main className={styles.page}>

@@ -12,7 +12,8 @@ export default function SEO({
   path = '',
   image = '/og-image.jpg',
   type = 'website',
-  noindex = false
+  noindex = false,
+  structuredData
 }) {
   const fullTitle = title
     ? (title.includes('Genesis Leal') ? title : `${title} | Genesis Leal`)
@@ -58,6 +59,17 @@ export default function SEO({
       document.title = DEFAULT_TITLE
     }
   }, [fullTitle, description, fullUrl, fullImage, type, noindex])
+
+  useEffect(() => {
+    if (!structuredData) return undefined
+
+    const script = document.createElement('script')
+    script.type = 'application/ld+json'
+    script.textContent = JSON.stringify(structuredData)
+    document.head.appendChild(script)
+
+    return () => script.remove()
+  }, [structuredData])
 
   return null
 }

@@ -129,6 +129,6 @@ Community Management · Social Media Marketing · Meta Ads · Google Ads · Cont
 
 **Identidad visual:** tema claro (fondo blanco, texto #1a1a1a), acento púrpura #a855f7. Tipografías Montserrat (base) + Instrument Serif (acento). Cursor personalizado en desktop.
 
-**SEO / GEO:** meta tags dinámicos por página, JSON-LD (LocalBusiness, Person, WebSite, Service, FAQPage, OfferCatalog), Open Graph + Twitter Cards, robots.txt, sitemap.xml y `llms.txt` (contexto para motores de IA como ChatGPT, Perplexity y Claude). Analytics: Google Analytics + Microsoft Clarity.
+**SEO / GEO:** meta tags dinámicos por página, JSON-LD de Person y WebSite en todas las rutas públicas y de Service únicamente en `/servicios`, Open Graph + Twitter Cards, robots.txt, sitemap.xml y `llms.txt` como resumen de contenido público (sin garantía de uso por motores de IA). Analytics: Google Analytics + Microsoft Clarity.
 
 **Hosting:** servidor propio (server.imanleads.com) detrás de Cloudflare; deploy manual por rsync.

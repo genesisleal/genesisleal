@@ -306,7 +306,7 @@
 
 .counterGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--spacing-8);
   padding-top: var(--spacing-8);
   border-top: 1px solid var(--color-border);
@@ -742,7 +742,7 @@
   }
 
   .counterGrid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -815,7 +815,7 @@
   }
 
   .counterGrid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-4);
     text-align: center;
   }
