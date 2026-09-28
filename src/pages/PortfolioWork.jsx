@@ -51,7 +51,7 @@ const works = [
     goal: 'Generar consultas para la sede de Temuco.',
     approach: 'Edición del reel y uso como creativo de la campaña a mensajes.',
     period: '11 de junio al 15 de agosto de 2025',
-    resultNote: 'Meta registró 1.412 conversaciones iniciadas. Esta métrica no equivale a ventas ni reservas confirmadas.',
+    resultNote: 'Meta registró 1.412 conversaciones iniciadas en el período de la campaña.',
     stats: [
       { value: '1.412', label: 'conversaciones iniciadas' },
       { value: '$901.845', label: 'invertidos en pauta' }
@@ -70,7 +70,7 @@ const works = [
     goal: 'Abrir conversaciones con potenciales clientes.',
     approach: 'Concepto y edición del reel para una campaña de mensajes.',
     period: '6 al 20 de mayo de 2026',
-    resultNote: 'Meta registró 37 conversaciones a €0,42 cada una, un costo 31% inferior al de conjuntos de anuncios similares según su propia comparación. No equivale a 37 ventas.',
+    resultNote: 'Meta registró 37 conversaciones a €0,42 cada una, un costo 31% inferior al de conjuntos de anuncios similares según su propia comparación.',
     stats: [
       { value: '37', label: 'conversaciones iniciadas' },
       { value: '€0,42', label: 'por conversación' }
@@ -89,7 +89,7 @@ const works = [
     goal: 'Recibir consultas sobre turnos en Temuco.',
     approach: 'Creación del reel y campaña orientada a mensajes.',
     period: '1 al 28 de febrero de 2026',
-    resultNote: 'Meta registró 268 conversaciones a $1.498 cada una, 27% menos que conjuntos de anuncios similares según su comparación. La captura no permite confirmar cuántas terminaron en reservas.',
+    resultNote: 'Meta registró 268 conversaciones a $1.498 cada una. El costo por conversación fue 27% menor que el de anuncios similares, según Meta.',
     stats: [
       { value: '268', label: 'conversaciones iniciadas' },
       { value: '$1.498', label: 'por conversación' }
