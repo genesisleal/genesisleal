@@ -123,6 +123,10 @@ Community Management · Social Media Marketing · Meta Ads · Google Ads · Cont
 - `/experiencia` — Experiencia
 - `/portafolio` — Casos: campañas Meta Ads, reels editados y carruseles con resultados
 - `/servicios` — Áreas de trabajo, consulta sobre la marca y formas de contacto (indexable)
+- `/servicios/gestion-redes-sociales` — Detalle del servicio de gestión de redes sociales
+- `/servicios/meta-ads` — Detalle del servicio de campañas en Meta Ads
+- `/servicios/creacion-de-contenido` — Detalle del servicio de contenido para redes sociales
+- `/servicios/automatizacion-chatbots` — Detalle del servicio de automatización y chatbots
 - `/contacto` y `/planes` — Redirigen a `/servicios`
 - `/planes/redes` · `/planes/publicidad` · `/planes/proximamente` — Redirigen a `/servicios`; los detalles de paquetes no son públicos
 - `/oferta` — Página de oferta (sin header/footer)

@@ -28,24 +28,28 @@ const services = [
     number: '01',
     title: 'Gestión de Redes Sociales',
     description: 'Administro y hago crecer tu presencia en Instagram, TikTok, Facebook y YouTube con estrategias de contenido multi-plataforma.',
+    path: '/servicios/gestion-redes-sociales',
     size: 'large',
   },
   {
     number: '02',
     title: 'Meta Ads',
     description: 'Campañas de respuesta directa optimizadas para ROAS y conversión.',
+    path: '/servicios/meta-ads',
     size: 'small',
   },
   {
     number: '03',
     title: 'Contenido Visual',
     description: 'Reels, Stories y Carruseles con hooks de 3 segundos que capturan.',
+    path: '/servicios/creacion-de-contenido',
     size: 'small',
   },
   {
     number: '04',
     title: 'Automatización & Chatbots IA',
     description: 'Flujos de ManyChat para respuestas automáticas, cupones y citas. Bots conversacionales con IA para atención 24/7.',
+    path: '/servicios/automatizacion-chatbots',
     size: 'large',
   },
 ]
@@ -316,7 +320,7 @@ export default function Home() {
 
           <div className={styles.servicesGrid}>
             {services.map((service, index) => (
-              <motion.div
+              <motion.article
                 key={index}
                 className={`${styles.serviceItem} ${service.size === 'large' ? styles.serviceLarge : styles.serviceSmall}`}
                 initial={{ opacity: 0, y: 30 }}
@@ -324,11 +328,13 @@ export default function Home() {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <ArrowUpRight className={styles.serviceArrow} size={24} />
-                <span className={styles.serviceNumber}>{service.number}</span>
-                <h3 className={styles.serviceTitle}>{service.title}</h3>
-                <p className={styles.serviceDescription}>{service.description}</p>
-              </motion.div>
+                <Link to={service.path} className={styles.serviceCardLink}>
+                  <ArrowUpRight className={styles.serviceArrow} size={24} />
+                  <span className={styles.serviceNumber}>{service.number}</span>
+                  <h3 className={styles.serviceTitle}>{service.title}</h3>
+                  <p className={styles.serviceDescription}>{service.description}</p>
+                </Link>
+              </motion.article>
             ))}
           </div>
         </div>

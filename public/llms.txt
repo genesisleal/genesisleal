@@ -1,10 +1,14 @@
 # Genesis Leal | Community Manager en Buenos Aires
 
-Genesis Leal trabaja en gestión de redes sociales, publicidad digital y creación de contenido para marcas. Este archivo resume las páginas públicas del sitio; los resultados de campañas son métricas de las plataformas en los períodos indicados, no ventas atribuidas.
+Genesis Leal trabaja en gestión de redes sociales, publicidad digital, creación de contenido y automatización para marcas. Este archivo resume las páginas públicas del sitio; los resultados de campañas son métricas de las plataformas en los períodos indicados, no ventas atribuidas.
 
 ## Servicios
 
-- [Servicios](https://genesisleal.com/servicios/): gestión de redes sociales, campañas de Meta Ads y creación de contenido. Incluye un formulario para describir la marca y el objetivo antes de conversar por WhatsApp.
+- [Servicios](https://genesisleal.com/servicios/): resumen de la oferta y formulario para describir la marca y el objetivo antes de conversar por WhatsApp.
+- [Gestión de redes sociales](https://genesisleal.com/servicios/gestion-redes-sociales/): estrategia, planificación, contenido, copywriting y seguimiento para redes sociales.
+- [Meta Ads](https://genesisleal.com/servicios/meta-ads/): campañas de respuesta directa con estrategia, creatividades, segmentación, optimización y análisis.
+- [Creación de contenido](https://genesisleal.com/servicios/creacion-de-contenido/): conceptos, guiones, reels, historias, carruseles y adaptación para redes sociales.
+- [Automatización y chatbots](https://genesisleal.com/servicios/automatizacion-chatbots/): flujos de ManyChat para consultas frecuentes, cupones y agendamiento.
 
 ## Sobre Genesis
 
@@ -16,7 +20,7 @@ Genesis Leal trabaja en gestión de redes sociales, publicidad digital y creaci�
 
 - Peluquería Hernández, Temuco: 1.412 conversaciones iniciadas registradas por Meta del 11 de junio al 15 de agosto de 2025.
 - Innvoice, Perú: 37 conversaciones iniciadas a €0,42 cada una del 6 al 20 de mayo de 2026, según una captura de Meta Ads.
-- Peluquería Hernández, Temuco: 268 conversaciones iniciadas en febrero de 2026. La captura no confirma cuántas terminaron en reservas.
+- Peluquería Hernández, Temuco: 268 conversaciones iniciadas en febrero de 2026 a $1.498 cada una. El costo por conversación fue 27% menor que el de anuncios similares, según Meta.
 
 ## Contacto
 

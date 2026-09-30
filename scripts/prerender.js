@@ -16,6 +16,10 @@ const ROUTES = [
   '/contacto',
   '/oferta',
   '/servicios',
+  '/servicios/gestion-redes-sociales',
+  '/servicios/meta-ads',
+  '/servicios/creacion-de-contenido',
+  '/servicios/automatizacion-chatbots',
   '/planes',
   '/planes/redes',
   '/planes/publicidad'

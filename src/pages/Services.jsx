@@ -1,45 +1,36 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowLeft, MessageCircle, Share2, Target, Video } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Bot, MessageCircle, Share2, Target, Video } from 'lucide-react'
 import styles from './Services.module.css'
 import SEO from '../components/SEO'
 import ContactCards from '../components/ContactCards'
+import { servicePages } from '../data/services'
 
 const serviceOptions = [
   'Redes sociales',
   'Publicidad digital',
   'Creación de contenido',
+  'Automatización y chatbots',
   'Todavía no estoy segura',
 ]
 
-const services = [
-  {
-    icon: Share2,
-    title: 'Gestión de redes sociales',
-    description: 'Estrategia, planificación y seguimiento para construir una presencia constante y relevante.',
-  },
-  {
-    icon: Target,
-    title: 'Publicidad digital',
-    description: 'Campañas en Meta Ads orientadas a tus objetivos, con optimización y análisis de resultados.',
-  },
-  {
-    icon: Video,
-    title: 'Creación de contenido',
-    description: 'Piezas visuales y mensajes que expresan la identidad de tu marca y conectan con su audiencia.',
-  },
-]
+const serviceIcons = {
+  social: Share2,
+  ads: Target,
+  content: Video,
+  automation: Bot,
+}
 
 const servicesStructuredData = {
   '@context': 'https://schema.org',
-  '@graph': services.map(({ title, description }, index) => ({
+  '@graph': servicePages.map(({ title, shortDescription, path }) => ({
     '@type': 'Service',
-    '@id': `https://genesisleal.com/servicios/#servicio-${index + 1}`,
+    '@id': `https://genesisleal.com${path}/#service`,
     name: title,
-    description,
+    description: shortDescription,
     provider: { '@id': 'https://genesisleal.com/#person' },
-    url: 'https://genesisleal.com/servicios/',
+    url: `https://genesisleal.com${path}/`,
     areaServed: { '@type': 'Country', name: 'Argentina' },
   })),
 }
@@ -106,13 +97,13 @@ export default function Services() {
   return (
     <>
       <SEO
-        title="Servicios de redes sociales y publicidad digital"
-        description="Gestión de redes sociales, publicidad digital y creación de contenido para marcas. Contame tus objetivos y conversemos sobre una propuesta personalizada."
+        title="Servicios de community manager y Meta Ads"
+        description="Gestión de redes sociales, Meta Ads, creación de contenido y automatización para marcas B2C. Conocé cada servicio y pedí una propuesta personalizada."
         path="/servicios"
         structuredData={servicesStructuredData}
       />
 
-      <main className={styles.page}>
+      <div className={styles.page}>
         <div className={styles.content}>
           <motion.span
             className={styles.eyebrow}
@@ -143,9 +134,11 @@ export default function Services() {
           </motion.p>
 
           <div className={styles.servicesGrid}>
-            {services.map(({ icon: Icon, title, description }, index) => (
+            {servicePages.map((service, index) => {
+              const Icon = serviceIcons[service.key]
+              return (
               <motion.article
-                key={title}
+                key={service.key}
                 className={styles.serviceCard}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -153,13 +146,18 @@ export default function Services() {
                 viewport={{ once: true }}
               >
                 <Icon size={28} strokeWidth={1.7} aria-hidden="true" />
-                <h2>{title}</h2>
-                <p>{description}</p>
+                <h2>{service.title}</h2>
+                <p>{service.shortDescription}</p>
+                <Link to={service.path} className={styles.serviceLink}>
+                  Conocer el servicio
+                  <ArrowRight size={17} aria-hidden="true" />
+                </Link>
               </motion.article>
-            ))}
+              )
+            })}
           </div>
 
-          <div className={styles.formIntro}>
+          <div className={styles.formIntro} id="consulta">
             <span className={styles.eyebrow}>Propuesta personalizada</span>
             <h2>Empecemos por tus objetivos</h2>
             <p>Contame qué necesitás y te recomendaré por dónde empezar.</p>
@@ -296,7 +294,7 @@ export default function Services() {
             Volver al inicio
           </Link>
         </div>
-      </main>
+      </div>
     </>
   )
 }

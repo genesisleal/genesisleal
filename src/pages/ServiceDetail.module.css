@@ -1,0 +1,342 @@
+.page {
+  background: #fff;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-8);
+}
+
+.hero {
+  padding: 2rem 0 4.5rem;
+  background:
+    radial-gradient(circle at 82% 18%, rgba(168, 85, 247, 0.14), transparent 34%),
+    linear-gradient(155deg, #f8f4ff 0%, #fff 58%, #f0f9ff 100%);
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 3rem;
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+}
+
+.breadcrumb a {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 0.9rem;
+  color: var(--color-accent);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.75fr);
+  align-items: end;
+  gap: clamp(3rem, 8vw, 8rem);
+}
+
+.hero h1 {
+  max-width: 720px;
+  font-size: clamp(2.5rem, 4vw, 3.4rem);
+  line-height: 1.12;
+}
+
+.heroAside {
+  padding: 0.25rem 0 0.25rem clamp(2rem, 4vw, 4rem);
+  border-left: 1px solid rgba(168, 85, 247, 0.2);
+}
+
+.lead {
+  max-width: 600px;
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 1.75rem;
+}
+
+.primaryButton,
+.secondaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 50px;
+  padding: 0.8rem 1.35rem;
+  border-radius: 100px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.primaryButton {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-hover));
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(168, 85, 247, 0.22);
+}
+
+.primaryButton:hover {
+  background: linear-gradient(135deg, var(--color-accent-hover), #7e22ce);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(168, 85, 247, 0.3);
+}
+
+.secondaryButton {
+  border: 1.5px solid rgba(26, 26, 26, 0.18);
+  color: var(--color-text-primary);
+}
+
+.secondaryButton:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.section {
+  padding: 4.5rem 0;
+}
+
+.sectionHeading {
+  max-width: 720px;
+  margin-bottom: 2.5rem;
+}
+
+.sectionHeading h2,
+.fitCard h2 {
+  font-size: clamp(1.8rem, 3vw, 2.65rem);
+}
+
+.includedGrid,
+.processGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.includedCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  min-height: 120px;
+  padding: 1.6rem;
+  border: 1px solid rgba(168, 85, 247, 0.14);
+  border-radius: 20px;
+  box-shadow: 0 10px 32px rgba(70, 32, 105, 0.05);
+}
+
+.includedCard svg {
+  flex: 0 0 auto;
+  margin-top: 0.2rem;
+  color: var(--color-accent);
+}
+
+.includedCard p {
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+}
+
+.processSection {
+  background: var(--color-bg-secondary);
+}
+
+.processGrid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.processCard {
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.stepNumber {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--color-accent), #c084fc);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.processCard h3 {
+  margin-bottom: 0.65rem;
+  font-size: 1.1rem;
+}
+
+.processCard p {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.fitSection {
+  padding: 4.5rem 0;
+}
+
+.fitCard {
+  padding: clamp(2rem, 6vw, 4.5rem);
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 88% 15%, rgba(168, 85, 247, 0.15), transparent 34%),
+    linear-gradient(145deg, #f8f4ff, #f3f8ff);
+  border: 1px solid rgba(168, 85, 247, 0.16);
+  color: var(--color-text-primary);
+}
+
+.fitCard h2 {
+  max-width: 700px;
+  color: var(--color-text-primary);
+}
+
+.fitCard > p {
+  max-width: 720px;
+  margin: 1rem 0 2rem;
+  color: var(--color-text-secondary);
+  font-size: 1.05rem;
+}
+
+.fitCard .primaryButton {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-hover));
+  color: #fff;
+}
+
+.fitCard .primaryButton:hover {
+  background: linear-gradient(135deg, var(--color-accent-hover), #7e22ce);
+  color: #fff;
+}
+
+.otherSection {
+  padding: 0 0 4.5rem;
+}
+
+.otherGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.otherCard {
+  display: flex;
+  flex-direction: column;
+  min-height: 230px;
+  padding: 1.6rem;
+  border: 1px solid rgba(168, 85, 247, 0.14);
+  border-radius: 20px;
+  background: #fff;
+}
+
+.otherCard:hover {
+  border-color: rgba(168, 85, 247, 0.38);
+  box-shadow: 0 16px 40px rgba(70, 32, 105, 0.08);
+  transform: translateY(-4px);
+}
+
+.otherCard h3 {
+  font-size: 1.15rem;
+}
+
+.otherCard p {
+  margin: 0.75rem 0 1.5rem;
+  color: var(--color-text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+.otherCard span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  color: var(--color-accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  color: var(--color-accent);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .heroAside {
+    max-width: 720px;
+    padding: 1.75rem 0 0;
+    border-top: 1px solid rgba(168, 85, 247, 0.2);
+    border-left: 0;
+  }
+
+  .processGrid,
+  .otherGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 var(--spacing-4);
+  }
+
+  .hero {
+    padding: 1.5rem 0 3.5rem;
+  }
+
+  .breadcrumb {
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.15rem, 10vw, 2.75rem);
+  }
+
+  .section,
+  .fitSection {
+    padding: 3.5rem 0;
+  }
+
+  .includedGrid,
+  .processGrid,
+  .otherGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .includedCard {
+    min-height: auto;
+  }
+
+  .otherSection {
+    padding-bottom: 4rem;
+  }
+}

@@ -37,6 +37,9 @@ export default function Header() {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
   const closeMenu = () => setIsMenuOpen(false)
+  const isActive = (path) => path === '/servicios'
+    ? location.pathname.startsWith('/servicios')
+    : location.pathname === path
 
   const handleNavClick = (path) => {
     closeMenu()
@@ -57,7 +60,7 @@ export default function Header() {
             <Link
               key={link.path}
               to={link.path}
-              className={`${styles.navLink} ${location.pathname === link.path ? styles.active : ''}`}
+              className={`${styles.navLink} ${isActive(link.path) ? styles.active : ''}`}
               onClick={() => handleNavClick(link.path)}
             >
               {link.label}
@@ -127,7 +130,7 @@ export default function Header() {
                   <Link
                     key={link.path}
                     to={link.path}
-                    className={`${styles.mobileNavLink} ${location.pathname === link.path ? styles.active : ''}`}
+                    className={`${styles.mobileNavLink} ${isActive(link.path) ? styles.active : ''}`}
                     onClick={() => handleNavClick(link.path)}
                   >
                     {link.label}

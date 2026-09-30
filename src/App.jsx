@@ -9,16 +9,24 @@ import PortfolioWork from './pages/PortfolioWork'
 import About from './pages/About'
 import Oferta from './pages/Oferta'
 import Services from './pages/Services'
+import ServiceDetail from './pages/ServiceDetail'
 import NotFound from './pages/NotFound'
 
 const BARE_ROUTES = ['/oferta']
 
 function ScrollToTop() {
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
 
   useEffect(() => {
+    if (hash) {
+      window.requestAnimationFrame(() => {
+        document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' })
+      })
+      return
+    }
+
     window.scrollTo(0, 0)
-  }, [pathname])
+  }, [pathname, hash])
 
   return null
 }
@@ -47,6 +55,10 @@ function Layout() {
           <Route path="/precios/publicidad" element={<Navigate to="/servicios" replace />} />
           <Route path="/oferta" element={<Oferta />} />
           <Route path="/servicios" element={<Services />} />
+          <Route path="/servicios/gestion-redes-sociales" element={<ServiceDetail serviceKey="social" />} />
+          <Route path="/servicios/meta-ads" element={<ServiceDetail serviceKey="ads" />} />
+          <Route path="/servicios/creacion-de-contenido" element={<ServiceDetail serviceKey="content" />} />
+          <Route path="/servicios/automatizacion-chatbots" element={<ServiceDetail serviceKey="automation" />} />
           <Route path="/planes" element={<Navigate to="/servicios" replace />} />
           <Route path="/planes/redes" element={<Navigate to="/servicios" replace />} />
           <Route path="/planes/publicidad" element={<Navigate to="/servicios" replace />} />
