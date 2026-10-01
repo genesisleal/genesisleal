@@ -37,6 +37,17 @@ body {
   min-height: calc(100vh - var(--header-height));
 }
 
+.route-stage {
+  min-height: calc(100vh - var(--header-height));
+  visibility: hidden;
+  opacity: 0;
+}
+
+.route-stage-ready {
+  visibility: visible;
+  opacity: 1;
+}
+
 .cursor-main {
   position: fixed;
   width: 8px;

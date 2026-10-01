@@ -8,3 +8,8 @@ createRoot(document.getElementById('root')).render(
     <App />
   </StrictMode>,
 )
+
+// Never leave the document hidden if a route resource fails unexpectedly.
+window.setTimeout(() => {
+  document.documentElement.classList.remove('app-booting')
+}, 4000)

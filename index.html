@@ -1,8 +1,16 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" class="app-booting">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Prevents unstyled text or fallback fonts from appearing before React is ready. -->
+    <style>
+      html.app-booting body { visibility: hidden; }
+    </style>
+    <script>
+      document.documentElement.classList.add('app-booting');
+    </script>
 
     <!-- Critical local font -->
     <link rel="preload" href="/fonts/montserrat-latin-variable.woff2" as="font" type="font/woff2" crossorigin />

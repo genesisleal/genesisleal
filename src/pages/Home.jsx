@@ -175,10 +175,7 @@ export default function Home() {
       <section className={styles.hero}>
         <div className="container">
           <div className={styles.heroName}>
-            <motion.h1
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+            <h1
               onMouseEnter={() => setTitleHover(true)}
               onMouseLeave={() => setTitleHover(false)}
               data-cursor-hover
@@ -199,16 +196,11 @@ export default function Home() {
                   {char}
                 </motion.span>
               ))}
-            </motion.h1>
+            </h1>
           </div>
 
           <div className={styles.heroGrid}>
-            <motion.div
-              className={styles.heroLeft}
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
+            <div className={styles.heroLeft}>
               <div className={styles.heroStats}>
                 <div className={styles.statHighlight}>
                   <span className={styles.statNumber}>100%</span>
@@ -218,14 +210,9 @@ export default function Home() {
                   En campañas de publicidad digital y contenido B2C.
                 </p>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              className={styles.heroCenter}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
+            <div className={styles.heroCenter}>
               <motion.div
                 ref={imageRef}
                 className={styles.heroImageWrapper}
@@ -241,24 +228,29 @@ export default function Home() {
                 onMouseLeave={handleMouseLeave}
                 data-cursor-hover
               >
-                <img src={genesisProfile} alt="Genesis Leal" className={styles.heroImage} />
+                <img
+                  src={genesisProfile}
+                  width="640"
+                  height="800"
+                  alt="Genesis Leal"
+                  className={styles.heroImage}
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
+                  data-critical-image
+                />
                 <div className={styles.imageShine} />
               </motion.div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              className={styles.heroRight}
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
+            <div className={styles.heroRight}>
               <p className={styles.heroDescription}>
                 Hola, soy Genesis, Community Manager & Social Media Strategist especializada en marcas B2C.
               </p>
               <Link to="/servicios" className={styles.heroButton}>
                 Contactar
               </Link>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -268,7 +260,14 @@ export default function Home() {
           <div className={styles.marqueeTrack}>
             {[...clientLogos, ...clientLogos].map((logo, index) => (
               <div key={index} className={styles.clientLogo}>
-                <img src={logo.src} alt={logo.alt} />
+                <img
+                  src={logo.src}
+                  width="300"
+                  height="210"
+                  alt={logo.alt}
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
             ))}
           </div>
