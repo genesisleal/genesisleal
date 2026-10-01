@@ -79,6 +79,12 @@ try {
       assert.equal(response.status(), 200, `${device} ${route}`)
       const raw = await response.text()
       assert(raw.includes(`name="deployment-sha" content="${expectedSha}"`), `Stale HTML: ${route}`)
+      const staticSEO = await page.evaluate((html) => {
+        const document = new DOMParser().parseFromString(html, 'text/html')
+        return { canonical: document.querySelector('link[rel="canonical"]')?.href, h1: document.querySelector('h1')?.textContent }
+      }, raw)
+      assert.equal(staticSEO.canonical, `https://genesisleal.com${route}`, `Prerender canonical: ${route}`)
+      assert(staticSEO.h1?.trim(), `Missing prerender heading: ${route}`)
       await ready(route)
       const metadata = await page.evaluate(() => ({
         title: document.title,
@@ -107,7 +113,10 @@ try {
     await clickVisible('button[role="tab"]:nth-child(2)')
     assert.equal(await page.$eval('button[role="tab"]:nth-child(2)', (element) => element.getAttribute('aria-selected')), 'true')
     await clickVisible('button[aria-label="Ver resultados de la campaña"]')
-    await page.waitForFunction(() => document.querySelector('button[aria-label="Cerrar"]')?.parentElement.querySelector('img')?.naturalWidth > 0)
+    await page.waitForFunction(() => {
+      const modal = document.querySelector('button[aria-label="Cerrar"]')?.parentElement
+      return modal?.querySelector('img')?.naturalWidth > 0 && getComputedStyle(modal).opacity === '1'
+    })
     await page.screenshot({ path: join(output, `${device}-portfolio-results.png`) })
     await clickVisible('button[aria-label="Cerrar"]')
     await page.waitForFunction(() => !document.querySelector('button[aria-label="Cerrar"]'))
