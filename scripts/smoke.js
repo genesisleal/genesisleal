@@ -15,7 +15,7 @@ const sitemap = await readFile(join(dist, 'sitemap.xml'), 'utf8')
 const routes = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => new URL(match[1]).pathname)
 routes.push('/oferta/')
 const aliases = ['/si', '/contacto', '/precios/publicidad', '/planes', '/planes/redes', '/planes/publicidad']
-const blocked = ['googletagmanager.com', 'google-analytics.com', 'clarity.ms', 'wa.me', 'whatsapp.com']
+const blocked = ['googletagmanager.com', 'google-analytics.com', 'clarity.ms', 'static.cloudflareinsights.com', 'wa.me', 'whatsapp.com']
 const report = { commit: expectedSha, base: null, pages: [], interactions: [], assets: [], errors: [] }
 await mkdir(output, { recursive: true })
 let server, browser, page
@@ -48,12 +48,17 @@ try {
   const base = (process.env.SMOKE_BASE_URL || server.resolvedUrls.local[0]).replace(/\/$/, '')
   report.base = base
   const origin = new URL(base).origin
+  const isBlocked = (url) => {
+    const parsed = new URL(url)
+    return blocked.some((host) => parsed.hostname === host || parsed.hostname.endsWith(`.${host}`)) ||
+      (parsed.origin === origin && parsed.pathname === '/cdn-cgi/rum')
+  }
   browser = await puppeteer.launch({ headless: true })
   page = await browser.newPage()
   await page.setCacheEnabled(false)
   await page.setRequestInterception(true)
   page.on('request', (req) => {
-    if (blocked.some((host) => new URL(req.url()).hostname.includes(host))) return req.abort()
+    if (isBlocked(req.url())) return req.abort()
     if (!['GET', 'HEAD'].includes(req.method())) {
       report.errors.push(`Blocked outbound ${req.method()}: ${req.url()}`)
       return req.abort()
@@ -62,7 +67,7 @@ try {
   })
   page.on('pageerror', (error) => report.errors.push(`JS: ${error.message}`))
   page.on('requestfailed', (req) => {
-    if (req.url().startsWith(origin) && req.failure()?.errorText !== 'net::ERR_ABORTED') report.errors.push(`Request: ${req.url()} ${req.failure()?.errorText}`)
+    if (req.url().startsWith(origin) && !isBlocked(req.url()) && req.failure()?.errorText !== 'net::ERR_ABORTED') report.errors.push(`Request: ${req.url()} ${req.failure()?.errorText}`)
   })
   page.on('response', (response) => {
     if (response.url().startsWith(origin) && response.status() >= 400 && !response.url().includes('__smoke-not-found__')) report.errors.push(`HTTP ${response.status()}: ${response.url()}`)
