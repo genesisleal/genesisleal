@@ -1,6 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
 @import './styles/variables.css';
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300 900;
+  font-display: swap;
+  src: url('/fonts/montserrat-latin-variable.woff2') format('woff2');
+}
 
 *,
 *::before,
@@ -25,6 +31,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   cursor: none;
+}
+
+.route-loading {
+  min-height: calc(100vh - var(--header-height));
 }
 
 .cursor-main {

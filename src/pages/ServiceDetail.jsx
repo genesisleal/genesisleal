@@ -1,6 +1,5 @@
 import { Link, Navigate } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Check } from 'lucide-react'
-import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
 import { getServiceByKey, servicePages } from '../data/services'
 import styles from './ServiceDetail.module.css'
@@ -64,29 +63,15 @@ export default function ServiceDetail({ serviceKey }) {
 
             <div className={styles.heroGrid}>
               <div className={styles.heroCopy}>
-                <motion.span
-                  className={styles.eyebrow}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.45 }}
-                >
+                <span className={styles.eyebrow}>
                   {service.eyebrow}
-                </motion.span>
-                <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.08 }}
-                >
+                </span>
+                <h1>
                   {service.heading}
-                </motion.h1>
+                </h1>
               </div>
 
-              <motion.div
-                className={styles.heroAside}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.16 }}
-              >
+              <div className={styles.heroAside}>
                 <p className={styles.lead}>{service.intro}</p>
                 <div className={styles.heroActions}>
                   <Link to="/servicios#consulta" className={styles.primaryButton}>
@@ -97,27 +82,31 @@ export default function ServiceDetail({ serviceKey }) {
                     Ver trabajos
                   </Link>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>
 
         <section className={`${styles.section} ${styles.caseSection}`} aria-labelledby={`case-${service.key}-title`}>
           <div className={styles.container}>
-            <motion.article
+            <article
               className={`${styles.caseCard} ${service.featuredCase.image ? '' : styles.caseCardWithoutImage}`}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
             >
               {service.featuredCase.image ? (
                 <div className={styles.caseMedia}>
-                  <img
-                    src={service.featuredCase.image}
-                    alt={service.featuredCase.imageAlt}
-                    loading="lazy"
-                  />
+                  <picture>
+                    {service.featuredCase.imageAvif && (
+                      <source srcSet={service.featuredCase.imageAvif} type="image/avif" />
+                    )}
+                    <img
+                      src={service.featuredCase.image}
+                      width={service.featuredCase.imageWidth}
+                      height={service.featuredCase.imageHeight}
+                      alt={service.featuredCase.imageAlt}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
                 </div>
               ) : (
                 <div className={styles.casePlaceholder} aria-hidden="true">
@@ -144,7 +133,7 @@ export default function ServiceDetail({ serviceKey }) {
                   <ArrowRight size={17} aria-hidden="true" />
                 </Link>
               </div>
-            </motion.article>
+            </article>
           </div>
         </section>
 

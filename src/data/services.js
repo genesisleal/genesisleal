@@ -1,6 +1,9 @@
-import reelTemucoPoster from '../assets/images/portfolio/reel-temuco-poster.jpg'
-import resultadoHernandez from '../assets/images/portfolio/resultado-metaads-hernandez.jpg'
-import reelViralPoster from '../assets/images/portfolio/reel-viral-poster.jpg'
+import reelTemucoPoster from '../assets/images/optimized/reel-temuco-poster-480.jpg'
+import reelTemucoPosterAvif from '../assets/images/optimized/reel-temuco-poster-480.avif'
+import resultadoHernandez from '../assets/images/optimized/resultado-metaads-hernandez-960.jpg'
+import resultadoHernandezAvif from '../assets/images/optimized/resultado-metaads-hernandez-960.avif'
+import reelViralPoster from '../assets/images/optimized/reel-viral-poster-480.jpg'
+import reelViralPosterAvif from '../assets/images/optimized/reel-viral-poster-480.avif'
 
 export const servicePages = [
   {
@@ -24,6 +27,9 @@ export const servicePages = [
         { value: '150+', label: 'historias mensuales' },
       ],
       image: reelTemucoPoster,
+      imageAvif: reelTemucoPosterAvif,
+      imageWidth: 480,
+      imageHeight: 853,
       imageAlt: 'Contenido creado para Peluquería Hernández en Temuco',
       link: '/experiencia',
       linkLabel: 'Ver experiencia',
@@ -63,6 +69,9 @@ export const servicePages = [
         { value: '$901.845', label: 'invertidos en pauta' },
       ],
       image: resultadoHernandez,
+      imageAvif: resultadoHernandezAvif,
+      imageWidth: 960,
+      imageHeight: 477,
       imageAlt: 'Resultados de la campaña de Meta Ads para Peluquería Hernández',
       link: '/portafolio',
       linkLabel: 'Ver el caso en el portafolio',
@@ -102,6 +111,9 @@ export const servicePages = [
         { value: '+1.802', label: 'seguidores nuevos' },
       ],
       image: reelViralPoster,
+      imageAvif: reelViralPosterAvif,
+      imageWidth: 480,
+      imageHeight: 853,
       imageAlt: 'Reel producido para una barbería que alcanzó más de 89 mil visualizaciones',
       link: '/portafolio',
       linkLabel: 'Ver el caso en el portafolio',

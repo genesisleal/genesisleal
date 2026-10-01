@@ -29,7 +29,7 @@
 
 .brandTagline {
   font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
 }
 
 .nav {
@@ -86,12 +86,12 @@
 
 .copyright {
   font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
 }
 
 .location {
   font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
 }
 
 @media (max-width: 1024px) {

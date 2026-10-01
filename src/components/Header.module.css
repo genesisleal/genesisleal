@@ -52,7 +52,7 @@
 }
 
 .navLink.active {
-  color: var(--color-accent);
+  color: var(--color-accent-hover);
   background: rgba(168, 85, 247, 0.1);
 }
 
@@ -78,6 +78,8 @@
 
 .menuButton {
   display: none;
+  position: relative;
+  z-index: 101;
   color: var(--color-text-primary);
 }
 
@@ -89,6 +91,7 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.3);
   z-index: 99;
+  animation: fade-in 0.2s ease both;
 }
 
 .mobileMenu {
@@ -101,6 +104,18 @@
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   z-index: 100;
+  transform-origin: top;
+  animation: menu-in 0.2s ease both;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes menu-in {
+  from { opacity: 0; transform: scaleY(0.96) translateY(-6px); }
+  to { opacity: 1; transform: scaleY(1) translateY(0); }
 }
 
 .mobileMenuInner {
@@ -127,7 +142,7 @@
 }
 
 .mobileNavLink.active {
-  color: var(--color-accent);
+  color: var(--color-accent-hover);
   background: rgba(168, 85, 247, 0.1);
   font-weight: 600;
 }

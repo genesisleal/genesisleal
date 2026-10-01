@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
 import styles from './Header.module.css'
-import logoGenesis from '../assets/logos/logo-genesis.png'
+import logoGenesis from '../assets/images/optimized/logo-genesis-96.png'
+import logoGenesisAvif from '../assets/images/optimized/logo-genesis-96.avif'
 
 const LinkedInIcon = () => (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
@@ -52,7 +52,16 @@ export default function Header() {
     <header className={styles.header}>
       <div className={`container ${styles.container}`}>
         <Link to="/" className={styles.logo} onClick={() => handleNavClick('/')}>
-          <img src={logoGenesis} alt="Genesis Leal" className={styles.logoImg} />
+          <picture>
+            <source srcSet={logoGenesisAvif} type="image/avif" />
+            <img
+              src={logoGenesis}
+              width="96"
+              height="96"
+              alt="Genesis Leal"
+              className={styles.logoImg}
+            />
+          </picture>
         </Link>
 
         <nav className={styles.desktopNav}>
@@ -107,24 +116,10 @@ export default function Header() {
         </button>
       </div>
 
-      <AnimatePresence>
-        {isMenuOpen && (
-          <>
-            <motion.div
-              className={styles.mobileOverlay}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              onClick={closeMenu}
-            />
-            <motion.nav
-              className={styles.mobileMenu}
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-            >
+      {isMenuOpen && (
+        <>
+          <div className={styles.mobileOverlay} onClick={closeMenu} />
+          <nav className={styles.mobileMenu}>
               <div className={styles.mobileMenuInner}>
                 {navLinks.map(link => (
                   <Link
@@ -160,10 +155,9 @@ export default function Header() {
                   </a>
                 </div>
               </div>
-            </motion.nav>
-          </>
-        )}
-      </AnimatePresence>
+          </nav>
+        </>
+      )}
     </header>
   )
 }

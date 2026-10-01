@@ -33,7 +33,7 @@
 .eyebrow {
   display: block;
   margin-bottom: 0.9rem;
-  color: var(--color-accent);
+  color: var(--color-accent-hover);
   font-size: var(--font-size-sm);
   font-weight: 700;
   letter-spacing: 0.15em;
@@ -143,6 +143,10 @@
   border-radius: 18px;
 }
 
+.caseMedia picture {
+  display: contents;
+}
+
 .casePlaceholder {
   display: flex;
   flex-direction: column;
@@ -181,7 +185,7 @@
 
 .caseClient {
   margin-bottom: 0.7rem;
-  color: var(--color-text-muted);
+  color: #686868;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -220,7 +224,7 @@
 }
 
 .caseStat span {
-  color: var(--color-text-muted);
+  color: #686868;
   font-size: 0.76rem;
   font-weight: 600;
 }
@@ -231,7 +235,7 @@
   gap: 0.45rem;
   width: fit-content;
   margin-top: 2rem;
-  color: var(--color-accent);
+  color: var(--color-accent-hover);
   font-size: 0.88rem;
   font-weight: 700;
 }
@@ -401,7 +405,7 @@
   align-items: center;
   gap: 0.4rem;
   margin-top: auto;
-  color: var(--color-accent);
+  color: var(--color-accent-hover);
   font-size: 0.82rem;
   font-weight: 700;
 }
@@ -411,7 +415,7 @@
   align-items: center;
   gap: 0.5rem;
   margin-top: 2rem;
-  color: var(--color-accent);
+  color: var(--color-accent-hover);
   font-size: 0.9rem;
   font-weight: 700;
 }
