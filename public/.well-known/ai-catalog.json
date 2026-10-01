@@ -1,0 +1,37 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Genesis Leal",
+    "identifier": "did:web:genesisleal.com",
+    "documentationUrl": "https://genesisleal.com/llms.txt",
+    "logoUrl": "https://genesisleal.com/favicon.png"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:genesisleal.com:skill:orientador-servicios-digitales",
+      "displayName": "Orientador de servicios digitales de Genesis Leal",
+      "type": "text/markdown; profile=\"urn:air:agent-skills\"",
+      "url": "https://genesisleal.com/ai-skills/orientador-servicios-digitales.md",
+      "description": "Guía para que agentes identifiquen el servicio de Genesis Leal más adecuado y dirijan a la persona a información pública verificable.",
+      "tags": [
+        "gestion de redes sociales",
+        "meta ads",
+        "creacion de contenido",
+        "automatizacion",
+        "community manager"
+      ],
+      "capabilities": [
+        "ServiceDiscovery",
+        "PortfolioDiscovery",
+        "ContactRouting"
+      ],
+      "representativeQueries": [
+        "necesito una community manager para gestionar mis redes sociales",
+        "busco ayuda para crear y optimizar campañas de Meta Ads",
+        "quiero producir reels carruseles e historias para mi marca",
+        "necesito automatizar consultas frecuentes y respuestas en redes sociales"
+      ],
+      "version": "1.0.0"
+    }
+  ]
+}
