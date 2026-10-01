@@ -10,6 +10,7 @@ known_hosts=${SSH_KNOWN_HOSTS_PATH:?SSH_KNOWN_HOSTS_PATH is required}
 [[ $key =~ ^/[a-zA-Z0-9_./-]+$ && $known_hosts =~ ^/[a-zA-Z0-9_./-]+$ ]]
 test -r "$key" && test -r "$known_hosts"
 test -s "$dist_dir/index.html" && test -s "$dist_dir/deployment.json"
+test -s "$dist_dir/.well-known/ard.json" && test -s "$dist_dir/.well-known/ai-catalog.json"
 test -d "$dist_dir/assets" && test ! -L "$dist_dir"
 if find "$dist_dir" -type l -print -quit | grep -q .; then
   echo 'Refusing symlinks in dist.' >&2
@@ -59,6 +60,14 @@ exec 9>"$domain/.deploy.lock"
 flock -w 120 9
 if test -d "$backup" && grep -q "\"commit\":\"$sha\"" "$target/deployment.json"; then
   rsync -a --delay-updates --delete-after --exclude='/.well-known/' --exclude='/.htaccess' --exclude='/assets/.htaccess' "$backup/" "$target/"
+  mkdir -p "$target/.well-known"
+  for file in ard.json ai-catalog.json; do
+    if test -f "$backup/.well-known/$file"; then
+      cp -a "$backup/.well-known/$file" "$target/.well-known/$file"
+    else
+      rm -f "$target/.well-known/$file"
+    fi
+  done
   echo "Rollback restored: $backup"
 else
   echo 'Rollback did not overwrite another version or an unchanged origin.'
@@ -75,9 +84,11 @@ trap 'exit 130' INT
 trap 'exit 143' TERM
 trap 'exit 129' HUP
 
-(cd "$dist_dir"; find . -type f ! -path './.well-known/*' ! -path './.htaccess' ! -path './assets/.htaccess' -print0 | sort -z | xargs -0 sha256sum) > "$work_dir/dist.sha256"
+(cd "$dist_dir"; find . -type f ! -path './.well-known/*' ! -path './.htaccess' ! -path './assets/.htaccess' -print0; printf '%s\0' './.well-known/ard.json' './.well-known/ai-catalog.json') | sort -z | (cd "$dist_dir"; xargs -0 sha256sum) > "$work_dir/dist.sha256"
 ssh "${ssh_options[@]}" "$remote" "test ! -e '$stage' && mkdir -p '$stage/dist'"
 rsync -azc "${excludes[@]}" -e "$rsync_shell" "$dist_dir/" "$remote:$stage/dist/"
+ssh "${ssh_options[@]}" "$remote" "mkdir -p '$stage/dist/.well-known'"
+rsync -azc -e "$rsync_shell" "$dist_dir/.well-known/ard.json" "$dist_dir/.well-known/ai-catalog.json" "$remote:$stage/dist/.well-known/"
 ssh "${ssh_options[@]}" "$remote" "cat > '$stage/dist.sha256'" < "$work_dir/dist.sha256"
 may_have_published=true
 ssh "${ssh_options[@]}" "$remote" bash -s -- "$sha" "$stage" "$backup" <<'PUBLISH'
@@ -105,6 +116,14 @@ restore() {
   trap - EXIT INT TERM HUP
   if [[ $status -ne 0 && $started == true ]]; then
     rsync -a --delay-updates --delete-after --exclude='/.well-known/' --exclude='/.htaccess' --exclude='/assets/.htaccess' "$backup/" "$target/" || echo "Remote rollback failed: $backup" >&2
+    mkdir -p "$target/.well-known"
+    for file in ard.json ai-catalog.json; do
+      if test -f "$backup/.well-known/$file"; then
+        cp -a "$backup/.well-known/$file" "$target/.well-known/$file"
+      else
+        rm -f "$target/.well-known/$file"
+      fi
+    done
   fi
   exit "$status"
 }
@@ -114,10 +133,13 @@ trap 'exit 143' TERM
 trap 'exit 129' HUP
 started=true
 rsync -ac --delay-updates --delete-after --exclude='/.well-known/' --exclude='/.htaccess' --exclude='/assets/.htaccess' "$stage/dist/" "$target/"
+mkdir -p "$target/.well-known"
+install -m 0644 "$stage/dist/.well-known/ard.json" "$target/.well-known/ard.json"
+install -m 0644 "$stage/dist/.well-known/ai-catalog.json" "$target/.well-known/ai-catalog.json"
 (cd "$target"; sha256sum --check --status "$stage/dist.sha256")
 diff "$backup/.htaccess" "$target/.htaccess"
 diff "$backup/assets/.htaccess" "$target/assets/.htaccess"
-if test -d "$backup/.well-known"; then diff -qr "$backup/.well-known" "$target/.well-known"; fi
+if test -d "$backup/.well-known"; then diff -qr --exclude='ard.json' --exclude='ai-catalog.json' "$backup/.well-known" "$target/.well-known"; fi
 diff_output=$(rsync -anci --delete --exclude='/.well-known/' --exclude='/.htaccess' --exclude='/assets/.htaccess' "$stage/dist/" "$target/")
 test -z "$diff_output"
 echo "Origin files match validated artifact: $sha"
@@ -125,6 +147,10 @@ PUBLISH
 
 curl -fsS --retry 2 --max-time 30 --resolve 'genesisleal.com:443:45.152.44.122' https://genesisleal.com/ -o "$work_dir/origin.html"
 cmp "$dist_dir/index.html" "$work_dir/origin.html"
+curl -fsS --retry 2 --max-time 30 --resolve 'genesisleal.com:443:45.152.44.122' https://genesisleal.com/.well-known/ard.json -o "$work_dir/origin-ard.json"
+curl -fsS --retry 2 --max-time 30 --resolve 'genesisleal.com:443:45.152.44.122' https://genesisleal.com/.well-known/ai-catalog.json -o "$work_dir/origin-ai-catalog.json"
+cmp "$dist_dir/.well-known/ard.json" "$work_dir/origin-ard.json"
+cmp "$dist_dir/.well-known/ai-catalog.json" "$work_dir/origin-ai-catalog.json"
 purge
 public_verified=false
 for attempt in 1 2 3; do
