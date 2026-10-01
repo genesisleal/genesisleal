@@ -136,12 +136,23 @@ rsync -ac --delay-updates --delete-after --exclude='/.well-known/' --exclude='/.
 mkdir -p "$target/.well-known"
 install -m 0644 "$stage/dist/.well-known/ard.json" "$target/.well-known/ard.json"
 install -m 0644 "$stage/dist/.well-known/ai-catalog.json" "$target/.well-known/ai-catalog.json"
-(cd "$target"; sha256sum --check --status "$stage/dist.sha256")
-diff "$backup/.htaccess" "$target/.htaccess"
-diff "$backup/assets/.htaccess" "$target/assets/.htaccess"
-if test -d "$backup/.well-known"; then diff -qr --exclude='ard.json' --exclude='ai-catalog.json' "$backup/.well-known" "$target/.well-known"; fi
+if ! (cd "$target"; sha256sum --check --status "$stage/dist.sha256"); then
+  echo 'Published file verification failed:' >&2
+  (cd "$target"; sha256sum --check "$stage/dist.sha256") || true
+  exit 1
+fi
+echo 'Published file checksums match.'
+diff "$backup/.htaccess" "$target/.htaccess" || { echo 'Root .htaccess changed unexpectedly.' >&2; exit 1; }
+diff "$backup/assets/.htaccess" "$target/assets/.htaccess" || { echo 'Assets .htaccess changed unexpectedly.' >&2; exit 1; }
+if test -d "$backup/.well-known"; then
+  diff -qr --exclude='ard.json' --exclude='ai-catalog.json' "$backup/.well-known" "$target/.well-known" || {
+    echo 'An unmanaged .well-known resource changed unexpectedly.' >&2
+    exit 1
+  }
+fi
+echo 'Protected server files remain unchanged.'
 diff_output=$(rsync -anci --delete --exclude='/.well-known/' --exclude='/.htaccess' --exclude='/assets/.htaccess' "$stage/dist/" "$target/")
-test -z "$diff_output"
+test -z "$diff_output" || { printf 'Unexpected post-publish differences:\n%s\n' "$diff_output" >&2; exit 1; }
 echo "Origin files match validated artifact: $sha"
 PUBLISH
 
