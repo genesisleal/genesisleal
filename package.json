@@ -9,6 +9,7 @@
     "build:spa": "vite build",
     "prerender": "node scripts/prerender.js",
     "lint": "eslint .",
+    "smoke": "node scripts/smoke.js",
     "preview": "vite preview",
     "capture": "node capture-website.js"
   },

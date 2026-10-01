@@ -1,0 +1,118 @@
+name: CI and Hostinger
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: genesis-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    name: Lint, prerender and browser smoke
+    runs-on: ubuntu-22.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
+      - run: npm run smoke
+      - name: Package the validated dist
+        run: |
+          mkdir release
+          tar -C dist -czf release/dist.tar.gz .
+          (cd release && sha256sum dist.tar.gz > dist.tar.gz.sha256)
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: dist-${{ github.sha }}
+          path: release/
+          retention-days: 14
+          if-no-files-found: error
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: smoke-${{ github.sha }}
+          path: .artifacts/smoke/
+          include-hidden-files: true
+          retention-days: 14
+
+  deploy:
+    name: Hostinger publication
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: validate
+    runs-on: ubuntu-22.04
+    timeout-minutes: 20
+    concurrency:
+      group: genesis-production
+      cancel-in-progress: false
+    steps:
+      - name: Check deployment configuration
+        id: configuration
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.HOSTINGER_SSH_PRIVATE_KEY }}
+        run: |
+          if [[ -z "$SSH_PRIVATE_KEY" ]]; then
+            echo 'ready=false' >> "$GITHUB_OUTPUT"
+            echo '::notice::CI passed. CD is pending HOSTINGER_SSH_PRIVATE_KEY; nothing was published.'
+            echo 'CI passed. CD pending repository secret HOSTINGER_SSH_PRIVATE_KEY. Nothing published.' >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'ready=true' >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        if: steps.configuration.outputs.ready == 'true'
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        if: steps.configuration.outputs.ready == 'true'
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+        if: steps.configuration.outputs.ready == 'true'
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        if: steps.configuration.outputs.ready == 'true'
+        with:
+          name: dist-${{ github.sha }}
+          path: release
+      - name: Verify and unpack validated artifact
+        if: steps.configuration.outputs.ready == 'true'
+        run: |
+          (cd release && sha256sum --check dist.tar.gz.sha256)
+          mkdir dist
+          tar -xzf release/dist.tar.gz -C dist
+      - name: Publish, verify public site and recover on failure
+        if: steps.configuration.outputs.ready == 'true'
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.HOSTINGER_SSH_PRIVATE_KEY }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          DEPLOY_SHA: ${{ github.sha }}
+          SMOKE_OUTPUT_DIR: .artifacts/public-smoke
+        run: |
+          umask 077
+          key="$RUNNER_TEMP/genesis-ssh-key"
+          trap 'rm -f "$key"' EXIT
+          printf '%s\n' "$SSH_PRIVATE_KEY" > "$key"
+          unset SSH_PRIVATE_KEY
+          export SSH_KEY_PATH="$key"
+          export SSH_KNOWN_HOSTS_PATH="$GITHUB_WORKSPACE/scripts/hostinger-known-hosts"
+          bash scripts/deploy-hostinger.sh dist
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always() && steps.configuration.outputs.ready == 'true'
+        with:
+          name: public-smoke-${{ github.sha }}
+          path: .artifacts/public-smoke/
+          include-hidden-files: true
+          retention-days: 14
