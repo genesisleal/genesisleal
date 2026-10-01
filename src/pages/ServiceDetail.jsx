@@ -102,6 +102,52 @@ export default function ServiceDetail({ serviceKey }) {
           </div>
         </section>
 
+        <section className={`${styles.section} ${styles.caseSection}`} aria-labelledby={`case-${service.key}-title`}>
+          <div className={styles.container}>
+            <motion.article
+              className={`${styles.caseCard} ${service.featuredCase.image ? '' : styles.caseCardWithoutImage}`}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              {service.featuredCase.image ? (
+                <div className={styles.caseMedia}>
+                  <img
+                    src={service.featuredCase.image}
+                    alt={service.featuredCase.imageAlt}
+                    loading="lazy"
+                  />
+                </div>
+              ) : (
+                <div className={styles.casePlaceholder} aria-hidden="true">
+                  <strong>{service.featuredCase.stats[0].value}</strong>
+                  <span>{service.featuredCase.stats[0].label}</span>
+                </div>
+              )}
+
+              <div className={styles.caseContent}>
+                <span className={styles.eyebrow}>{service.featuredCase.label}</span>
+                <p className={styles.caseClient}>{service.featuredCase.client}</p>
+                <h2 id={`case-${service.key}-title`}>{service.featuredCase.title}</h2>
+                <p className={styles.caseDescription}>{service.featuredCase.description}</p>
+                <div className={styles.caseStats}>
+                  {service.featuredCase.stats.map(stat => (
+                    <div key={stat.label} className={styles.caseStat}>
+                      <strong>{stat.value}</strong>
+                      <span>{stat.label}</span>
+                    </div>
+                  ))}
+                </div>
+                <Link to={service.featuredCase.link} className={styles.caseLink}>
+                  {service.featuredCase.linkLabel}
+                  <ArrowRight size={17} aria-hidden="true" />
+                </Link>
+              </div>
+            </motion.article>
+          </div>
+        </section>
+
         <section className={styles.section} aria-labelledby="included-title">
           <div className={styles.container}>
             <div className={styles.sectionHeading}>

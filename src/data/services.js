@@ -1,3 +1,7 @@
+import reelTemucoPoster from '../assets/images/portfolio/reel-temuco-poster.jpg'
+import resultadoHernandez from '../assets/images/portfolio/resultado-metaads-hernandez.jpg'
+import reelViralPoster from '../assets/images/portfolio/reel-viral-poster.jpg'
+
 export const servicePages = [
   {
     key: 'social',
@@ -9,6 +13,21 @@ export const servicePages = [
     metaTitle: 'Gestión de redes sociales en Buenos Aires',
     metaDescription: 'Gestión de redes sociales para marcas B2C: estrategia, planificación, contenido, copywriting y seguimiento para Instagram, TikTok, Facebook y YouTube.',
     intro: 'Trabajo la presencia digital de cada marca con una planificación clara, contenido alineado a sus objetivos y seguimiento para aprender de los resultados.',
+    featuredCase: {
+      label: 'Experiencia relacionada',
+      client: 'Peluquería Hernández · Chile',
+      title: 'Gestión de contenido para seis cuentas en cinco ciudades',
+      description: 'Una operación sostenida de contenido para acompañar la presencia digital de una cadena de peluquerías con distintas sedes.',
+      stats: [
+        { value: '6', label: 'cuentas de Instagram' },
+        { value: '5', label: 'ciudades' },
+        { value: '150+', label: 'historias mensuales' },
+      ],
+      image: reelTemucoPoster,
+      imageAlt: 'Contenido creado para Peluquería Hernández en Temuco',
+      link: '/experiencia',
+      linkLabel: 'Ver experiencia',
+    },
     included: [
       'Estrategia de contenido según los objetivos y la audiencia de la marca.',
       'Planificación editorial para sostener una comunicación ordenada.',
@@ -34,6 +53,20 @@ export const servicePages = [
     metaTitle: 'Meta Ads para marcas B2C',
     metaDescription: 'Campañas de Meta Ads para marcas B2C: estrategia, creatividades, segmentación, optimización y análisis enfocados en consultas y conversiones.',
     intro: 'Diseño campañas de respuesta directa para conectar el mensaje, la creatividad y la segmentación con el objetivo comercial de cada marca.',
+    featuredCase: {
+      label: 'Caso real',
+      client: 'Peluquería Hernández · Temuco, Chile',
+      title: '1.412 conversaciones iniciadas con una campaña en Meta Ads',
+      description: 'Un reel de posicionamiento se utilizó como creativo principal de una campaña orientada a generar conversaciones para la sede de Temuco.',
+      stats: [
+        { value: '1.412', label: 'conversaciones iniciadas' },
+        { value: '$901.845', label: 'invertidos en pauta' },
+      ],
+      image: resultadoHernandez,
+      imageAlt: 'Resultados de la campaña de Meta Ads para Peluquería Hernández',
+      link: '/portafolio',
+      linkLabel: 'Ver el caso en el portafolio',
+    },
     included: [
       'Definición del objetivo y la estructura de campaña.',
       'Propuesta de mensajes y creatividades para los anuncios.',
@@ -59,6 +92,20 @@ export const servicePages = [
     metaTitle: 'Creación de contenido para redes sociales',
     metaDescription: 'Creación de contenido para redes sociales: conceptos, guiones, reels, historias y carruseles alineados con la identidad y los objetivos de tu marca.',
     intro: 'Transformo ideas y objetivos en piezas visuales que se entienden rápido, sostienen la identidad de la marca y conectan con su audiencia.',
+    featuredCase: {
+      label: 'Caso real',
+      client: 'Christian · Barbería',
+      title: 'De la idea al reel: 89K visualizaciones y más de 1.800 seguidores',
+      description: 'Planificación, guion, dirección de la grabación y análisis de un reel que alcanzó principalmente a personas que todavía no seguían la cuenta.',
+      stats: [
+        { value: '89.465', label: 'visualizaciones' },
+        { value: '+1.802', label: 'seguidores nuevos' },
+      ],
+      image: reelViralPoster,
+      imageAlt: 'Reel producido para una barbería que alcanzó más de 89 mil visualizaciones',
+      link: '/portafolio',
+      linkLabel: 'Ver el caso en el portafolio',
+    },
     included: [
       'Conceptos de contenido alineados con la estrategia de la marca.',
       'Guiones y estructuras para reels y piezas audiovisuales.',
@@ -84,6 +131,17 @@ export const servicePages = [
     metaTitle: 'Automatización y chatbots para redes sociales',
     metaDescription: 'Automatización y chatbots para marcas: flujos de ManyChat, respuestas frecuentes, cupones y agendamiento para mejorar la atención digital.',
     intro: 'Diseño automatizaciones que ayudan a responder consultas frecuentes y acompañan a cada persona hacia el siguiente paso de forma clara.',
+    featuredCase: {
+      label: 'Experiencia relacionada',
+      client: 'Peluquería Hernández · Chile',
+      title: 'Atención automatizada para consultas frecuentes',
+      description: 'Implementación de flujos de ManyChat para responder consultas, entregar cupones y facilitar el agendamiento de citas.',
+      stats: [
+        { value: '24/7', label: 'atención automatizada' },
+      ],
+      link: '/experiencia',
+      linkLabel: 'Ver experiencia',
+    },
     included: [
       'Diseño del recorrido de conversación según el objetivo.',
       'Flujos de ManyChat para respuestas y entrega de información.',
