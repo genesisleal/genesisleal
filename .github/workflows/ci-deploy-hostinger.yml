@@ -28,6 +28,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run lint
+      - run: npm run test:measurement
       - run: npm run build
       - run: npm run smoke
       - name: Package the validated dist
@@ -108,6 +109,8 @@ jobs:
           unset SSH_PRIVATE_KEY
           export SSH_KEY_PATH="$key"
           export SSH_KNOWN_HOSTS_PATH="$GITHUB_WORKSPACE/scripts/hostinger-known-hosts"
+          mkdir -p .artifacts/server-config
+          ssh -p 65002 -i "$key" -o "UserKnownHostsFile=$SSH_KNOWN_HOSTS_PATH" -o StrictHostKeyChecking=yes -o HostKeyAlgorithms=ssh-ed25519 -o BatchMode=yes u381549037@45.152.44.122 'cat /home/u381549037/domains/genesisleal.com/public_html/.htaccess' > .artifacts/server-config/root.htaccess
           bash scripts/deploy-hostinger.sh dist
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         if: always() && steps.configuration.outputs.ready == 'true'
@@ -116,3 +119,11 @@ jobs:
           path: .artifacts/public-smoke/
           include-hidden-files: true
           retention-days: 14
+
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always() && steps.configuration.outputs.ready == 'true'
+        with:
+          name: server-config-${{ github.sha }}
+          path: .artifacts/server-config/
+          include-hidden-files: true
+          retention-days: 3

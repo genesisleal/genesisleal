@@ -105,7 +105,7 @@ try {
       assert(metadata.overflow <= 2, `${device} overflow on ${route}: ${metadata.overflow}`)
       assert.equal(metadata.robots.includes('noindex'), route === '/oferta/')
       report.pages.push({ device, route, status: response.status(), ...metadata })
-      if (['/', '/servicios/', '/portafolio/', '/servicios/meta-ads/'].includes(route)) {
+      if ((['/', '/servicios/', '/portafolio/', '/servicios/meta-ads/'].includes(route) || route.startsWith('/casos/'))) {
         await page.screenshot({ path: join(output, `${device}-${route.replaceAll('/', '_') || 'home'}.png`), fullPage: true })
       }
     }

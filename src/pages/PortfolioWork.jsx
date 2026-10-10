@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
-import { Play, X, ChevronLeft, ChevronRight, ExternalLink, Megaphone, Layers, Sparkles, Globe } from 'lucide-react'
+import { Play, X, ChevronLeft, ChevronRight, ExternalLink, ArrowRight, Megaphone, Layers, Sparkles, Globe } from 'lucide-react'
 import SEO from '../components/SEO'
 import styles from './PortfolioWork.module.css'
 
@@ -43,6 +44,7 @@ import landingCarconnect from '../assets/images/portfolio/landing-carconnect.jpg
 const works = [
   {
     id: 'hernandez-temuco',
+    casePath: '/casos/meta-ads-temuco-1412-conversaciones',
     types: ['meta', 'video'],
     kicker: 'Caso · Meta Ads + Reel',
     client: 'Peluquería Hernández · Temuco, Chile',
@@ -62,6 +64,7 @@ const works = [
   },
   {
     id: 'innvoice',
+    casePath: '/casos/meta-ads-innvoice-conversaciones',
     types: ['meta', 'video'],
     kicker: 'Caso · Meta Ads + Reel',
     client: 'Innvoice · Facturación electrónica, Perú',
@@ -81,6 +84,7 @@ const works = [
   },
   {
     id: 'hernandez-reservas',
+    casePath: '/casos/meta-ads-reservas-peluqueria-temuco',
     types: ['meta', 'video'],
     kicker: 'Caso · Meta Ads + Reel',
     client: 'Peluquería Hernández · Temuco, Chile',
@@ -100,6 +104,7 @@ const works = [
   },
   {
     id: 'carrusel-victorino',
+    casePath: '/casos/carrusel-instagram-victorino-stylo',
     types: ['carousel'],
     kicker: 'Caso · Carrusel de Instagram',
     client: 'Victorino Stylo · Caguas, Puerto Rico',
@@ -138,11 +143,12 @@ const works = [
   },
   {
     id: 'reel-viral-christian',
+    casePath: '/casos/reel-viral-barberia-crecimiento-organico',
     types: ['video'],
     kicker: 'Caso · Reel · De la idea al viral',
     client: 'Christian · Barbería',
     title: 'De la idea al viral: 89K visualizaciones y +1.800 seguidores',
-    desc: 'Planifiqué, produje y optimicé este reel de punta a punta: guion, dirección de la grabación y análisis del rendimiento. Superó las 89.000 visualizaciones y sumó 1.802 seguidores nuevos, con el 94% del alcance en cuentas que todavía no la seguían.',
+    desc: 'Planifiqué, produje y optimicé este reel de punta a punta: guion, dirección de la grabación y análisis del rendimiento. Superó las 89.000 visualizaciones y sumó 1.802 seguidores nuevos, con el 94,1% de las visualizaciones de cuentas que todavía no la seguían.',
     stats: [
       { value: '89.465', label: 'visualizaciones' },
       { value: '+1.802', label: 'seguidores nuevos' }
@@ -534,6 +540,13 @@ export default function PortfolioWork() {
                       </div>
                     ))}
                   </div>
+                )}
+
+                {w.casePath && (
+                  <Link className={styles.caseStudyLink} to={w.casePath}>
+                    Leer el caso completo
+                    <ArrowRight size={15} strokeWidth={2} />
+                  </Link>
                 )}
 
                 <div className={styles.actions}>

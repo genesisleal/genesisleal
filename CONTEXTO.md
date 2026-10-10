@@ -122,6 +122,11 @@ Community Management · Social Media Marketing · Meta Ads · Google Ads · Cont
 - `/sobre-mi` — Sobre mí (trayectoria, certificaciones)
 - `/experiencia` — Experiencia
 - `/portafolio` — Casos: campañas Meta Ads, reels editados y carruseles con resultados
+- `/casos/meta-ads-temuco-1412-conversaciones` — Caso completo de campaña de Meta Ads para Peluquería Hernández
+- `/casos/meta-ads-innvoice-conversaciones` — Caso completo de campaña de Meta Ads para Innvoice
+- `/casos/meta-ads-reservas-peluqueria-temuco` — Caso completo de campaña para consultas sobre reservas
+- `/casos/carrusel-instagram-victorino-stylo` — Caso completo de estrategia y diseño de carrusel
+- `/casos/reel-viral-barberia-crecimiento-organico` — Caso completo de reel y crecimiento orgánico
 - `/servicios` — Áreas de trabajo, consulta sobre la marca y formas de contacto (indexable)
 - `/servicios/gestion-redes-sociales` — Detalle del servicio de gestión de redes sociales
 - `/servicios/meta-ads` — Detalle del servicio de campañas en Meta Ads
@@ -133,14 +138,16 @@ Community Management · Social Media Marketing · Meta Ads · Google Ads · Cont
 
 **Identidad visual:** tema claro (fondo blanco, texto #1a1a1a), acento púrpura #a855f7. Tipografías Montserrat (base) + Instrument Serif (acento). Cursor personalizado en desktop.
 
-**SEO / GEO:** meta tags dinámicos por página, JSON-LD de Person y WebSite en todas las rutas públicas y de Service únicamente en `/servicios`, Open Graph + Twitter Cards, robots.txt, sitemap.xml y `llms.txt` como resumen de contenido público (sin garantía de uso por motores de IA). Analytics: Google Analytics + Microsoft Clarity.
+**SEO / GEO:** meta tags dinámicos por página, JSON-LD de Person y WebSite en todas las rutas públicas, Service en servicios y Article con BreadcrumbList en los casos, Open Graph + Twitter Cards, robots.txt, sitemap.xml y `llms.txt` como resumen de contenido público (sin garantía de uso por motores de IA). Analytics: Google Analytics + Microsoft Clarity.
 
 **Hosting:** Hostinger desde el 25-sep-2026, detrás de Cloudflare. SSH: `45.152.44.122:65002`, usuario `u381549037`; destino exclusivo `/home/u381549037/domains/genesisleal.com/public_html/`. El servidor tiene rsync, Git y flock, pero no Node/npm; el build se realiza antes de subirlo.
 
-**CI/CD:** `.github/workflows/ci-deploy-hostinger.yml` ejecuta `npm ci`, lint, build/prerender y smoke headless en PR y en `main`. El proyecto es JavaScript/JSX, sin comprobación TypeScript ni otra suite de tests. El smoke verifica rutas, SEO, navegación, CTA, assets y el borrador del formulario interceptando WhatsApp y cualquier petición mutante. Los reportes y capturas se guardan como artefactos de Actions.
+**CI/CD:** `.github/workflows/ci-deploy-hostinger.yml` ejecuta `npm ci`, lint, tests de medición, build/prerender y smoke headless en PR y en `main`. El proyecto es JavaScript/JSX, sin comprobación TypeScript. Los tests de medición verifican que previews locales no envíen datos y que los eventos no incluyan datos personales. El smoke verifica rutas, SEO, navegación, CTA, assets y el borrador del formulario interceptando WhatsApp y cualquier petición mutante. Los reportes y capturas se guardan como artefactos de Actions.
 
 El CD de `main` usa el mismo `dist` validado, verifica su checksum y el SHA vigente de `main` antes de publicar. Serializa los despliegues, prepara un respaldo completo `public_html.bak-<fecha>-before-<sha>-<run>`, comprueba origen y sitio público en escritorio/móvil y conserva `/.htaccess`, `/assets/.htaccess` y `/.well-known/`. Los respaldos no se borran automáticamente. Un fallo de copia/verificación intenta restaurar el respaldo conservando esos mismos archivos; una interrupción forzada del proceso o una pérdida de conexión puede requerir recuperación manual.
 
 **Configuración:** la dueña o un colaborador con escritura debe introducir directamente en [GitHub → Actions secrets](https://github.com/genesisleal/genesisleal/settings/secrets/actions) el repository secret `HOSTINGER_SSH_PRIVATE_KEY`, correspondiente al acceso SSH existente. Sin ese secret, CI funciona pero CD informa que está pendiente y no publica. No se deben copiar claves a código, artefactos, logs o conversaciones. La clave pública del servidor se fija en `scripts/hostinger-known-hosts`; una rotación requiere comprobar su nueva huella por un canal de confianza. `CLOUDFLARE_API_TOKEN` es opcional y solo se usa para purgar la zona de este dominio; siempre se exige comprobar el contenido público. Después de configurar el secret, ejecutar el workflow manualmente sobre `main` y comprobar el paso de publicación y sus capturas; la existencia del YAML por sí sola no confirma CD activo.
 
 **Recuperación manual:** elegir el respaldo indicado en el run y ejecutar por SSH, bajo el mismo bloqueo `.deploy.lock`, `rsync -a --delay-updates --delete-after --exclude='/.well-known/' --exclude='/.htaccess' --exclude='/assets/.htaccess' <respaldo>/ public_html/`. Verificar HTML y hashes de assets públicos y, si corresponde, purgar la caché de Cloudflare para este dominio. La copia es estática y no modifica datos ni otros dominios.
+
+**Actualización 10-oct-2026:** cinco casos completos incorporados al prerender, sitemap y catálogos públicos. Los cuatro servicios responden preguntas habituales y enlazan a evidencia del portafolio. GA/Clarity se cargan solo en el dominio de producción; eventos whatsapp_click, email_click, consultation_form_valid y whatsapp_draft_open registran intención de contacto, no ventas ni mensajes recibidos. robots.txt omite la directiva no estándar Agentmap.

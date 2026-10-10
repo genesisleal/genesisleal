@@ -8,6 +8,11 @@ import reelViralPosterAvif from '../assets/images/optimized/reel-viral-poster-48
 export const servicePages = [
   {
     key: 'social',
+    questions: [
+      { question: '¿Qué necesitamos para empezar?', answer: 'Los objetivos de la marca, sus canales actuales, referencias y material disponible. Con esa información definimos las redes, los formatos y la frecuencia de trabajo.' },
+      { question: '¿Cómo se evalúa el trabajo?', answer: 'Revisamos el rendimiento del contenido y las acciones relevantes para la marca, como interacciones y consultas, para ajustar la planificación.' },
+      { question: '¿Cómo se prepara el presupuesto?', answer: 'La propuesta depende de las redes a gestionar, la cantidad y el tipo de piezas, y el alcance de la gestión. Los entregables se definen para tu marca.' },
+    ],
     path: '/servicios/gestion-redes-sociales',
     title: 'Gestión de redes sociales',
     eyebrow: 'Gestión de redes sociales',
@@ -51,6 +56,11 @@ export const servicePages = [
   },
   {
     key: 'ads',
+    questions: [
+      { question: '¿Qué necesitamos para empezar?', answer: 'Una oferta clara, el público al que querés llegar, el destino de las consultas y los accesos necesarios a Meta. También revisamos las piezas disponibles y el presupuesto de pauta.' },
+      { question: '¿Qué resultados se revisan?', answer: 'Definimos la acción que la campaña busca generar y seguimos los resultados y su costo. En una campaña de mensajes, por ejemplo, analizamos las conversaciones registradas por Meta.' },
+      { question: '¿La inversión en anuncios está incluida?', answer: 'La inversión publicitaria se paga directamente a la plataforma y se define por separado de la gestión. La propuesta detalla el trabajo y las creatividades acordadas.' },
+    ],
     path: '/servicios/meta-ads',
     title: 'Meta Ads',
     eyebrow: 'Publicidad digital',
@@ -73,8 +83,8 @@ export const servicePages = [
       imageWidth: 960,
       imageHeight: 477,
       imageAlt: 'Resultados de la campaña de Meta Ads para Peluquería Hernández',
-      link: '/portafolio',
-      linkLabel: 'Ver el caso en el portafolio',
+      link: '/casos/meta-ads-temuco-1412-conversaciones',
+      linkLabel: 'Leer el caso completo',
     },
     included: [
       'Definición del objetivo y la estructura de campaña.',
@@ -93,6 +103,11 @@ export const servicePages = [
   },
   {
     key: 'content',
+    questions: [
+      { question: '¿Qué material necesitamos?', answer: 'Referencias de la marca, objetivos, formatos y material disponible. Si el proyecto requiere grabación, acordamos qué tomas hacen falta y cómo producirlas.' },
+      { question: '¿Qué piezas podemos trabajar?', answer: 'Conceptos, guiones, reels, historias y carruseles. La cantidad, los formatos y el alcance de diseño o edición se definen en la propuesta.' },
+      { question: '¿Cómo se evalúa el contenido?', answer: 'Observamos las estadísticas de cada pieza según su objetivo, como visualizaciones, interacciones y crecimiento de audiencia, para aprender de lo publicado.' },
+    ],
     path: '/servicios/creacion-de-contenido',
     title: 'Creación de contenido',
     eyebrow: 'Contenido visual',
@@ -115,8 +130,8 @@ export const servicePages = [
       imageWidth: 480,
       imageHeight: 853,
       imageAlt: 'Reel producido para una barbería que alcanzó más de 89 mil visualizaciones',
-      link: '/portafolio',
-      linkLabel: 'Ver el caso en el portafolio',
+      link: '/casos/reel-viral-barberia-crecimiento-organico',
+      linkLabel: 'Leer el caso completo',
     },
     included: [
       'Conceptos de contenido alineados con la estrategia de la marca.',
@@ -135,6 +150,11 @@ export const servicePages = [
   },
   {
     key: 'automation',
+    questions: [
+      { question: '¿Qué necesitamos para diseñar el flujo?', answer: 'Las preguntas frecuentes, la información que querés entregar y la acción que debe facilitar la conversación, como una consulta o una reserva.' },
+      { question: '¿Cómo se define el alcance?', answer: 'Revisamos los canales, las herramientas disponibles y los recorridos necesarios. Los accesos y costos de plataforma se definen antes de configurar la automatización.' },
+      { question: '¿Cómo se comprueba que funciona?', answer: 'Probamos las respuestas y los recorridos del flujo, incluyendo el paso al contacto con una persona cuando el diseño lo contempla.' },
+    ],
     path: '/servicios/automatizacion-chatbots',
     title: 'Automatización y chatbots',
     eyebrow: 'Automatización y chatbots',

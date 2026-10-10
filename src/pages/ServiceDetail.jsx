@@ -186,6 +186,22 @@ export default function ServiceDetail({ serviceKey }) {
           </div>
         </section>
 
+        <section className={styles.section} aria-labelledby="questions-title">
+          <div className={styles.container}>
+            <div className={styles.sectionHeading}>
+              <span className={styles.eyebrow}>Antes de empezar</span>
+              <h2 id="questions-title">Lo que conviene definir juntos</h2>
+            </div>
+            <div className={styles.includedGrid}>
+              {service.questions.map(({ question, answer }) => (
+                <article className={styles.includedCard} key={question}>
+                  <div><h3>{question}</h3><p>{answer}</p></div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className={styles.otherSection} aria-labelledby="other-services-title">
           <div className={styles.container}>
             <div className={styles.sectionHeading}>

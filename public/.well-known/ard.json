@@ -18,7 +18,8 @@
         "meta ads",
         "creacion de contenido",
         "automatizacion",
-        "community manager"
+        "community manager",
+        "casos de exito"
       ],
       "capabilities": [
         "ServiceDiscovery",
@@ -31,7 +32,7 @@
         "quiero producir reels carruseles e historias para mi marca",
         "necesito automatizar consultas frecuentes y respuestas en redes sociales"
       ],
-      "version": "1.0.0"
+      "version": "1.1.0"
     }
   ]
 }

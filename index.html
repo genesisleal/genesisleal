@@ -85,38 +85,7 @@
     }
     </script>
 
-    <!-- Analytics load after the initial content or the first interaction -->
-    <script>
-      (() => {
-        let loaded = false;
 
-        const loadMeasurement = () => {
-          if (loaded) return;
-          loaded = true;
-
-          window.dataLayer = window.dataLayer || [];
-          window.gtag = function(){ window.dataLayer.push(arguments); };
-          window.gtag('js', new Date());
-          window.gtag('config', 'G-PHYD3VS6T5');
-
-          const analytics = document.createElement('script');
-          analytics.async = true;
-          analytics.src = 'https://www.googletagmanager.com/gtag/js?id=G-PHYD3VS6T5';
-          document.head.appendChild(analytics);
-
-          (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-          })(window, document, 'clarity', 'script', 's422uew20w');
-        };
-
-        ['pointerdown', 'keydown', 'touchstart'].forEach((eventName) => {
-          window.addEventListener(eventName, loadMeasurement, { once: true, passive: true });
-        });
-        window.addEventListener('load', () => window.setTimeout(loadMeasurement, 6000), { once: true });
-      })();
-    </script>
   </head>
   <body>
     <div id="root"></div>

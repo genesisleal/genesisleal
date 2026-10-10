@@ -37,9 +37,11 @@ export default function Header() {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
   const closeMenu = () => setIsMenuOpen(false)
-  const isActive = (path) => path === '/servicios'
-    ? location.pathname.startsWith('/servicios')
-    : location.pathname === path
+  const isActive = (path) => {
+    if (path === '/servicios') return location.pathname.startsWith('/servicios')
+    if (path === '/portafolio') return location.pathname === path || location.pathname.startsWith('/casos/')
+    return location.pathname === path
+  }
 
   const handleNavClick = (path) => {
     closeMenu()

@@ -217,6 +217,25 @@
   gap: var(--spacing-3);
 }
 
+.caseStudyLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: fit-content;
+  margin-top: 1.5rem;
+  color: var(--color-accent-hover);
+  font-size: 0.84rem;
+  font-weight: 750;
+}
+
+.caseStudyLink:hover svg {
+  transform: translate(2px, -2px);
+}
+
+.caseStudyLink svg {
+  transition: transform var(--transition-fast);
+}
+
 .btnPrimary {
   display: inline-flex;
   align-items: center;

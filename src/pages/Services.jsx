@@ -6,6 +6,7 @@ import styles from './Services.module.css'
 import SEO from '../components/SEO'
 import ContactCards from '../components/ContactCards'
 import { servicePages } from '../data/services'
+import { trackContact } from '../utils/measurement'
 
 const serviceOptions = [
   'Redes sociales',
@@ -87,11 +88,13 @@ export default function Services() {
       formData.details ? `Sobre la marca: ${formData.details}` : null,
     ].filter(line => line !== null).join('\n')
 
+    trackContact('consultation_form_valid', { source: 'consultation_form', serviceCount: formData.services.length })
     window.open(
       `https://wa.me/5491125490503?text=${encodeURIComponent(message)}`,
       '_blank',
       'noopener,noreferrer'
     )
+    trackContact('whatsapp_draft_open', { source: 'consultation_form', serviceCount: formData.services.length })
   }
 
   return (

@@ -2,7 +2,6 @@ User-agent: *
 Allow: /
 
 Sitemap: https://genesisleal.com/sitemap.xml
-Agentmap: /.well-known/ard.json
 
 User-agent: Googlebot
 Allow: /
