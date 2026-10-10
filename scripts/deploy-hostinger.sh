@@ -31,6 +31,7 @@ excludes=(--exclude='/.well-known/' --exclude='/.htaccess' --exclude='/assets/.h
 work_dir=$(mktemp -d)
 may_have_published=false
 original_htaccess_sha=45fd5b3a6e3dad62735467b69a48002fd4097b5ba62be1cc4d36790409ae2724
+previous_htaccess_sha=fecfb39ac97f19231c2ca8a3749efb78b8fed09b11ba28bb604ecbed1b5c1a85
 server_config_sha=$(sha256sum scripts/hostinger-root.htaccess | cut -d' ' -f1)
 
 purge() {
@@ -96,14 +97,15 @@ rsync -azc -e "$rsync_shell" "$dist_dir/.well-known/ard.json" "$dist_dir/.well-k
 ssh "${ssh_options[@]}" "$remote" "cat > '$stage/dist.sha256'" < "$work_dir/dist.sha256"
 rsync -azc -e "$rsync_shell" scripts/hostinger-root.htaccess "$remote:$stage/server.htaccess"
 may_have_published=true
-ssh "${ssh_options[@]}" "$remote" bash -s -- "$sha" "$stage" "$backup" "$original_htaccess_sha" "$server_config_sha" <<'PUBLISH'
+ssh "${ssh_options[@]}" "$remote" bash -s -- "$sha" "$stage" "$backup" "$original_htaccess_sha" "$server_config_sha" "$previous_htaccess_sha" <<'PUBLISH'
 set -euo pipefail
 sha=$1
 stage=$2
 backup=$3
 original_config_sha=$4
 server_config_sha=$5
-[[ $original_config_sha =~ ^[0-9a-f]{64}$ && $server_config_sha =~ ^[0-9a-f]{64}$ ]]
+previous_config_sha=$6
+[[ $original_config_sha =~ ^[0-9a-f]{64}$ && $server_config_sha =~ ^[0-9a-f]{64}$ && $previous_config_sha =~ ^[0-9a-f]{64}$ ]]
 domain=/home/u381549037/domains/genesisleal.com
 target=$domain/public_html
 [[ $sha =~ ^[0-9a-f]{40}$ && $stage =~ ^/home/u381549037/domains/genesisleal.com/\.deploy-[0-9a-f]{40}-[0-9]+$ && $backup =~ ^/home/u381549037/domains/genesisleal.com/public_html.bak-[0-9]{8}T[0-9]{6}Z-before-[0-9a-f]{7}-[0-9]+$ ]]
@@ -112,7 +114,7 @@ flock -w 300 9
 test -d "$target" && test ! -L "$target"
 test -s "$target/.htaccess" && test -s "$target/assets/.htaccess"
 current_config_sha=$(sha256sum "$target/.htaccess" | cut -d' ' -f1)
-[[ $current_config_sha == "$original_config_sha" || $current_config_sha == "$server_config_sha" ]] || { echo 'Server configuration changed outside this deployment; refusing to replace it.' >&2; exit 1; }
+[[ $current_config_sha == "$original_config_sha" || $current_config_sha == "$server_config_sha" || $current_config_sha == "$previous_config_sha" ]] || { echo 'Server configuration changed outside this deployment; refusing to replace it.' >&2; exit 1; }
 [[ $(sha256sum "$stage/server.htaccess" | cut -d' ' -f1) == "$server_config_sha" ]]
 (cd "$stage/dist"; sha256sum --check --status ../dist.sha256)
 test ! -e "$backup"
