@@ -30,7 +30,7 @@ const choices = [
 export default function HiringGuide() {
   return (
     <>
-      <SEO title={title} description={description} path={hiringGuidePath} type="article" structuredData={structuredData} />
+      <SEO title="Contratar community manager: guía y presupuesto" description={description} path={hiringGuidePath} type="article" structuredData={structuredData} />
       <article className={styles.page}>
         <header className={styles.hero}>
           <Link to="/servicios" className={styles.link}>Servicios de Genesis Leal</Link>
