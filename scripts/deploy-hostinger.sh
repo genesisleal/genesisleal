@@ -164,7 +164,7 @@ if test -d "$backup/.well-known"; then
   }
 fi
 echo 'Versioned root server configuration verified; other protected server files unchanged.'
-diff_output=$(rsync -anci --delete --exclude='/.well-known/' --exclude='/.htaccess' --exclude='/assets/.htaccess' "$stage/dist/" "$target/")
+diff_output=$(rsync -anci --omit-dir-times --delete --exclude='/.well-known/' --exclude='/.htaccess' --exclude='/assets/.htaccess' "$stage/dist/" "$target/")
 test -z "$diff_output" || { printf 'Unexpected post-publish differences:\n%s\n' "$diff_output" >&2; exit 1; }
 echo "Origin files match validated artifact: $sha"
 PUBLISH
