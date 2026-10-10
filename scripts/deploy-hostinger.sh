@@ -11,6 +11,7 @@ known_hosts=${SSH_KNOWN_HOSTS_PATH:?SSH_KNOWN_HOSTS_PATH is required}
 test -r "$key" && test -r "$known_hosts"
 test -s "$dist_dir/index.html" && test -s "$dist_dir/deployment.json"
 test -s "$dist_dir/.well-known/ard.json" && test -s "$dist_dir/.well-known/ai-catalog.json"
+test -s scripts/hostinger-root.htaccess
 test -d "$dist_dir/assets" && test ! -L "$dist_dir"
 if find "$dist_dir" -type l -print -quit | grep -q .; then
   echo 'Refusing symlinks in dist.' >&2
@@ -29,6 +30,8 @@ rsync_shell="ssh -p 65002 -i $key -o UserKnownHostsFile=$known_hosts -o StrictHo
 excludes=(--exclude='/.well-known/' --exclude='/.htaccess' --exclude='/assets/.htaccess')
 work_dir=$(mktemp -d)
 may_have_published=false
+original_htaccess_sha=45fd5b3a6e3dad62735467b69a48002fd4097b5ba62be1cc4d36790409ae2724
+server_config_sha=$(sha256sum scripts/hostinger-root.htaccess | cut -d' ' -f1)
 
 purge() {
   if [[ -z ${CLOUDFLARE_API_TOKEN:-} ]]; then return; fi
@@ -60,6 +63,7 @@ exec 9>"$domain/.deploy.lock"
 flock -w 120 9
 if test -d "$backup" && grep -q "\"commit\":\"$sha\"" "$target/deployment.json"; then
   rsync -a --delay-updates --delete-after --exclude='/.well-known/' --exclude='/.htaccess' --exclude='/assets/.htaccess' "$backup/" "$target/"
+  cp -a "$backup/.htaccess" "$target/.htaccess"
   mkdir -p "$target/.well-known"
   for file in ard.json ai-catalog.json; do
     if test -f "$backup/.well-known/$file"; then
@@ -90,12 +94,16 @@ rsync -azc "${excludes[@]}" -e "$rsync_shell" "$dist_dir/" "$remote:$stage/dist/
 ssh "${ssh_options[@]}" "$remote" "mkdir -p '$stage/dist/.well-known'"
 rsync -azc -e "$rsync_shell" "$dist_dir/.well-known/ard.json" "$dist_dir/.well-known/ai-catalog.json" "$remote:$stage/dist/.well-known/"
 ssh "${ssh_options[@]}" "$remote" "cat > '$stage/dist.sha256'" < "$work_dir/dist.sha256"
+rsync -azc -e "$rsync_shell" scripts/hostinger-root.htaccess "$remote:$stage/server.htaccess"
 may_have_published=true
-ssh "${ssh_options[@]}" "$remote" bash -s -- "$sha" "$stage" "$backup" <<'PUBLISH'
+ssh "${ssh_options[@]}" "$remote" bash -s -- "$sha" "$stage" "$backup" "$original_htaccess_sha" "$server_config_sha" <<'PUBLISH'
 set -euo pipefail
 sha=$1
 stage=$2
 backup=$3
+original_config_sha=$4
+server_config_sha=$5
+[[ $original_config_sha =~ ^[0-9a-f]{64}$ && $server_config_sha =~ ^[0-9a-f]{64}$ ]]
 domain=/home/u381549037/domains/genesisleal.com
 target=$domain/public_html
 [[ $sha =~ ^[0-9a-f]{40}$ && $stage =~ ^/home/u381549037/domains/genesisleal.com/\.deploy-[0-9a-f]{40}-[0-9]+$ && $backup =~ ^/home/u381549037/domains/genesisleal.com/public_html.bak-[0-9]{8}T[0-9]{6}Z-before-[0-9a-f]{7}-[0-9]+$ ]]
@@ -103,6 +111,9 @@ exec 9>"$domain/.deploy.lock"
 flock -w 300 9
 test -d "$target" && test ! -L "$target"
 test -s "$target/.htaccess" && test -s "$target/assets/.htaccess"
+current_config_sha=$(sha256sum "$target/.htaccess" | cut -d' ' -f1)
+[[ $current_config_sha == "$original_config_sha" || $current_config_sha == "$server_config_sha" ]] || { echo 'Server configuration changed outside this deployment; refusing to replace it.' >&2; exit 1; }
+[[ $(sha256sum "$stage/server.htaccess" | cut -d' ' -f1) == "$server_config_sha" ]]
 (cd "$stage/dist"; sha256sum --check --status ../dist.sha256)
 test ! -e "$backup"
 cp -a "$target" "$backup"
@@ -116,6 +127,7 @@ restore() {
   trap - EXIT INT TERM HUP
   if [[ $status -ne 0 && $started == true ]]; then
     rsync -a --delay-updates --delete-after --exclude='/.well-known/' --exclude='/.htaccess' --exclude='/assets/.htaccess' "$backup/" "$target/" || echo "Remote rollback failed: $backup" >&2
+    cp -a "$backup/.htaccess" "$target/.htaccess"
     mkdir -p "$target/.well-known"
     for file in ard.json ai-catalog.json; do
       if test -f "$backup/.well-known/$file"; then
@@ -134,6 +146,7 @@ trap 'exit 129' HUP
 started=true
 rsync -ac --delay-updates --delete-after --exclude='/.well-known/' --exclude='/.htaccess' --exclude='/assets/.htaccess' "$stage/dist/" "$target/"
 mkdir -p "$target/.well-known"
+install -m 0644 "$stage/server.htaccess" "$target/.htaccess"
 install -m 0644 "$stage/dist/.well-known/ard.json" "$target/.well-known/ard.json"
 install -m 0644 "$stage/dist/.well-known/ai-catalog.json" "$target/.well-known/ai-catalog.json"
 if ! (cd "$target"; sha256sum --check --status "$stage/dist.sha256"); then
@@ -142,7 +155,7 @@ if ! (cd "$target"; sha256sum --check --status "$stage/dist.sha256"); then
   exit 1
 fi
 echo 'Published file checksums match.'
-diff "$backup/.htaccess" "$target/.htaccess" || { echo 'Root .htaccess changed unexpectedly.' >&2; exit 1; }
+cmp "$stage/server.htaccess" "$target/.htaccess" || { echo 'Root server configuration differs from the validated version.' >&2; exit 1; }
 diff "$backup/assets/.htaccess" "$target/assets/.htaccess" || { echo 'Assets .htaccess changed unexpectedly.' >&2; exit 1; }
 if test -d "$backup/.well-known"; then
   diff -qr --exclude='ard.json' --exclude='ai-catalog.json' "$backup/.well-known" "$target/.well-known" || {
@@ -150,7 +163,7 @@ if test -d "$backup/.well-known"; then
     exit 1
   }
 fi
-echo 'Protected server files remain unchanged.'
+echo 'Versioned root server configuration verified; other protected server files unchanged.'
 diff_output=$(rsync -anci --delete --exclude='/.well-known/' --exclude='/.htaccess' --exclude='/assets/.htaccess' "$stage/dist/" "$target/")
 test -z "$diff_output" || { printf 'Unexpected post-publish differences:\n%s\n' "$diff_output" >&2; exit 1; }
 echo "Origin files match validated artifact: $sha"

@@ -12,7 +12,8 @@
     "test:measurement": "node --test scripts/measurement.test.js",
     "smoke": "node scripts/smoke.js",
     "preview": "vite preview",
-    "capture": "node capture-website.js"
+    "capture": "node capture-website.js",
+    "indexnow": "node scripts/indexnow.js"
   },
   "dependencies": {
     "framer-motion": "^12.28.1",

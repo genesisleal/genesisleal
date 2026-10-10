@@ -47,6 +47,20 @@ try {
   if (!process.env.SMOKE_BASE_URL) server = await preview({ root, preview: { host: '127.0.0.1', port: 0 } })
   const base = (process.env.SMOKE_BASE_URL || server.resolvedUrls.local[0]).replace(/\/$/, '')
   report.base = base
+  if (process.env.SMOKE_BASE_URL) {
+    report.serverResponses = []
+    for (const path of ['/__smoke-not-found__/', '/cgi-bin/', '/assets/__smoke-not-found__.js', '/casos/__smoke-not-found__/']) {
+      const response = await fetch(base + path, { redirect: 'manual', signal: AbortSignal.timeout(30000) })
+      assert.equal(response.status, 404, `Expected true HTTP 404: ${path}`)
+      const html = await response.text()
+      assert(/name="robots" content="[^"]*noindex/.test(html), `Missing noindex on HTTP 404: ${path}`)
+      report.serverResponses.push({ path, status: response.status })
+    }
+    const www = await fetch('https://www.genesisleal.com/servicios/meta-ads/?source=smoke', { redirect: 'manual', signal: AbortSignal.timeout(30000) })
+    assert.equal(www.status, 301, 'www must redirect permanently')
+    assert.equal(www.headers.get('location'), 'https://genesisleal.com/servicios/meta-ads/?source=smoke')
+    report.serverResponses.push({ path: 'www', status: www.status, location: www.headers.get('location') })
+  }
   const origin = new URL(base).origin
   const isBlocked = (url) => {
     const parsed = new URL(url)

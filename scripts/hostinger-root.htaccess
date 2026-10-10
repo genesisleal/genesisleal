@@ -1,0 +1,23 @@
+# genesisleal.com: sitio estático prerenderizado. Configuración versionada y respaldada.
+Options -MultiViews -Indexes
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+RewriteEngine On
+RewriteBase /
+
+# Consolidar el dominio sin www, conservando ruta y parámetros.
+RewriteCond %{HTTP_HOST} ^www\.genesisleal\.com$ [NC]
+RewriteRule ^ https://genesisleal.com%{REQUEST_URI} [R=301,L,NE]
+
+# Conservar las rutas históricas de la aplicación.
+RewriteRule ^si/?$ / [R=301,L]
+RewriteRule ^(contacto|precios/publicidad|planes(/(redes|publicidad|proximamente|detalleredessociales|detallepublicidad))?)/?$ /servicios/ [R=301,L]
+
+# La carpeta técnica no constituye contenido público del portafolio.
+RewriteRule ^cgi-bin(?:/|$) - [R=404,L]
+
+# Las rutas públicas tienen su index.html prerenderizado. No usar Inicio como fallback.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ - [R=404,L]
