@@ -1,6 +1,6 @@
 # Genesis Leal | Community Manager en Buenos Aires
 
-Genesis Leal trabaja en gestión de redes sociales, publicidad digital, creación de contenido y automatización para marcas. Este archivo resume las páginas públicas del sitio; los resultados de campañas son métricas de las plataformas en los períodos indicados, no ventas atribuidas.
+Genesis Leal trabaja en gestión de redes sociales, publicidad digital, creación de contenido automatización y diseño web para marcas. Este archivo resume las páginas públicas del sitio; los resultados de campañas son métricas de las plataformas en los períodos indicados, no ventas atribuidas.
 
 ## Servicios
 
@@ -33,3 +33,18 @@ Cada página explica el desafío, la estrategia, el trabajo realizado, el result
 ## Contacto
 
 - Los servicios y el formulario de consulta están en [Servicios](https://genesisleal.com/servicios/).
+
+## Diseño web y sectores
+
+- [Diseño web y landing pages](https://genesisleal.com/servicios/diseno-web/): páginas corporativas, landings de producto y portafolios; presupuesto por alcance, separado de los planes mensuales de redes.
+- [Sectores](https://genesisleal.com/sectores/): proyectos agrupados por tipo de negocio y experiencia relacionada.
+- [Peluquerías y barberías](https://genesisleal.com/servicios/redes-sociales-peluquerias-barberias/): redes, contenido y Meta Ads con casos documentados.
+- [Software y tecnología](https://genesisleal.com/sectores/software-tecnologia/): alcance y proyectos relacionados del portafolio.
+- [Clínicas dentales](https://genesisleal.com/sectores/clinicas-dentales/): alcance y proyectos relacionados del portafolio.
+- [Empresas B2B](https://genesisleal.com/sectores/empresas-b2b/): alcance y proyectos relacionados del portafolio.
+- [Agencias de marketing](https://genesisleal.com/sectores/agencias-marketing/): alcance y proyectos relacionados del portafolio.
+- [Marca personal y LinkedIn](https://genesisleal.com/sectores/marca-personal-linkedin/): alcance y proyectos relacionados del portafolio.
+
+## Landing page
+
+Landing page de una sola página: USD 200 en un pago único, con un año de hosting incluido. El dominio se paga aparte y la renovación del hosting después del primer año también. Las webs con más páginas o funciones y el mantenimiento se cotizan según el alcance. Más información en [Diseño web](https://genesisleal.com/servicios/diseno-web/) y [Planes y precios](https://genesisleal.com/planes/).

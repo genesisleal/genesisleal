@@ -1,5 +1,6 @@
 import { Link, Navigate } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Check } from 'lucide-react'
+import LandingOffer from '../components/LandingOffer'
 import SEO from '../components/SEO'
 import { hiringGuidePath } from '../components/ServiceLinks'
 import { getServiceByKey, servicePages } from '../data/services'
@@ -137,6 +138,13 @@ export default function ServiceDetail({ serviceKey }) {
             </article>
           </div>
         </section>
+
+        {service.examples && <section className={styles.section} aria-labelledby="examples-title"><div className={styles.container}>
+          <div className={styles.sectionHeading}><span className={styles.eyebrow}>Más proyectos</span><h2 id="examples-title">Otros trabajos del portafolio</h2></div>
+          <div className={styles.otherGrid}>{service.examples.map(project => <Link to={project.link} key={project.title} className={styles.otherCard}><h3>{project.title}</h3><p>{project.text}</p><span>Ver el proyecto <ArrowRight size={16} aria-hidden="true" /></span></Link>)}</div>
+        </div></section>}
+
+        {service.key === 'web' && <div className={styles.container}><LandingOffer /></div>}
 
         <section className={styles.section} aria-labelledby="included-title">
           <div className={styles.container}>

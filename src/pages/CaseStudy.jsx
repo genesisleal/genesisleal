@@ -249,6 +249,7 @@ export default function CaseStudy() {
                 <Link to={item.servicePath} className={styles.secondaryButton}>
                   Ver el servicio
                 </Link>
+                {['meta-ads-temuco-1412-conversaciones', 'meta-ads-reservas-peluqueria-temuco', 'reel-viral-barberia-crecimiento-organico'].includes(item.slug) && <Link to="/servicios/redes-sociales-peluquerias-barberias" className={styles.secondaryButton}>Servicio para peluquerías y barberías</Link>}
               </div>
             </div>
           </div>

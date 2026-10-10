@@ -5,6 +5,8 @@ import resultadoHernandezAvif from '../assets/images/optimized/resultado-metaads
 import reelViralPoster from '../assets/images/optimized/reel-viral-poster-480.jpg'
 import reelViralPosterAvif from '../assets/images/optimized/reel-viral-poster-480.avif'
 
+import landingInnvoice from '../assets/images/portfolio/landing-innvoice.jpg'
+
 export const servicePages = [
   {
     key: 'social',
@@ -103,6 +105,13 @@ export const servicePages = [
   },
   {
     key: 'content',
+    examples: [
+      { title: 'Maje', text: 'Guion y edición completa de un reel publicitario.', link: '/portafolio#edicion-maje' },
+      { title: 'Indexa', text: 'Guion, presentación frente a cámara y edición publicitaria.', link: '/portafolio#edicion-indexa' },
+      { title: 'Milena', text: 'Guion y edición de un reel informativo para LinkedIn.', link: '/portafolio#edicion-milena' },
+      { title: 'Contenido propio en LinkedIn', text: 'Concepto, textos y diseño de un carrusel educativo.', link: '/portafolio#carrusel-bigbang' },
+      { title: 'Victorino Stylo', text: 'Carrusel de posicionamiento con estadísticas publicadas.', link: '/casos/carrusel-instagram-victorino-stylo' },
+    ],
     questions: [
       { question: '¿Qué material necesitamos?', answer: 'Referencias de la marca, objetivos, formatos y material disponible. Si el proyecto requiere grabación, acordamos qué tomas hacen falta y cómo producirlas.' },
       { question: '¿Qué piezas podemos trabajar?', answer: 'Conceptos, guiones, reels, historias y carruseles. La cantidad, los formatos y el alcance de diseño o edición se definen en la propuesta.' },
@@ -188,6 +197,46 @@ export const servicePages = [
     ],
     idealFor: 'Marcas que reciben consultas frecuentes y quieren agilizar la atención, entregar información o facilitar reservas desde sus canales digitales.',
     ctaLabel: 'Quiero automatizar mis consultas',
+  },
+  {
+    key: 'web',
+    examples: [
+      { title: 'Bernal Dental Clinic', text: 'Diseño web para una clínica dental en Barcelona.', link: '/portafolio#web-bernal' },
+      { title: 'B&B Global', text: 'Web corporativa para comercio exterior y supply chain.', link: '/portafolio#web-bbglobal' },
+      { title: 'Car Connect', text: 'Landing para una agencia de performance.', link: '/portafolio#web-carconnect' },
+      { title: 'Genesis Leal', text: 'Identidad, estructura, textos y desarrollo de mi portafolio.', link: '/portafolio#web-genesisleal' },
+    ],
+    path: '/servicios/diseno-web', title: 'Diseño web y landing pages', eyebrow: 'Diseño web',
+    heading: 'Diseño web y landing pages para tu negocio',
+    shortDescription: 'Páginas que presentan tu oferta, organizan la información y facilitan el contacto con tu marca.',
+    metaTitle: 'Diseño web y landing pages en Buenos Aires',
+    metaDescription: 'Diseño web y landing pages con Genesis Leal: estructura, identidad visual y recorridos de contacto. Proyectos para software, clínicas y empresas. Atención online.',
+    intro: 'Diseño páginas que conectan la identidad de tu marca con una oferta clara. Definimos qué necesita saber la persona y cómo llevarla al siguiente paso: consultar, pedir una cotización o agendar una llamada.',
+    featuredCase: {
+      label: 'Proyecto del portafolio', client: 'Innvoice · Facturación electrónica, Perú',
+      title: 'Una landing para presentar un producto de software',
+      description: 'Diseño de la landing del producto con una jerarquía clara de la propuesta de valor y llamadas a la acción para pruebas gratuitas y demos.',
+      stats: [], image: landingInnvoice, imageAlt: 'Diseño de la landing de Innvoice', link: '/portafolio#web-innvoice', linkLabel: 'Ver el proyecto',
+    },
+    included: [
+      'Estructura de páginas y secciones según el objetivo del proyecto.',
+      'Diseño visual alineado con la identidad de la marca.',
+      'Organización de textos, imágenes y llamadas a la acción.',
+      'Adaptación del diseño y revisión en móvil y escritorio.',
+    ],
+    process: [
+      { title: 'Definir el objetivo', text: 'Revisamos la oferta, el público, las referencias y la acción principal de la página.' },
+      { title: 'Organizar el contenido', text: 'Acordamos las secciones, los textos y el material que aporta la marca.' },
+      { title: 'Diseñar y revisar', text: 'Preparo la propuesta visual y revisamos el recorrido y los ajustes necesarios.' },
+      { title: 'Preparar la entrega', text: 'Comprobamos móvil y escritorio y acordamos la implementación, publicación y soporte que necesita el proyecto.' },
+    ],
+    questions: [
+      { question: '¿Incluye dominio, alojamiento y mantenimiento?', answer: 'La landing de USD 200 incluye un año de hosting. El dominio y la renovación del hosting después del primer año se pagan aparte. El mantenimiento y las actualizaciones se acuerdan en la propuesta.' },
+      { question: '¿Qué material necesito aportar?', answer: 'Información del negocio, oferta, identidad visual y fotografías disponibles. Definimos qué textos hay que preparar y quién los aprueba.' },
+      { question: '¿Cuánto cuesta una web?', answer: 'La landing page de una sola página cuesta USD 200 en un pago único e incluye un año de hosting. El dominio y la renovación del hosting se pagan aparte. Las webs con más páginas o funciones se cotizan según el alcance. Los planes mensuales de redes no incluyen diseño web.' },
+    ],
+    idealFor: 'Profesionales, empresas y productos digitales que necesitan presentar sus servicios o una oferta puntual con una página clara y un acceso directo al contacto.',
+    ctaLabel: 'Quiero una propuesta para mi web',
   },
 ]
 

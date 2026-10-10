@@ -4,6 +4,7 @@ import { mkdir, writeFile } from 'fs/promises'
 import { execFileSync } from 'node:child_process'
 import { preview } from 'vite'
 import puppeteer from 'puppeteer'
+import { sectorPaths } from '../src/data/sectorRoutes.js'
 import { caseStudyPaths } from '../src/data/caseStudyRoutes.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -18,6 +19,10 @@ const ROUTES = [
   '/contacto',
   '/oferta',
   '/servicios',
+  '/servicios/diseno-web',
+  '/sectores',
+  ...sectorPaths,
+  '/servicios/redes-sociales-peluquerias-barberias',
   '/servicios/gestion-redes-sociales',
   '/servicios/meta-ads',
   '/servicios/creacion-de-contenido',

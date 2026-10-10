@@ -1,0 +1,43 @@
+.page { max-width: 1100px; padding: 48px 24px 70px; margin: auto; }
+.hero { max-width: 800px; padding: 0 0 48px; }
+.back { display: block; color: #666; font-size: 13px; margin-bottom: 28px; }
+.badge { display: inline-flex; gap: 8px; align-items: center; border-radius: 30px; padding: 8px 14px; background: #f4edf9; color: #8134ba; font-size: 13px; }
+.hero h1 { font-size: clamp(36px,5vw,60px); color: #222; line-height: 1.12; letter-spacing: -.04em; margin: 22px 0; }
+.hero h1 span { color: #8134ba; }
+.lead { font-size: 18px; line-height: 1.7; }
+.location { font-size: 13px; margin: 18px 0 24px; }
+.button { display: inline-flex; gap: 10px; align-items: center; padding: 14px 20px; color: white; background: #222; border-radius: 12px; font-size: 14px; font-weight: 600; text-decoration: none; }
+.button:hover { background: #8134ba; color: white; }
+.page a:focus-visible { outline: 3px solid #a855f7; outline-offset: 4px; }
+.section { padding: 36px 0; }
+.eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; color: #8134ba; margin-bottom: 8px; }
+.page h2 { font-size: clamp(24px,3vw,32px); color: #222; line-height: 1.3; letter-spacing: -.025em; margin-bottom: 24px; }
+.workGrid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.workCard { padding: 24px; border: 1px solid #eae3f1; border-radius: 18px; }
+.workCard svg { color: #8134ba; margin-bottom: 14px; }
+.page h3 { font-size: 16px; color: #222; line-height: 1.4; margin-bottom: 10px; }
+.workCard p, .case p, .faq p, .plans p { font-size: 14px; line-height: 1.7; }
+.cases { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.case { border: 1px solid #eae3f1; border-radius: 20px; overflow: hidden; text-decoration: none; color: #666; }
+.case img { width: 100%; height: 220px; object-fit: contain; display: block; background: #f8f6fa; }
+.case img.reelImage { object-fit: cover; object-position: center 35%; }
+.case > div { padding: 24px; }
+.case span { display: inline-flex; align-items: center; gap: 8px; color: #8134ba; font-weight: 600; font-size: 13px; margin-top: 18px; }
+.caption { font-size: 12px; margin: 18px 0; }
+.textLink { color: #8134ba; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; text-underline-offset: 4px; }
+.plans { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; padding: 32px; margin: 28px 0; border: 1px solid #eae3f1; border-radius: 24px; background: #fcfaff; }
+.plans h2 { margin-bottom: 14px; }
+.plans .textLink { margin-top: 18px; }
+.prices { display: grid; gap: 20px; }
+.prices > div { padding-bottom: 14px; border-bottom: 1px solid #eae3f1; }
+.prices strong { font-size: 28px; color: #222; }
+.prices span { font-size: 12px; }
+.faq { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 36px; }
+.faq > div { border-top: 1px solid #eae3f1; padding-top: 20px; }
+.cta { padding: 32px; border-radius: 24px; background: #f4edf9; margin-top: 28px; }
+.cta p { max-width: 650px; margin-bottom: 24px; }
+@media(max-width:680px) { .page { padding: 32px 18px 50px; } .workGrid,.cases,.plans,.faq { grid-template-columns: 1fr; } .plans,.cta { padding: 24px; } .lead { font-size: 16px; } }
+
+.hubHero { padding-bottom: 16px; }
+.hubHero h1 { max-width: 850px; font-size: clamp(36px,5vw,56px); line-height: 1.15; margin: 24px 0; letter-spacing: -.04em; }
+.hubHero .lead { max-width: 750px; }

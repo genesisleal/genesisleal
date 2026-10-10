@@ -1,4 +1,5 @@
 import { Check, ArrowRight, Sparkles, TrendingUp, Info, Layers, Video, CalendarDays, CreditCard, MessageCircle, CheckCheck } from 'lucide-react'
+import LandingOffer from '../components/LandingOffer'
 import SEO from '../components/SEO'
 import styles from './PlansPreview.module.css'
 
@@ -9,7 +10,7 @@ const plans = [
 
 export default function PlansPreview() {
   return <>
-    <SEO title="Planes de redes sociales" path="/planes" description="Planes de gestión de redes sociales y Meta Ads para una marca: Pro USD 350 y Premium USD 500 por mes. Conocé entregables, alcance y condiciones." />
+    <SEO title="Planes de redes sociales y landing pages" path="/planes" description="Planes de gestión de redes sociales y Meta Ads para una marca: Pro USD 350 y Premium USD 500 por mes. Landing de USD 200, pago único, con un año de hosting." />
     <div className={styles.marketplace}>
       <header className={styles.hero}>
         <div className={styles.heroContent}>
@@ -37,7 +38,7 @@ export default function PlansPreview() {
         </section>
         <p className={styles.adsNote}><Info size={17} aria-hidden="true" /><span>La inversión en anuncios se paga aparte. La calculamos según el nicho, los objetivos y el mercado de tu marca.</span></p>
         <section className={styles.conditions} aria-labelledby="working-title">
-          <header className={styles.workingHeader}><span>Antes de empezar</span><h2 id="working-title">Cómo trabajamos</h2><p>Todo claro desde el primer día.</p></header>
+          <header className={styles.workingHeader}><span>Antes de empezar</span><h2 id="working-title">Cómo trabajamos en redes sociales</h2><p>Todo claro desde el primer día.</p></header>
           <div className={styles.workingGrid}>
             {[
               { icon: Layers, title: 'Un contenido, varios canales', text: 'Los 6 o 10 posteos son el total mensual compartido entre plataformas. Los anuncios se adaptan de esos mismos contenidos.' },
@@ -49,6 +50,7 @@ export default function PlansPreview() {
             ].map(({ icon: Icon, title, text }) => <div className={styles.workingItem} key={title}><div className={styles.workingIcon}><Icon size={21} aria-hidden="true" /></div><div><h3>{title}</h3><p>{text}</p></div></div>)}
           </div>
         </section>
+        <LandingOffer />
       </div>
     </div>
   </>

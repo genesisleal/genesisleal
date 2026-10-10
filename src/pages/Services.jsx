@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowLeft, ArrowRight, Bot, MessageCircle, Share2, Target, Video } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Bot, MessageCircle, Share2, Target, Video, Globe } from 'lucide-react'
 import styles from './Services.module.css'
 import SEO from '../components/SEO'
 import { hiringGuidePath } from '../components/ServiceLinks'
+import SectorLinks from '../components/SectorLinks'
 import ContactCards from '../components/ContactCards'
 import { servicePages } from '../data/services'
 import { trackContact } from '../utils/measurement'
@@ -14,6 +15,7 @@ const serviceOptions = [
   'Publicidad digital',
   'Creación de contenido',
   'Automatización y chatbots',
+  'Diseño web y landing pages',
   'Todavía no estoy segura',
 ]
 
@@ -22,6 +24,7 @@ const serviceIcons = {
   ads: Target,
   content: Video,
   automation: Bot,
+  web: Globe,
 }
 
 const servicesStructuredData = {
@@ -154,8 +157,11 @@ export default function Services() {
             adaptadas a los objetivos de cada marca.
           </motion.p>
 
-          <Link to="/planes" className={styles.plansLink}>Ver planes y precios <ArrowRight size={18} aria-hidden="true" /></Link>
-
+          <div className={styles.serviceLinks}>
+            <Link to="/planes" className={styles.plansLink}>Ver planes y precios <ArrowRight size={18} aria-hidden="true" /></Link>
+            <Link to="/servicios/redes-sociales-peluquerias-barberias" className={styles.plansLink}>Redes y publicidad para peluquerías y barberías <ArrowRight size={18} aria-hidden="true" /></Link>
+            <Link to="/sectores" className={styles.plansLink}>Ver todos los sectores <ArrowRight size={18} aria-hidden="true" /></Link>
+          </div>
           <div className={styles.servicesGrid}>
             {servicePages.map((service, index) => {
               const Icon = serviceIcons[service.key]
@@ -318,6 +324,7 @@ export default function Services() {
           </Link>
         </div>
       </div>
+      <SectorLinks />
     </>
   )
 }

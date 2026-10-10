@@ -153,3 +153,11 @@ El CD de `main` usa el mismo `dist` validado, verifica su checksum y el SHA vige
 **Actualización 10-oct-2026:** cinco casos completos incorporados al prerender, sitemap y catálogos públicos. Los cuatro servicios responden preguntas habituales y enlazan a evidencia del portafolio. GA/Clarity se cargan solo en el dominio de producción; eventos whatsapp_click, email_click, consultation_form_valid y whatsapp_draft_open registran intención de contacto, no ventas ni mensajes recibidos. robots.txt omite la directiva no estándar Agentmap.
 
 **Servidor e IndexNow (10-oct):** la configuración raíz establece www → dominio principal, conserva redirecciones históricas y devuelve 404 con página noindex para rutas inexistentes y cgi-bin. El smoke público exige estos estados. `npm run indexnow` verifica la clave pública y las URLs indexables del sitemap antes de avisar a los buscadores participantes; no envía a Google ni confirma indexación. Usar URLs específicas como argumentos después de publicar cambios para evitar envíos repetidos innecesarios.
+
+## Apartados por sector y diseño web, 10 de octubre de 2026
+
+Servicio /servicios/diseno-web y hub /sectores con software-tecnologia, clinicas-dentales, empresas-b2b, agencias-marketing y marca-personal-linkedin. Se mantiene la página de peluquerías y barberías. Cada área enlaza trabajos existentes; clínicas y B2B describen el alcance web. Empleabilidad, inmobiliarias y branding se presentan como experiencia en el hub, sin métricas nuevas. Diseño web se cotiza aparte de los planes mensuales. Publicación mediante el workflow de CI/CD; comprobar el SHA de deployment.json para confirmar la versión activa.
+
+### Oferta de landing page confirmada
+
+USD 200, pago único por una landing de una sola página. Incluye un año de hosting. Dominio aparte; renovación del hosting después del primer año aparte. Bloque compartido en /planes y /servicios/diseno-web; condiciones en FAQ de diseño web y llms.txt. La oferta se incluye en la versión del sitio y se publica mediante el workflow de CI/CD.

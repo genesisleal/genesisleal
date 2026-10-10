@@ -19,7 +19,9 @@
         "creacion de contenido",
         "automatizacion",
         "community manager",
-        "casos de exito"
+        "casos de exito",
+        "diseno web",
+        "landing pages"
       ],
       "capabilities": [
         "ServiceDiscovery",
@@ -30,9 +32,10 @@
         "necesito una community manager para gestionar mis redes sociales",
         "busco ayuda para crear y optimizar campañas de Meta Ads",
         "quiero producir reels carruseles e historias para mi marca",
-        "necesito automatizar consultas frecuentes y respuestas en redes sociales"
+        "necesito automatizar consultas frecuentes y respuestas en redes sociales",
+        "necesito una web o landing page para presentar mi negocio"
       ],
-      "version": "1.1.0"
+      "version": "1.2.0"
     }
   ]
 }

@@ -1,0 +1,18 @@
+.offer { display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: center; padding: 32px; margin: 48px auto; max-width: 1000px; border: 1px solid #e6d8f2; border-radius: 24px; background: linear-gradient(135deg,#f8f3ff,#fff 70%); }
+.badge { display: inline-flex; align-items: center; gap: 8px; color: #8134ba; font-size: 13px; margin-bottom: 16px; }
+.copy h2 { font-size: clamp(24px,3vw,32px); line-height: 1.2; letter-spacing: -.03em; color: #222; margin-bottom: 16px; }
+.copy p { font-size: 15px; line-height: 1.7; }
+.details { display: inline-flex; gap: 8px; align-items: center; color: #8134ba; font-size: 13px; margin-top: 20px; }
+.priceCard { background: white; border: 1px solid #eee; border-radius: 18px; padding: 24px; }
+.price { color: #222; display: flex; align-items: baseline; gap: 8px; }
+.price span { font-size: 20px; font-weight: 600; }
+.price strong { font-size: 48px; line-height: 1.2; letter-spacing: -.04em; }
+.included { display: flex; align-items: center; gap: 8px; font-size: 14px; margin: 16px 0 12px; }
+.included svg { color: #8134ba; }
+.button { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px; border-radius: 12px; background: #222; color: white; text-decoration: none; font-size: 14px; font-weight: 600; }
+.button:hover { background: #8134ba; color: white; }
+.offer a:focus-visible { outline: 3px solid #a855f7; outline-offset: 4px; }
+@media(max-width:680px) { .offer { grid-template-columns: 1fr; padding: 24px; gap: 24px; } }
+
+.payment { font-size: 13px; line-height: 1.5; margin-top: 8px; }
+.terms { font-size: 12px; line-height: 1.6; margin-bottom: 24px; }

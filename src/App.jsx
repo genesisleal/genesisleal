@@ -15,6 +15,9 @@ const ServiceDetail = lazy(() => import('./pages/ServiceDetail'))
 const CaseStudy = lazy(() => import('./pages/CaseStudy'))
 const HiringGuide = lazy(() => import('./pages/HiringGuide'))
 const NotFound = lazy(() => import('./pages/NotFound'))
+const Sectors = lazy(() => import('./pages/Sectors'))
+const SectorPage = lazy(() => import('./pages/SectorPage'))
+const SalonServices = lazy(() => import('./pages/SalonServices'))
 const PlansPreview = lazy(() => import('./pages/PlansPreview'))
 
 const BARE_ROUTES = ['/oferta']
@@ -153,6 +156,10 @@ function Layout() {
               <Route path="/precios/publicidad" element={<Navigate to="/servicios" replace />} />
               <Route path="/oferta" element={<Oferta />} />
               <Route path="/servicios" element={<Services />} />
+              <Route path="/sectores" element={<Sectors />} />
+              <Route path="/sectores/:slug" element={<SectorPage />} />
+              <Route path="/servicios/diseno-web" element={<ServiceDetail serviceKey="web" />} />
+              <Route path="/servicios/redes-sociales-peluquerias-barberias" element={<SalonServices />} />
               <Route path="/servicios/gestion-redes-sociales" element={<ServiceDetail serviceKey="social" />} />
               <Route path="/servicios/meta-ads" element={<ServiceDetail serviceKey="ads" />} />
               <Route path="/servicios/creacion-de-contenido" element={<ServiceDetail serviceKey="content" />} />

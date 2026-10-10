@@ -1,8 +1,9 @@
 import { useState, useEffect, useMemo } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { Play, X, ChevronLeft, ChevronRight, ExternalLink, ArrowRight, Megaphone, Layers, Sparkles, Globe } from 'lucide-react'
 import SEO from '../components/SEO'
+import SectorLinks from '../components/SectorLinks'
 import ServiceLinks from '../components/ServiceLinks'
 import styles from './PortfolioWork.module.css'
 
@@ -454,6 +455,7 @@ function Viewer({ item, onClose }) {
 }
 
 export default function PortfolioWork() {
+  const { hash } = useLocation()
   const [filter, setFilter] = useState('all')
   const [active, setActive] = useState(null)
 
@@ -461,6 +463,14 @@ export default function PortfolioWork() {
     () => (filter === 'all' ? works : works.filter((w) => w.types.includes(filter))),
     [filter]
   )
+
+  useEffect(() => {
+    if (!hash || filter !== 'all') return
+    const frame = requestAnimationFrame(() => {
+      document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: 'instant' })
+    })
+    return () => cancelAnimationFrame(frame)
+  }, [hash, filter])
 
   return (
     <>
@@ -511,8 +521,10 @@ export default function PortfolioWork() {
           {visible.map((w, i) => (
             <motion.article
               key={w.id}
+              id={w.id}
+              style={{ scrollMarginTop: 110 }}
               className={`${styles.case} ${i % 2 === 1 ? styles.reverse : ''}`}
-              initial={{ opacity: 0, y: 48 }}
+              initial={hash === `#${w.id}` ? false : { opacity: 0, y: 48 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -723,6 +735,7 @@ export default function PortfolioWork() {
           {active && <Viewer item={active} onClose={() => setActive(null)} />}
         </AnimatePresence>
       </main>
+      <SectorLinks />
       <ServiceLinks heading="Del trabajo que viste a lo que necesita tu marca" />
     </>
   )
