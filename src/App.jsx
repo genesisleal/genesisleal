@@ -15,6 +15,7 @@ const ServiceDetail = lazy(() => import('./pages/ServiceDetail'))
 const CaseStudy = lazy(() => import('./pages/CaseStudy'))
 const HiringGuide = lazy(() => import('./pages/HiringGuide'))
 const NotFound = lazy(() => import('./pages/NotFound'))
+const PlansPreview = lazy(() => import('./pages/PlansPreview'))
 
 const BARE_ROUTES = ['/oferta']
 const MAX_ROUTE_PREPARE_MS = 2500
@@ -158,7 +159,7 @@ function Layout() {
               <Route path="/servicios/automatizacion-chatbots" element={<ServiceDetail serviceKey="automation" />} />
               <Route path="/guias/contratar-community-manager-presupuesto" element={<HiringGuide />} />
               <Route path="/casos/:slug" element={<CaseStudy />} />
-              <Route path="/planes" element={<Navigate to="/servicios" replace />} />
+              <Route path="/planes" element={import.meta.env.DEV ? <PlansPreview /> : <Navigate to="/servicios" replace />} />
               <Route path="/planes/redes" element={<Navigate to="/servicios" replace />} />
               <Route path="/planes/publicidad" element={<Navigate to="/servicios" replace />} />
               <Route path="/planes/proximamente" element={<Navigate to="/servicios" replace />} />
