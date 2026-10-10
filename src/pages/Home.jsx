@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { useState, useRef, useEffect } from 'react'
 import styles from './Home.module.css'
 import SEO from '../components/SEO'
+import { hiringGuidePath } from '../components/ServiceLinks'
 
 import genesisProfile from '../assets/images/hero/genesis-profile.jpg'
 
@@ -245,7 +246,7 @@ export default function Home() {
 
             <div className={styles.heroRight}>
               <p className={styles.heroDescription}>
-                Hola, soy Genesis, Community Manager & Social Media Strategist especializada en marcas B2C.
+                Hola, soy Genesis, Community Manager & Social Media Strategist especializada en marcas B2C. Trabajo desde Buenos Aires con atención online.
               </p>
               <Link to="/servicios" className={styles.heroButton}>
                 Contactar
@@ -336,6 +337,7 @@ export default function Home() {
               </motion.article>
             ))}
           </div>
+          <p className={styles.guideLink}><Link to={hiringGuidePath}>Cómo elegir el servicio y pedir presupuesto</Link></p>
         </div>
       </section>
 

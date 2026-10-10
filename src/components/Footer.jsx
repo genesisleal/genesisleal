@@ -25,6 +25,7 @@ const menuLinks = [
   { path: '/portafolio', label: 'Portafolio' },
   { path: '/sobre-mi', label: 'Sobre mí' },
   { path: '/servicios', label: 'Servicios' },
+  { path: '/guias/contratar-community-manager-presupuesto', label: 'Contratación y presupuesto' },
 ]
 
 export default function Footer() {

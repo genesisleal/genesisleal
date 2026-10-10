@@ -923,3 +923,6 @@
     line-height: 1.7;
   }
 }
+
+.guideLink { margin-top: 28px; line-height: 1.6; }
+.guideLink a { color: #c4b5fd; text-underline-offset: 4px; }

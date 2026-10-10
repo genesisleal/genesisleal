@@ -13,6 +13,7 @@ const Oferta = lazy(() => import('./pages/Oferta'))
 const Services = lazy(() => import('./pages/Services'))
 const ServiceDetail = lazy(() => import('./pages/ServiceDetail'))
 const CaseStudy = lazy(() => import('./pages/CaseStudy'))
+const HiringGuide = lazy(() => import('./pages/HiringGuide'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
 const BARE_ROUTES = ['/oferta']
@@ -155,6 +156,7 @@ function Layout() {
               <Route path="/servicios/meta-ads" element={<ServiceDetail serviceKey="ads" />} />
               <Route path="/servicios/creacion-de-contenido" element={<ServiceDetail serviceKey="content" />} />
               <Route path="/servicios/automatizacion-chatbots" element={<ServiceDetail serviceKey="automation" />} />
+              <Route path="/guias/contratar-community-manager-presupuesto" element={<HiringGuide />} />
               <Route path="/casos/:slug" element={<CaseStudy />} />
               <Route path="/planes" element={<Navigate to="/servicios" replace />} />
               <Route path="/planes/redes" element={<Navigate to="/servicios" replace />} />

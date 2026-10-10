@@ -23,6 +23,7 @@ const ROUTES = [
   '/servicios/creacion-de-contenido',
   '/servicios/automatizacion-chatbots',
   ...caseStudyPaths,
+  '/guias/contratar-community-manager-presupuesto',
   '/planes',
   '/planes/redes',
   '/planes/publicidad'

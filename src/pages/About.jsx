@@ -4,6 +4,7 @@ import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './About.module.css'
 import SEO from '../components/SEO'
+import ServiceLinks from '../components/ServiceLinks'
 
 import genesisProfile from '../assets/images/hero/genesis-profile.jpg'
 
@@ -227,6 +228,7 @@ export default function About() {
           </div>
         </div>
       </section>
+      <ServiceLinks />
     </>
   )
 }

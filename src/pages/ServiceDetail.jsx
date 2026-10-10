@@ -1,6 +1,7 @@
 import { Link, Navigate } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Check } from 'lucide-react'
 import SEO from '../components/SEO'
+import { hiringGuidePath } from '../components/ServiceLinks'
 import { getServiceByKey, servicePages } from '../data/services'
 import styles from './ServiceDetail.module.css'
 
@@ -191,6 +192,7 @@ export default function ServiceDetail({ serviceKey }) {
             <div className={styles.sectionHeading}>
               <span className={styles.eyebrow}>Antes de empezar</span>
               <h2 id="questions-title">Lo que conviene definir juntos</h2>
+              <Link to={hiringGuidePath} className={styles.backLink}>Cómo elegir el servicio y preparar el presupuesto <ArrowRight size={16} aria-hidden="true" /></Link>
             </div>
             <div className={styles.includedGrid}>
               {service.questions.map(({ question, answer }) => (

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { ArrowLeft, ArrowRight, Bot, MessageCircle, Share2, Target, Video } from 'lucide-react'
 import styles from './Services.module.css'
 import SEO from '../components/SEO'
+import { hiringGuidePath } from '../components/ServiceLinks'
 import ContactCards from '../components/ContactCards'
 import { servicePages } from '../data/services'
 import { trackContact } from '../utils/measurement'
@@ -284,6 +285,8 @@ export default function Services() {
               No guardamos tus respuestas. Se abrirá WhatsApp con el mensaje listo para enviar.
             </p>
           </motion.form>
+
+          <p><Link to={hiringGuidePath}>Qué incluye cada servicio y cómo se prepara el presupuesto</Link></p>
 
           <section className={styles.directContact} aria-labelledby="direct-contact-title">
             <span className={styles.contactEyebrow}>Otras formas de contacto</span>

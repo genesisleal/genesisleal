@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { TrendingUp, Users, Target, Zap, Instagram, MessageCircle, ArrowUpRight } from 'lucide-react'
 import styles from './Portfolio.module.css'
 import SEO from '../components/SEO'
+import ServiceLinks from '../components/ServiceLinks'
 
 const projects = [
   {
@@ -175,6 +176,7 @@ export default function Portfolio() {
           </div>
         </div>
       </section>
+      <ServiceLinks />
     </>
   )
 }
