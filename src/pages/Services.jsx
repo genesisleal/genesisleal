@@ -48,50 +48,67 @@ export default function Services() {
   const [formData, setFormData] = useState({
     name: '',
     brand: '',
-    phone: '',
     services: [],
     objective: '',
     details: '',
   })
   const [serviceError, setServiceError] = useState(false)
+  const [draftUrl, setDraftUrl] = useState('')
 
   const updateField = (event) => {
     const { name, value } = event.target
+    event.target.setCustomValidity('')
+    setDraftUrl('')
     setFormData(current => ({ ...current, [name]: value }))
   }
 
   const toggleService = (service) => {
     setServiceError(false)
-    setFormData(current => ({
-      ...current,
-      services: current.services.includes(service)
+    setDraftUrl('')
+    setFormData(current => {
+      const unsure = 'Todavía no estoy segura'
+      const services = current.services.includes(service)
         ? current.services.filter(item => item !== service)
-        : [...current.services, service],
-    }))
+        : service === unsure
+          ? [unsure]
+          : [...current.services.filter(item => item !== unsure), service]
+      return { ...current, services }
+    })
   }
 
   const handleSubmit = (event) => {
     event.preventDefault()
 
+    for (const field of ['name', 'brand']) {
+      if (!formData[field].trim()) {
+        const input = event.currentTarget.elements.namedItem(field)
+        input.setCustomValidity(field === 'name' ? 'Escribí tu nombre.' : 'Escribí el nombre de tu marca.')
+        input.reportValidity()
+        return
+      }
+    }
+
     if (formData.services.length === 0) {
       setServiceError(true)
+      event.currentTarget.querySelector('#service-options button').focus()
       return
     }
 
     const message = [
       'Hola Genesis, quiero conversar sobre una propuesta para mi marca.',
       '',
-      `Nombre: ${formData.name}`,
-      `Marca: ${formData.brand}`,
-      `WhatsApp: ${formData.phone}`,
+      `Nombre: ${formData.name.trim()}`,
+      `Marca: ${formData.brand.trim()}`,
       `Servicio: ${formData.services.join(', ')}`,
       `Objetivo: ${formData.objective}`,
-      formData.details ? `Sobre la marca: ${formData.details}` : null,
+      formData.details.trim() ? `Sobre la marca: ${formData.details.trim()}` : null,
     ].filter(line => line !== null).join('\n')
 
+    const url = `https://wa.me/5491125490503?text=${encodeURIComponent(message)}`
+    setDraftUrl(url)
     trackContact('consultation_form_valid', { source: 'consultation_form', serviceCount: formData.services.length })
     window.open(
-      `https://wa.me/5491125490503?text=${encodeURIComponent(message)}`,
+      url,
       '_blank',
       'noopener,noreferrer'
     )
@@ -184,6 +201,7 @@ export default function Services() {
                   onChange={updateField}
                   placeholder="¿Cómo te llamás?"
                   autoComplete="name"
+                  maxLength={100}
                   required
                 />
               </label>
@@ -196,29 +214,16 @@ export default function Services() {
                   onChange={updateField}
                   placeholder="Tu marca o negocio"
                   autoComplete="organization"
+                  maxLength={120}
                   required
                 />
               </label>
             </div>
 
-            <label className={styles.field}>
-              <span>Número de WhatsApp</span>
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={updateField}
-                placeholder="Ejemplo: +54 11 1234 5678"
-                autoComplete="tel"
-                inputMode="tel"
-                required
-              />
-            </label>
-
-            <fieldset className={styles.fieldset}>
+            <fieldset className={styles.fieldset} aria-describedby={serviceError ? 'service-hint service-error' : 'service-hint'}>
               <legend>¿Qué necesitás?</legend>
-              <p>Podés elegir más de una opción.</p>
-              <div className={styles.optionGrid}>
+              <p id="service-hint">Podés elegir varios servicios. Si aún no lo sabés, te ayudo a definirlo.</p>
+              <div className={styles.optionGrid} id="service-options">
                 {serviceOptions.map(service => {
                   const selected = formData.services.includes(service)
                   return (
@@ -235,7 +240,7 @@ export default function Services() {
                 })}
               </div>
               {serviceError && (
-                <span className={styles.error}>Elegí al menos una opción.</span>
+                <span id="service-error" role="alert" className={styles.error}>Elegí al menos una opción.</span>
               )}
             </fieldset>
 
@@ -263,13 +268,14 @@ export default function Services() {
             </fieldset>
 
             <label className={styles.field}>
-              <span>Contame brevemente sobre tu marca</span>
+              <span>Contame brevemente sobre tu marca (opcional)</span>
               <textarea
                 name="details"
                 value={formData.details}
                 onChange={updateField}
                 placeholder="¿A qué se dedica tu marca, qué redes usa y qué te gustaría mejorar?"
                 rows="4"
+                maxLength={1500}
               />
             </label>
 
@@ -281,8 +287,17 @@ export default function Services() {
               Pedir una propuesta por WhatsApp
             </button>
 
+            {draftUrl && (
+              <div className={styles.draftHelp} role="status">
+                <p>Tu mensaje está preparado. Revisalo en WhatsApp antes de enviarlo.</p>
+                <a href={draftUrl} target="_blank" rel="noopener noreferrer">
+                  Si WhatsApp no se abrió, abrí tu mensaje aquí
+                </a>
+              </div>
+            )}
+
             <p className={styles.privacyNote}>
-              No guardamos tus respuestas. Se abrirá WhatsApp con el mensaje listo para enviar.
+              No guardamos tus respuestas. Abrir WhatsApp no envía el mensaje; vos decidís cuándo enviarlo.
             </p>
           </motion.form>
 

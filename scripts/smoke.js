@@ -156,21 +156,36 @@ try {
 
     await page.type('input[name="name"]', 'QA Genesis')
     await page.type('input[name="brand"]', 'Marca de prueba')
-    await page.type('input[name="phone"]', '1100000000')
     await clickVisible('label:has(input[name="objective"])')
     await clickVisible('button[type="submit"]')
     await page.waitForFunction(() => document.body.textContent.includes('Elegí al menos una opción.'))
     assert.deepEqual(await page.evaluate(() => window.__smokeOpened), [])
-    await clickVisible('form button[type="button"]')
+    assert.equal(await page.$eval('#service-options button', el => el === document.activeElement), true, 'Service error must focus the choices')
+    await clickVisible('#service-options button:last-child')
+    await clickVisible('#service-options button:first-child')
+    assert.equal(await page.$$eval('#service-options button[aria-pressed="true"]', els => els.map(el => el.textContent).join(',')), 'Redes sociales')
     await clickVisible('button[type="submit"]')
     const opened = await page.evaluate(() => window.__smokeOpened)
     assert.equal(opened.length, 1)
     const message = new URL(opened[0])
     assert.equal(message.origin + message.pathname, 'https://wa.me/5491125490503')
-    for (const text of ['Nombre: QA Genesis', 'Marca: Marca de prueba', 'WhatsApp: 1100000000', 'Servicio: Redes sociales', 'Objetivo: Conseguir más consultas']) {
+    for (const text of ['Nombre: QA Genesis', 'Marca: Marca de prueba', 'Servicio: Redes sociales', 'Objetivo: Conseguir más consultas']) {
       assert(message.searchParams.get('text').includes(text), `Missing WhatsApp field: ${text}`)
     }
-    report.interactions.push(`${device}: validation and WhatsApp draft, external opening intercepted`)
+    const draftText = message.searchParams.get('text')
+    assert(!draftText.includes('WhatsApp:'), 'Do not request a redundant contact number')
+    assert.equal(await page.$eval('form [role="status"] a', el => el.href), opened[0], 'Recovery link must preserve the prepared message')
+    await page.$eval('input[name="name"]', el => {
+      const setValue = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set
+      setValue.call(el, '')
+      el.dispatchEvent(new Event('input', { bubbles: true }))
+    })
+    await page.waitForFunction(() => document.querySelector('input[name="name"]').value === '')
+    await page.type('input[name="name"]', '   ')
+    await clickVisible('button[type="submit"]')
+    assert.equal((await page.evaluate(() => window.__smokeOpened)).length, 1, 'Whitespace must not open another draft')
+    assert.equal(await page.$eval('input[name="name"]', el => el.validity.customError), true)
+    report.interactions.push(`${device}: service error focus, exclusive unsure option, WhatsApp draft recovery and whitespace validation, external opening intercepted`)
   }
 
   for (const alias of aliases) {
