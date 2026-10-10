@@ -154,6 +154,8 @@ export default function Services() {
             adaptadas a los objetivos de cada marca.
           </motion.p>
 
+          <Link to="/planes" className={styles.plansLink}>Ver planes y precios <ArrowRight size={18} aria-hidden="true" /></Link>
+
           <div className={styles.servicesGrid}>
             {servicePages.map((service, index) => {
               const Icon = serviceIcons[service.key]

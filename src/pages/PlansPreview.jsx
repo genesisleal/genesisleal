@@ -1,4 +1,4 @@
-import { Check, ArrowRight, Sparkles, TrendingUp, Info } from 'lucide-react'
+import { Check, ArrowRight, Sparkles, TrendingUp, Info, Layers, Video, CalendarDays, CreditCard, MessageCircle, CheckCheck } from 'lucide-react'
 import SEO from '../components/SEO'
 import styles from './PlansPreview.module.css'
 
@@ -9,7 +9,7 @@ const plans = [
 
 export default function PlansPreview() {
   return <>
-    <SEO title="Planes de redes sociales" path="/planes" noindex />
+    <SEO title="Planes de redes sociales" path="/planes" description="Planes de gestión de redes sociales y Meta Ads para una marca: Pro USD 350 y Premium USD 500 por mes. Conocé entregables, alcance y condiciones." />
     <div className={styles.marketplace}>
       <header className={styles.hero}>
         <div className={styles.heroContent}>
@@ -36,11 +36,18 @@ export default function PlansPreview() {
           </article>)}
         </section>
         <p className={styles.adsNote}><Info size={17} aria-hidden="true" /><span>La inversión en anuncios se paga aparte. La calculamos según el nicho, los objetivos y el mercado de tu marca.</span></p>
-        <section className={styles.conditions} aria-label="Alcance y condiciones">
-          <details><summary>Cómo se distribuye el contenido</summary><p>Los 6 o 10 posteos son el total mensual compartido entre plataformas. Las piezas publicitarias son adaptaciones de esos posteos. En Premium, los mismos reels se publican también como Shorts en YouTube, sin preparación aparte ni videos largos. Cada secuencia cuenta como una story.</p></details>
-          <details><summary>Material y atención de consultas</summary><p>Editamos los reels con el material que aportás. La atención de mensajes y comentarios se cotiza aparte.</p></details>
-          <details><summary>Preparación y tiempo de trabajo</summary><p>Necesitamos un mínimo de 15 días para preparar el contenido y acordamos la fecha de lanzamiento. Recomendamos trabajar al menos tres meses.</p></details>
-          <details><summary>Forma de pago</summary><p>El primer mes se abona 50% al iniciar y 50% al finalizar. Los meses siguientes se abonan al inicio, del 1 al 8 de cada mes.</p></details>
+        <section className={styles.conditions} aria-labelledby="working-title">
+          <header className={styles.workingHeader}><span>Antes de empezar</span><h2 id="working-title">Cómo trabajamos</h2><p>Todo claro desde el primer día.</p></header>
+          <div className={styles.workingGrid}>
+            {[
+              { icon: Layers, title: 'Un contenido, varios canales', text: 'Los 6 o 10 posteos son el total mensual compartido entre plataformas. Los anuncios se adaptan de esos mismos contenidos.' },
+              { icon: Video, title: 'Vos aportás el material', text: 'Editamos tus videos. En Premium, los mismos reels se publican como Shorts, sin preparación aparte ni videos largos.' },
+              { icon: CheckCheck, title: 'Lo revisamos juntos', text: 'El calendario se aprueba antes de publicar e incluye dos rondas de cambios. Cada secuencia cuenta como una story.' },
+              { icon: CalendarDays, title: 'Un inicio planificado', text: 'Preparación mínima de 15 días y fecha de lanzamiento acordada. Recomendamos trabajar al menos tres meses.' },
+              { icon: CreditCard, title: 'Pagos en dos pasos', text: 'Primer mes: 50% al iniciar y 50% al finalizar. Luego, al inicio de cada mes, del 1 al 8.' },
+              { icon: MessageCircle, title: 'Atención a tu medida', text: 'Responder mensajes y comentarios se cotiza aparte. Premium incluye de regalo la respuesta automática inicial.' },
+            ].map(({ icon: Icon, title, text }) => <div className={styles.workingItem} key={title}><div className={styles.workingIcon}><Icon size={21} aria-hidden="true" /></div><div><h3>{title}</h3><p>{text}</p></div></div>)}
+          </div>
         </section>
       </div>
     </div>

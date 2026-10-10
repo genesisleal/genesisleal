@@ -371,3 +371,6 @@
   color: var(--color-accent-hover);
   text-decoration: underline;
 }
+
+.plansLink { display: inline-flex; align-items: center; gap: 10px; color: #8134ba; font-size: 15px; font-weight: 600; margin-bottom: 28px; text-decoration: none; }
+.plansLink:hover { text-decoration: underline; }

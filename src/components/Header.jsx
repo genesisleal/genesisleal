@@ -28,6 +28,7 @@ const navLinks = [
   { path: '/experiencia', label: 'Experiencia' },
   { path: '/portafolio', label: 'Portafolio' },
   { path: '/servicios', label: 'Servicios' },
+  { path: '/planes', label: 'Planes y precios' },
   { path: '/sobre-mi', label: 'Sobre mí' },
 ]
 

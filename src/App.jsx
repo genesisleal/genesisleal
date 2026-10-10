@@ -159,7 +159,7 @@ function Layout() {
               <Route path="/servicios/automatizacion-chatbots" element={<ServiceDetail serviceKey="automation" />} />
               <Route path="/guias/contratar-community-manager-presupuesto" element={<HiringGuide />} />
               <Route path="/casos/:slug" element={<CaseStudy />} />
-              <Route path="/planes" element={import.meta.env.DEV ? <PlansPreview /> : <Navigate to="/servicios" replace />} />
+              <Route path="/planes" element={<PlansPreview />} />
               <Route path="/planes/redes" element={<Navigate to="/servicios" replace />} />
               <Route path="/planes/publicidad" element={<Navigate to="/servicios" replace />} />
               <Route path="/planes/proximamente" element={<Navigate to="/servicios" replace />} />

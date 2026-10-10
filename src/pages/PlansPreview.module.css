@@ -27,12 +27,19 @@
 .checkIcon { color: var(--tag-color); flex-shrink: 0; margin-top: 2px; }
 .ctaButton { display: flex; align-items: center; justify-content: center; gap: .5rem; width: 100%; padding: .875rem 1rem; background: var(--color-text-primary); color: #fff; border-radius: 12px; font-weight: 600; font-size: .9rem; text-decoration: none; transition: background .2s ease; }
 .ctaButton:hover { background: #8134ba; color: #fff; }
-.ctaButton:focus-visible, .conditions summary:focus-visible { outline: 3px solid #a855f7; outline-offset: 4px; }
+.ctaButton:focus-visible { outline: 3px solid #a855f7; outline-offset: 4px; }
 .adsNote { display: flex; align-items: center; justify-content: center; gap: .75rem; margin-top: 1.5rem; padding: .875rem 1.25rem; background: #a855f70f; border: 1px solid #a855f726; border-radius: 12px; font-size: .875rem; line-height: 1.5; }
 .adsNote svg { flex-shrink: 0; color: #8134ba; }
-.conditions { margin-top: 2rem; }
-.conditions details { border-bottom: 1px solid #e6e0eb; }
-.conditions summary { padding: 1rem 0; color: var(--color-text-primary); font-size: .9rem; font-weight: 600; cursor: pointer; }
-.conditions p { font-size: .875rem; line-height: 1.65; padding: 0 0 1rem; max-width: 780px; }
+.conditions { margin-top: 3.5rem; padding: 32px; background: linear-gradient(135deg, #fcfaff, #fff); border: 1px solid #eae3f1; border-radius: 24px; }
+.workingHeader { margin-bottom: 28px; }
+.workingHeader > span { color: #8134ba; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; }
+.workingHeader h2 { font-size: 26px; letter-spacing: -.03em; color: #222; margin-top: 4px; }
+.workingHeader > p { font-size: 14px; margin-top: 4px; }
+.workingGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 32px; }
+.workingItem { display: flex; gap: 14px; }
+.workingIcon { width: 42px; height: 42px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; border: 1px solid #e6d8f2; border-radius: 12px; color: #8134ba; background: #f4edf9; }
+.workingItem h3 { font-size: 14px; color: #27202e; font-weight: 650; margin-bottom: 6px; }
+.workingItem p { font-size: 13px; line-height: 1.65; }
+@media (max-width: 680px) { .conditions { padding: 24px 20px; margin-top: 2.5rem; } .workingGrid { grid-template-columns: 1fr; gap: 24px; } .workingHeader h2 { font-size: 24px; } }
 @media (max-width: 680px) { .hero { padding: 2.5rem 20px 2rem; } .subtitle { font-size: 1rem; } .catalog { padding: 2rem 18px 3rem; } .servicesGrid { grid-template-columns: 1fr; } .serviceCard { padding: 1.5rem; } .serviceDescription { min-height: 0; } }
 @media (prefers-reduced-motion: reduce) { .serviceCard { transition: none; } .serviceCard:hover { transform: none; } }

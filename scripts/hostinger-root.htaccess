@@ -12,7 +12,7 @@ RewriteRule ^ https://genesisleal.com%{REQUEST_URI} [R=301,L,NE]
 
 # Conservar las rutas históricas de la aplicación.
 RewriteRule ^si/?$ / [R=301,L]
-RewriteRule ^(contacto|precios/publicidad|planes(/(redes|publicidad|proximamente|detalleredessociales|detallepublicidad))?)/?$ /servicios/ [R=301,L]
+RewriteRule ^(contacto|precios/publicidad|planes/(redes|publicidad|proximamente|detalleredessociales|detallepublicidad))/?$ /servicios/ [R=301,L]
 
 # La carpeta técnica no constituye contenido público del portafolio.
 RewriteRule ^cgi-bin(?:/|$) - [R=404,L]

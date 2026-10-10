@@ -14,7 +14,7 @@ const expectedSha = process.env.SMOKE_EXPECTED_SHA || deployment.commit
 const sitemap = await readFile(join(dist, 'sitemap.xml'), 'utf8')
 const routes = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => new URL(match[1]).pathname)
 routes.push('/oferta/')
-const aliases = ['/si', '/contacto', '/precios/publicidad', '/planes', '/planes/redes', '/planes/publicidad']
+const aliases = ['/si', '/contacto', '/precios/publicidad', '/planes/redes', '/planes/publicidad']
 const blocked = ['googletagmanager.com', 'google-analytics.com', 'clarity.ms', 'static.cloudflareinsights.com', 'wa.me', 'whatsapp.com']
 const report = { commit: expectedSha, base: null, pages: [], interactions: [], assets: [], errors: [] }
 await mkdir(output, { recursive: true })
@@ -119,7 +119,7 @@ try {
       assert(metadata.overflow <= 2, `${device} overflow on ${route}: ${metadata.overflow}`)
       assert.equal(metadata.robots.includes('noindex'), route === '/oferta/')
       report.pages.push({ device, route, status: response.status(), ...metadata })
-      if ((['/', '/servicios/', '/portafolio/', '/servicios/meta-ads/'].includes(route) || route.startsWith('/casos/'))) {
+      if ((['/', '/servicios/', '/planes/', '/portafolio/', '/servicios/meta-ads/'].includes(route) || route.startsWith('/casos/'))) {
         await page.screenshot({ path: join(output, `${device}-${route.replaceAll('/', '_') || 'home'}.png`), fullPage: true })
       }
     }
